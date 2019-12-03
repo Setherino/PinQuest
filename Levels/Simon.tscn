@@ -12,6 +12,7 @@ momentary = true
 
 [node name="Button5" parent="." instance=ExtResource( 1 )]
 position = Vector2( 300, 520 )
+momentary = true
 
 [node name="Button2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 540, 520 )
