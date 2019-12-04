@@ -36,7 +36,7 @@ linkCode = 6
 position = Vector2( 640, 520 )
 momentary = true
 type = "blue"
-linkCode = 4
+linkCode = 8
 
 [node name="Button4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 730, 520 )
@@ -52,15 +52,20 @@ tile_data = PoolIntArray( 65534, 0, 65537, 65535, 0, 65537, 15, 0, 65537, 16, 0,
 
 [node name="door2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 340.176, 517.024 )
+nextLevel = "res://Levels/john.tscn"
 triggered = true
 linkCode = 3
 
 [node name="andGate" parent="." instance=ExtResource( 4 )]
 position = Vector2( 505.797, 318.745 )
-Xor = true
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 190.172, 412.314 )
 
 [node name="or gate" parent="Player" instance=ExtResource( 6 )]
 position = Vector2( 164, -34.0853 )
+
+[node name="door" parent="." instance=ExtResource( 3 )]
+position = Vector2( 691.247, 303.582 )
+triggered = true
+linkCode = 8
