@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Player Walk/playerWalk.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Walking"
 length = 1.5
 tracks/0/type = "value"
@@ -19,8 +19,9 @@ tracks/0/keys = {
 "values": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3 ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.1104, 46.5392 )
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 32.9885
+height = 21.542
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -36,11 +37,11 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/Walking = SubResource( 2 )
+anims/Walking = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -0.926582 )
-shape = SubResource( 1 )
+position = Vector2( 0.663422, 3.71736 )
+shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
