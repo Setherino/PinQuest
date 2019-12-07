@@ -35,10 +35,14 @@ format = 1
 tile_data = PoolIntArray( 262130, 7, 0, 196631, 11, 1, 327669, 7, 0, 262166, 11, 1, 262167, 11, 1, 393207, 7, 0, 393210, 7, 0, 327686, 11, 1, 327688, 11, 1, 327690, 11, 1, 327692, 11, 1, 327694, 11, 1, 327696, 11, 1, 327698, 11, 1, 327701, 11, 1, 327702, 11, 1, 327703, 11, 1, 327704, 11, 1, 327705, 11, 1, 327706, 11, 1, 327707, 11, 1, 327708, 11, 1, 327709, 11, 1, 393225, 6, 1, 393230, 6, 0, 393238, 11, 1, 393239, 11, 1, 458754, 10, 2, 458769, 7, 0, 458770, 7, 0, 458771, 7, 0, 458775, 11, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0.719116, 83.6556 )
+position = Vector2( 27.3763, 95.9589 )
 
 [node name="Jumper" parent="." instance=ExtResource( 6 )]
 position = Vector2( -260, 520 )
 
 [node name="Jumper2" parent="." instance=ExtResource( 6 )]
 position = Vector2( -470, 520 )
+
+[node name="Jumper3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 29.7034, 520 )
+forceJump = true
