@@ -19,7 +19,7 @@ config/name="PinQuest"
 run/main_scene="res://Levels/MainMenu.tscn"
 boot_splash/image="res://Sprites/PinQuestSplash-01.png"
 boot_splash/bg_color=Color( 0.0901961, 0.380392, 0.564706, 1 )
-config/icon="res://icon.png"
+config/icon="res://pinQuestIcon.png"
 
 [autoload]
 
