@@ -8,11 +8,16 @@ extends Area2D
 
 #this is the level we go to
 export var nextLevel = "start"
+export var triggered = false
+export var linkCode = 1
+
 
 var doorSize = Vector2(70,70)
 
 var onPlayer = false
 
+var myNumber = 0
+var names = ["yellow","green","red","blue"]
 #creating vector 2's representing the open and closed states of door one.
 var closedDoor1 = Vector2(1280,506)
 var openDoor1 = Vector2(1280,426)
@@ -33,6 +38,22 @@ onready var door2 = get_node("upperDoor")
 onready var sound2 = get_node("doorClose")
 onready var sound = get_node("doorOpen")
 
+
+func _ready():
+	if triggered:
+		assert(linkCode < main.maxLinks)
+		myNumber = linkCode
+
+
+func _process(delta):
+	if triggered:
+		if main.linkCodes[myNumber]:
+			door1.set_region_rect(openDoor1Rect)
+			door2.set_region_rect(openDoor2Rect)
+		else:
+			door1.set_region_rect(closedDoor1Rect)
+			door2.set_region_rect(closedDoor2Rect)
+
 #when any key is pressed
 func _input(event):
 	#check if it was the one we care about, and if
@@ -44,6 +65,8 @@ func _input(event):
 #when the player touches the door
 func _on_door_body_entered(body):
 	#set onPlayer to true
+	if triggered && !main.linkCodes[myNumber]:
+		return
 	onPlayer = true
 	
 	#open the door (switch door sprites to open version
@@ -56,6 +79,8 @@ func _on_door_body_entered(body):
 
 #when the player walks away from the door
 func _on_door_body_exited(body):
+	if triggered && !main.linkCodes[myNumber]:
+		return
 	#dissable onPlayer
 	onPlayer = false
 	

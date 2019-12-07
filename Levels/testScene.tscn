@@ -55,6 +55,7 @@ forceJump = true
 [node name="Jumper6" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 700, 130 )
 forceJump = true
+JumpHeight = 400
 
 [node name="Jumper" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( -1090, -70 )
