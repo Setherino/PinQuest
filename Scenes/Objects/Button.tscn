@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scripts/Button.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game_Objects/Button.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/tiles.svg" type="Texture" id=2]
 [ext_resource path="res://Sound/click.wav" type="AudioStream" id=3]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.0

@@ -3,20 +3,21 @@ extends Area2D
 #Level door
 
 #written by Seth Ciancio, 12/1/19
-
-
+#updated by Seth Ciancio, 12/6/19
+#-added linkObjects & stuff
+var link : linkObject = linkObject.new("Door") 
+#This is what allows us to interact with other linkObjects
 
 #this is the level we go to
 export var nextLevel = "start"
 export var triggered = false
-export var linkCode = 1
-
+export var sourceName = "N/A"
 
 var doorSize = Vector2(70,70)
 
 var onPlayer = false
 
-var myNumber = 0
+
 var names = ["yellow","green","red","blue"]
 #creating vector 2's representing the open and closed states of door one.
 var closedDoor1 = Vector2(1280,506)
@@ -41,13 +42,15 @@ onready var sound = get_node("doorOpen")
 
 func _ready():
 	if triggered:
-		assert(linkCode < main.maxLinks)
-		myNumber = linkCode
+		link.initialize(sourceName,false)
+
 
 
 func _process(delta):
+	link.update()
+	
 	if triggered:
-		if main.linkCodes[myNumber]:
+		if link.enabled:
 			door1.set_region_rect(openDoor1Rect)
 			door2.set_region_rect(openDoor2Rect)
 		else:
@@ -65,7 +68,7 @@ func _input(event):
 #when the player touches the door
 func _on_door_body_entered(body):
 	#set onPlayer to true
-	if triggered && !main.linkCodes[myNumber]:
+	if triggered && !link.enabled:
 		return
 	onPlayer = true
 	
@@ -79,7 +82,7 @@ func _on_door_body_entered(body):
 
 #when the player walks away from the door
 func _on_door_body_exited(body):
-	if triggered && !main.linkCodes[myNumber]:
+	if triggered && !link.enabled:
 		return
 	#dissable onPlayer
 	onPlayer = false

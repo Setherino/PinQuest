@@ -1,21 +1,23 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Objects/Button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilemaps/Base.tres" type="TileSet" id=2]
-[ext_resource path="res://Scenes/levelDoor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/LogicGates/andGate.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/Indicator.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/LogicGates/orGate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
 
 [node name="Simon" type="Node2D"]
 
 [node name="Button" parent="." instance=ExtResource( 1 )]
 position = Vector2( 440, 520 )
-linkCode = 2
+color = "blue"
+sourceName = "jill"
 
 [node name="Button5" parent="." instance=ExtResource( 1 )]
 position = Vector2( 228.853, 520 )
-linkCode = 1
+sourceName = "jack"
 
 [node name="Button7" parent="." instance=ExtResource( 1 )]
 position = Vector2( 34.8087, 356.711 )
@@ -24,25 +26,17 @@ rotation = 1.56816
 [node name="Button2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 540, 520 )
 momentary = true
-type = "green"
-linkCode = 4
 
 [node name="Button6" parent="." instance=ExtResource( 1 )]
 position = Vector2( 820, 520 )
-type = "green"
-linkCode = 6
 
 [node name="Button3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 640, 520 )
 momentary = true
-type = "blue"
-linkCode = 8
 
 [node name="Button4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 730, 520 )
 momentary = true
-type = "red"
-linkCode = 5
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -54,18 +48,35 @@ tile_data = PoolIntArray( 65534, 0, 65537, 65535, 0, 65537, 15, 0, 65537, 16, 0,
 position = Vector2( 340.176, 517.024 )
 nextLevel = "res://Levels/john.tscn"
 triggered = true
-linkCode = 3
+sourceName = "or"
 
 [node name="andGate" parent="." instance=ExtResource( 4 )]
-position = Vector2( 505.797, 318.745 )
+position = Vector2( 523.802, 297.311 )
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 190.172, 412.314 )
+[node name="Indicator" parent="." instance=ExtResource( 5 )]
+position = Vector2( 340.793, 382.406 )
+scale = Vector2( 0.193368, 0.193368 )
+sourceName = "or"
 
-[node name="or gate" parent="Player" instance=ExtResource( 6 )]
-position = Vector2( 164, -34.0853 )
+[node name="Indicator2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 433.672, 383.069 )
+scale = Vector2( 0.193368, 0.193368 )
+sourceName = "jill"
+
+[node name="Indicator3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 237.299, 387.05 )
+scale = Vector2( 0.193368, 0.193368 )
+sourceName = "jack"
+
+[node name="or gate" parent="." instance=ExtResource( 6 )]
+position = Vector2( 343.05, 288.493 )
+inSource1 = "jack"
+inSource2 = "jill"
+outSource = "or"
 
 [node name="door" parent="." instance=ExtResource( 3 )]
 position = Vector2( 691.247, 303.582 )
 triggered = true
-linkCode = 8
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 190.172, 412.314 )
