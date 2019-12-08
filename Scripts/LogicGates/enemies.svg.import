@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tiles_spritesheet.png-0e932f409fa6018039430441fc92126e.stex"
+path="res://.import/enemies.svg-ca939b0527b041b1570ea0956512d4d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/tiles_spritesheet.png"
-dest_files=[ "res://.import/tiles_spritesheet.png-0e932f409fa6018039430441fc92126e.stex" ]
+source_file="res://Scripts/LogicGates/enemies.svg"
+dest_files=[ "res://.import/enemies.svg-ca939b0527b041b1570ea0956512d4d4.stex" ]
 
 [params]
 

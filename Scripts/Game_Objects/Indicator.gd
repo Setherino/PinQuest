@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 
 #linked indicator
 
@@ -9,9 +9,7 @@ export var sourceName = "N/A"
 var codeFound = false
 var prevName = "N/A"
 
-export var test = [" "]
-
-onready var sprite = get_node(".")
+onready var sprite = get_node("Sprite")
 
 var link : linkObject = linkObject.new("Indicator")
 

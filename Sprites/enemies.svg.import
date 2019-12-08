@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PinQuest.png-1c2e02adbc985f5880dc746304c94f45.stex"
+path="res://.import/enemies.svg-962968f6b575b338f76b71a58751c20c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PinQuest.png"
-dest_files=[ "res://.import/PinQuest.png-1c2e02adbc985f5880dc746304c94f45.stex" ]
+source_file="res://Sprites/enemies.svg"
+dest_files=[ "res://.import/enemies.svg-962968f6b575b338f76b71a58751c20c.stex" ]
 
 [params]
 

@@ -17,6 +17,9 @@ var sourceName = " "
 var enabled = false
 #it's type, IE, button, door, indicator,ect.
 var type = "Unknown"
+#represents the previous state lol
+var prevState = false
+
 
 #constructor function does almost nothing
 func _init(Type:String):
@@ -54,12 +57,26 @@ func update():
 		enabled = main.linkCodes[linkCode] #set enabled to the right thing
 		
 
+
+func getPrev( ):
+	var temp = prevState
+	prevState = enabled
+	return temp
+
+func hasChanged( ):
+	if getPrev() != enabled:
+		return true
+	return false
+
 #these are all pretty simple, so.. yk just figure it out
 func setto(to:bool): 
+	prevState = main.linkCodes[linkCode]
 	main.linkCodes[linkCode] = to
 
 func on( ):
+	prevState = main.linkCodes[linkCode]
 	main.linkCodes[linkCode] = true
 
 func off( ):
+	prevState = main.linkCodes[linkCode]
 	main.linkCodes[linkCode] = false

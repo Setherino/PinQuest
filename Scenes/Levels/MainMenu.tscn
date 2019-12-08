@@ -1,14 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tilemaps/Base.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/PinQuestSplash-01.png" type="Texture" id=3]
 [ext_resource path="res://Tilemaps/Buildings.tres" type="TileSet" id=4]
-[ext_resource path="res://Scenes/Objects/Jumper.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Objects/Indicator.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Objects/Button.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/LogicGates/startWith.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Obstacles/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Objects/Coin.tscn" type="PackedScene" id=7]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -37,52 +35,26 @@ cell_size = Vector2( 69, 69 )
 format = 1
 tile_data = PoolIntArray( 262130, 7, 0, 196631, 11, 1, 327669, 7, 0, 262166, 11, 1, 262167, 11, 1, 393207, 7, 0, 393210, 7, 0, 327686, 11, 1, 327688, 11, 1, 327690, 11, 1, 327692, 11, 1, 327694, 11, 1, 327696, 11, 1, 327698, 11, 1, 327701, 11, 1, 327702, 11, 1, 327703, 11, 1, 327704, 11, 1, 327705, 11, 1, 327706, 11, 1, 327707, 11, 1, 327708, 11, 1, 327709, 11, 1, 393225, 6, 1, 393230, 6, 0, 393238, 11, 1, 393239, 11, 1, 458754, 10, 2, 458769, 7, 0, 458770, 7, 0, 458771, 7, 0, 458775, 11, 1 )
 
-[node name="Jumper" parent="." instance=ExtResource( 5 )]
-position = Vector2( -260, 520 )
-JumpHeight = 3000
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 141.511, 458.552 )
 
-[node name="Jumper2" parent="." instance=ExtResource( 5 )]
-position = Vector2( -470, 520 )
+[node name="Enemy" parent="." instance=ExtResource( 6 )]
+position = Vector2( -100.376, 479.583 )
 
-[node name="Jumper3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 29.7034, 520 )
-forceJump = true
+[node name="Coin" parent="." instance=ExtResource( 7 )]
+position = Vector2( 258.125, 494.316 )
 
-[node name="Indicator" parent="." instance=ExtResource( 6 )]
-position = Vector2( 588.332, 380.928 )
-scale = Vector2( 0.24427, 0.24427 )
-sourceName = "sata"
+[node name="Coin2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 320.125, 494.316 )
 
-[node name="Indicator3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 363.6, 386.056 )
-scale = Vector2( 0.24427, 0.24427 )
-sourceName = "chunky"
+[node name="Coin3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 383.125, 494.316 )
 
-[node name="Indicator2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 472.178, 384.472 )
-scale = Vector2( 0.24427, 0.24427 )
-sourceName = "john"
+[node name="Coin4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 447.125, 494.316 )
 
-[node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 27.3763, 95.9589 )
+[node name="Coin5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 505.126, 494.316 )
 
-[node name="Button" parent="." instance=ExtResource( 8 )]
-position = Vector2( 470.947, 518.232 )
-sourceName = "john"
-
-[node name="Button3" parent="." instance=ExtResource( 8 )]
-position = Vector2( 598.01, 518.232 )
-sourceName = "sata"
-
-[node name="Button2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 359.948, 517.497 )
-sourceName = "chunky"
-
-[node name="Button4" parent="." instance=ExtResource( 8 )]
-position = Vector2( 251.147, 517.497 )
-sourceName = "dad"
-
-[node name="Node2D" parent="." instance=ExtResource( 9 )]
-position = Vector2( 405.923, 296.2 )
-startWith = true
-sourceName = "sata"
+[node name="Coin6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 568.126, 494.316 )

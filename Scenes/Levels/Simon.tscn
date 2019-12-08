@@ -23,21 +23,6 @@ sourceName = "jack"
 position = Vector2( 34.8087, 356.711 )
 rotation = 1.56816
 
-[node name="Button2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 540, 520 )
-momentary = true
-
-[node name="Button6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 820, 520 )
-
-[node name="Button3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 640, 520 )
-momentary = true
-
-[node name="Button4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 730, 520 )
-momentary = true
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 69, 69 )
@@ -48,7 +33,7 @@ tile_data = PoolIntArray( 65534, 0, 65537, 65535, 0, 65537, 15, 0, 65537, 16, 0,
 position = Vector2( 340.176, 517.024 )
 nextLevel = "res://Levels/john.tscn"
 triggered = true
-sourceName = "or"
+sourceName = "out"
 
 [node name="andGate" parent="." instance=ExtResource( 4 )]
 position = Vector2( 523.802, 297.311 )
@@ -56,7 +41,7 @@ position = Vector2( 523.802, 297.311 )
 [node name="Indicator" parent="." instance=ExtResource( 5 )]
 position = Vector2( 340.793, 382.406 )
 scale = Vector2( 0.193368, 0.193368 )
-sourceName = "or"
+sourceName = "out"
 
 [node name="Indicator2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 433.672, 383.069 )
@@ -72,7 +57,6 @@ sourceName = "jack"
 position = Vector2( 343.05, 288.493 )
 inSource1 = "jack"
 inSource2 = "jill"
-outSource = "or"
 
 [node name="door" parent="." instance=ExtResource( 3 )]
 position = Vector2( 691.247, 303.582 )
