@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Tilemaps/Base.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Obstacles/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/Collectables/coinBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
@@ -18,9 +18,8 @@ position = Vector2( 99.7123, 379.219 )
 nextLevel = "res://Levels/testScene.tscn"
 triggered = true
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 335.315, 217.096 )
+[node name="coinBox" parent="." instance=ExtResource( 3 )]
+position = Vector2( 522.789, 382.524 )
 
-[node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 618.052, 346.501 )
-SPEED = 150
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 45.2203, 264.361 )

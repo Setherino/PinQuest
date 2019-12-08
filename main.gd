@@ -12,9 +12,23 @@ var coins = 0
 
 var future : File = File.new()
 
-var futureRewards = [ ]
+var futureRewards = ["string, please"]
 
+var playerHealth = 10
 
+var toggle = false
+
+func _process(delta):
+	if toggle:
+		if playerHealth > 0:
+			playerHealth -= 1
+		else:
+			toggle = false
+	else:
+		if playerHealth <= 10:
+			playerHealth += 1
+		else:
+			toggle = true
 
 func _ready():
 	futureRewards.clear()

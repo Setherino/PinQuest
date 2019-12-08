@@ -12,6 +12,9 @@ extends Node2D
 #	pass
 
 
+func _ready():
+	print("coin spawned")
+
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		print(main.futureRewards[main.coins])
