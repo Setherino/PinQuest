@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Game_Objects/coinBox.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/tiles.svg" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.8281, 3.60533 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35.0545, 27.9825 )
+
+[node name="coinBox" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 800, 586, 70, 71 )
+
+[node name="top" type="Area2D" parent="."]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top"]
+position = Vector2( 0, -31.9053 )
+shape = SubResource( 1 )
+
+[node name="sideCollisions" type="Area2D" parent="."]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sideCollisions"]
+position = Vector2( 0, 0.71698 )
+shape = SubResource( 2 )
+
+[node name="Container" type="Node2D" parent="."]
+[connection signal="body_entered" from="top" to="." method="_on_top_body_entered"]

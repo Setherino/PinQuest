@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Game_Objects/JumperCoin.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=2]
+
+[node name="JumperCoin" type="KinematicBody2D"]
+position = Vector2( 481.462, 215.064 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Coin" parent="." instance=ExtResource( 2 )]
