@@ -6,7 +6,13 @@ onready var four = get_node("CanvasLayer/40")
 onready var six = get_node("CanvasLayer/60")
 onready var eight = get_node("CanvasLayer/80")
 onready var ten = get_node("CanvasLayer/100")
+onready var health = get_node("CanvasLayer/Health")
+onready var coins = get_node("CanvasLayer/coinLabel")
 onready var display = get_node("CanvasLayer/ActivityDisplay")
+
+
+onready var sfx = get_node("CanvasLayer/coinLabel/sfx")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -15,7 +21,10 @@ var full = Rect2(Vector2(388,45),Vector2(53,46))
 var half = Rect2(Vector2(448,45),Vector2(53,46))
 var empty = Rect2(Vector2(508,45),Vector2(53,46))
 var prevCoins = 0
+var prevHealth = 0
 var disp = "test"
+var fading = false
+var coinFading = false
 
 func checkZero():
 	if main.playerHealth < 2:
@@ -62,19 +71,95 @@ func checkEight():
 	else:
 		eight.set_region_rect(full)
 
+
 func checkCoins():
 	if main.coins != prevCoins:
-		disp = str(main.futureRewards[prevCoins])
-		disp.erase(0,1)
-		disp.erase(disp.length()-3,3)
-		display.set_text(disp)
-		prevCoins = main.coins
+		sfx.set_pitch_scale(rand_range(.95,1.05))
+		sfx.play(0)
+		var t = Timer.new() #this creates a timer that we'll use later
+		if !coinFading:
+			prevCoins = main.coins
+			coinFading = true #well now we are
+			coins.get_node("fadeAnim").playback_speed = 1000
+			coins.get_node("fadeAnim").play_backwards("fade")
+			#use timer to wait for 3 seconds
+			t.set_wait_time(3) 
+			t.set_one_shot(true)
+			self.add_child(t)
+			t.start()
+			yield(t, "timeout")
+			#all that stuff up there is just to wait for 3 seconds
+			coins.get_node("fadeAnim").playback_speed = 1
+			coins.get_node("fadeAnim").play("fade")
+			coinFading = false #we're no longer fading
+		else: #if we are aleady fading
+			prevCoins = main.coins
+			t.set_wait_time(3)
+			
 
+func playbackSpeed(var speed):
+	health.get_node("fadeAnim").playback_speed = speed
+	zer.get_node("fadeAnim").playback_speed = speed
+	two.get_node("fadeAnim").playback_speed = speed
+	four.get_node("fadeAnim").playback_speed = speed
+	six.get_node("fadeAnim").playback_speed = speed
+	eight.get_node("fadeAnim").playback_speed = speed
+
+func stopPlayback(var toThis):
+	health.get_node("fadeAnim").stop(toThis)
+	zer.get_node("fadeAnim").stop(toThis)
+	two.get_node("fadeAnim").stop(toThis)
+	four.get_node("fadeAnim").stop(toThis)
+	six.get_node("fadeAnim").stop(toThis)
+	eight.get_node("fadeAnim").stop(toThis)
+
+
+func fade(var inout):
+	stopPlayback(true)
+	if inout:
+		playbackSpeed(1)
+		health.get_node("fadeAnim").play("fade")
+		zer.get_node("fadeAnim").play("fade")
+		two.get_node("fadeAnim").play("fade")
+		four.get_node("fadeAnim").play("fade")
+		six.get_node("fadeAnim").play("fade")
+		eight.get_node("fadeAnim").play("fade")
+	else:
+		playbackSpeed(1000)
+		health.get_node("fadeAnim").play_backwards("fade")
+		zer.get_node("fadeAnim").play_backwards("fade")
+		two.get_node("fadeAnim").play_backwards("fade")
+		four.get_node("fadeAnim").play_backwards("fade")
+		six.get_node("fadeAnim").play_backwards("fade")
+		eight.get_node("fadeAnim").play_backwards("fade")
+
+#checks whether it needs to display the health to the user
+func checkHealthFade():
+	if main.playerHealth != prevHealth: #if the health changes
+		var t = Timer.new() #this creates a timer that we'll use later
+		if !fading: #if we're not already fading out/displaying the health
+			prevHealth = main.playerHealth #update prevHealth
+			fading = true #well now we are
+			fade(false) #fade in
+			#use timer to wait for 3 seconds
+			t.set_wait_time(3) 
+			t.set_one_shot(true)
+			self.add_child(t)
+			t.start()
+			yield(t, "timeout")
+			#all that stuff up there is just to wait for 3 seconds
+			fade(true) #fade out
+			fading = false #we're no longer fading
+		else: #if we are aleady fading
+			prevHealth = main.playerHealth #
+			t.set_wait_time(3)
 
 func _process(delta):
+	coins.set_text(str(main.coins))
 	checkCoins()
 	checkZero()
 	checkTwo()
 	checkFour()
 	checkSix()
 	checkEight()
+	checkHealthFade()

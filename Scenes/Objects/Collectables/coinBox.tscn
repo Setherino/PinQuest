@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Game_Objects/coinBox.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/tiles.svg" type="Texture" id=2]
+[ext_resource path="res://Sprites/tiles/tiles.svg" type="Texture" id=2]
+[ext_resource path="res://Sprites/coin.png" type="Texture" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.8281, 3.60533 )
@@ -27,12 +29,24 @@ editor/display_folded = true
 position = Vector2( 0, -31.9053 )
 shape = SubResource( 1 )
 
-[node name="sideCollisions" type="Area2D" parent="."]
-editor/display_folded = true
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+lifetime = 2.0
+explosiveness = 1.0
+texture = ExtResource( 3 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector2( 0, 300 )
+initial_velocity = 200.0
+angular_velocity = 720.0
+linear_accel = 100.0
+radial_accel = -100.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sideCollisions"]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 0, 0.71698 )
 shape = SubResource( 2 )
-
-[node name="Container" type="Node2D" parent="."]
 [connection signal="body_entered" from="top" to="." method="_on_top_body_entered"]
+[connection signal="body_exited" from="top" to="." method="_on_top_body_exited"]
