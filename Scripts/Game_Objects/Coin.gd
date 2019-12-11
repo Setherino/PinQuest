@@ -1,22 +1,10 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#Written by Seth Ciancio 12/7/19
 
-# Called when the node enters the scene tree for the first time.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _ready():
-	print("coin spawned")
-
+#this activates when a player walks onto the button
 func _on_Area2D_body_entered(body):
-	if body.name == "Player":
-		print(main.futureRewards[main.coins])
-		main.coins = main.coins + 1
+	if body.name == "Player": #if it's the player
+		#print(main.futureRewards[main.coins]) #print stuff
+		main.coins += 1 #iterate coins variable by one
 		queue_free()

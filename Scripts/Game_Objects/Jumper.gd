@@ -105,7 +105,7 @@ func _on_Jumper_body_entered(body):
 			
 			#this is all just to wait for .1 seconds.
 			var t = Timer.new()
-			t.set_wait_time(0.2)
+			t.set_wait_time(.1)
 			t.set_one_shot(true)
 			self.add_child(t)
 			t.start()

@@ -7,16 +7,21 @@ extends Area2D
 #updated by Seth Ciancio, 12/6/19
 #-added linkObjects & stuff
 
-export var momentary = false
-export var color = "yellow"
-export var sourceName = "button1"
+#I guess I should explain linkObjects, huh? Ok, well when you want the player to trigger
+#something, with say, a button, the game needs to know what you want to be triggered, so
+#how does it do that? linkObjects of course! Basically, if you want a button to control a
+#door, you set the button's sourceName to "john" and the doors sourceName to, well, "john",
+#and the button now unlocks the door.
 
-var containedCheck = false
-var previousName = "n/a"
 
-var onButton = false
-var outfit
+export var momentary = false #if this is true the button won't toggle, but will be momentary
+export var color = "yellow" #defines the color of the button (y,g,r,b)
+export var sourceName = "button1" #the sourceName
 
+var onButton = false #is the player on the button?
+var outfit #where in the spritesheet should the sprite's reigon be set?
+
+#this is so we can use the linkObject class, which is a custom class that I made.
 var link : linkObject = linkObject.new("Button") 
 
 #these are the X & Y positions of the buttons in the spritesheet

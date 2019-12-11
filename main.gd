@@ -7,7 +7,7 @@ var forceJump = false
 #and linkObjects lol
 var sourceNames = [ ]
 var linkCodes = [ ]
-
+var slowcoin = 0
 var coins = 0
 
 var future : File = File.new()
@@ -19,16 +19,11 @@ var playerHealth = 10
 var toggle = false
 
 func _process(delta):
-	if toggle:
-		if playerHealth > 0:
-			playerHealth -= 1
-		else:
-			toggle = false
-	else:
-		if playerHealth <= 10:
-			playerHealth += 1
-		else:
-			toggle = true
+	if slowcoin > 0:
+		slowcoin -= 1
+		coins += 1
+
+
 
 func _ready():
 	futureRewards.clear()
