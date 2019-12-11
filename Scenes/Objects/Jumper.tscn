@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Game_Objects/Jumper.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/tiles.svg" type="Texture" id=2]
+[ext_resource path="res://Sprites/tiles/tiles.svg" type="Texture" id=2]
 [ext_resource path="res://Sound/boing.wav" type="AudioStream" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35, 5 )

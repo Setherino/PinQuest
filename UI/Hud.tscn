@@ -2,28 +2,14 @@
 
 [ext_resource path="res://Scripts/UI/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/SillyGames/SILLYGAMES-BOLD.OTF" type="DynamicFontData" id=2]
-[ext_resource path="res://Sprites/tiles.svg" type="Texture" id=3]
+[ext_resource path="res://Sprites/tiles/tiles.svg" type="Texture" id=3]
 [ext_resource path="res://Fonts/SUMMER IN DECEMBER - OTF.OTF" type="DynamicFontData" id=4]
 [ext_resource path="res://Sound/coins/coin2.wav" type="AudioStream" id=5]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 2 )
-
-[sub_resource type="Animation" id=8]
-resource_name = "fade"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
 
 [sub_resource type="Animation" id=2]
 resource_name = "fade"
@@ -41,7 +27,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -56,7 +41,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -71,7 +55,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -86,7 +69,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -100,7 +82,21 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=8]
 size = 40
 font_data = ExtResource( 4 )
 
@@ -139,7 +135,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Health"
 
 [node name="fadeAnim" type="AnimationPlayer" parent="CanvasLayer/Health"]
-anims/fade = SubResource( 8 )
+anims/fade = SubResource( 2 )
 
 [node name="0" type="Sprite" parent="CanvasLayer"]
 editor/display_folded = true
@@ -149,7 +145,7 @@ region_enabled = true
 region_rect = Rect2( 508, 45, 53, 46 )
 
 [node name="fadeAnim" type="AnimationPlayer" parent="CanvasLayer/0"]
-anims/fade = SubResource( 2 )
+anims/fade = SubResource( 3 )
 
 [node name="20" type="Sprite" parent="CanvasLayer"]
 editor/display_folded = true
@@ -159,7 +155,7 @@ region_enabled = true
 region_rect = Rect2( 388, 45, 53, 46 )
 
 [node name="fadeAnim" type="AnimationPlayer" parent="CanvasLayer/20"]
-anims/fade = SubResource( 3 )
+anims/fade = SubResource( 4 )
 
 [node name="40" type="Sprite" parent="CanvasLayer"]
 editor/display_folded = true
@@ -169,7 +165,7 @@ region_enabled = true
 region_rect = Rect2( 388, 45, 53, 46 )
 
 [node name="fadeAnim" type="AnimationPlayer" parent="CanvasLayer/40"]
-anims/fade = SubResource( 4 )
+anims/fade = SubResource( 5 )
 
 [node name="60" type="Sprite" parent="CanvasLayer"]
 position = Vector2( 390.094, 33.2727 )
@@ -178,7 +174,7 @@ region_enabled = true
 region_rect = Rect2( 448, 45, 53, 46 )
 
 [node name="fadeAnim" type="AnimationPlayer" parent="CanvasLayer/60"]
-anims/fade = SubResource( 5 )
+anims/fade = SubResource( 6 )
 
 [node name="80" type="Sprite" parent="CanvasLayer"]
 editor/display_folded = true
@@ -188,14 +184,14 @@ region_enabled = true
 region_rect = Rect2( 508, 45, 53, 46 )
 
 [node name="fadeAnim" type="AnimationPlayer" parent="CanvasLayer/80"]
-anims/fade = SubResource( 6 )
+anims/fade = SubResource( 7 )
 
 [node name="ActivityDisplay" type="Label" parent="CanvasLayer"]
 margin_left = 2.40881
 margin_top = 550.085
 margin_right = 317.409
 margin_bottom = 599.085
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "nothing right now"
 valign = 2
 
@@ -211,11 +207,11 @@ align = 1
 anims/fade = SubResource( 9 )
 
 [node name="coinSprite" type="Sprite" parent="CanvasLayer/coinLabel"]
-position = Vector2( -24.1895, 31.2897 )
-scale = Vector2( 1.59216, 1.59216 )
+position = Vector2( -13.8107, 31.741 )
+scale = Vector2( 0.920085, 0.920085 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 1377, 285, 36, 36 )
+region_rect = Rect2( 312, 44, 47, 47 )
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="CanvasLayer/coinLabel"]
 stream = ExtResource( 5 )

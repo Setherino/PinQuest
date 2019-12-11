@@ -54,7 +54,8 @@ position = Vector2( 248.63, 0 )
 position = Vector2( 320.63, 0 )
 
 [node name="coinBox" parent="." instance=ExtResource( 7 )]
-position = Vector2( -284.963, 517.009 )
+position = Vector2( -286.963, 517.009 )
+coinsInBox = 25
 
 [node name="coinBox2" parent="." instance=ExtResource( 7 )]
 position = Vector2( -186.162, 516.059 )

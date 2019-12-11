@@ -3,12 +3,26 @@ extends Spatial
 var jumpHeight = 0
 var forceJump = false
 
-#for the four buttons
-#and linkObjects lol
+
+#for linkObjects
 var sourceNames = [ ]
 var linkCodes = [ ]
+
+#for coins
 var slowcoin = 0
 var coins = 0
+
+#marks whether the current task is complete
+var taskComplete = false
+var currentTask = "nothing"
+var taskType = 0
+
+#these are all the arrays required for the task system
+var allTasks = [ ]
+var taskTypes = [ ]
+var taskTimer = [ ]
+var collectionTaskGoal = [ ]
+var speakingToGoal = [ ]
 
 var future : File = File.new()
 

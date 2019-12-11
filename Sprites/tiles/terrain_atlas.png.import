@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/coin.png-b7fabe76c61e67396a7c0402e221b540.stex"
+path="res://.import/terrain_atlas.png-19873945bf0007ddf1db9fb9ea2aadb6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/coin.png"
-dest_files=[ "res://.import/coin.png-b7fabe76c61e67396a7c0402e221b540.stex" ]
+source_file="res://Sprites/tiles/terrain_atlas.png"
+dest_files=[ "res://.import/terrain_atlas.png-19873945bf0007ddf1db9fb9ea2aadb6.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
