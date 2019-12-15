@@ -5,24 +5,33 @@ onready var two = get_node("CanvasLayer/20")
 onready var four = get_node("CanvasLayer/40")
 onready var six = get_node("CanvasLayer/60")
 onready var eight = get_node("CanvasLayer/80")
-onready var ten = get_node("CanvasLayer/100")
+#onready var ten = get_node("CanvasLayer/100")
 onready var health = get_node("CanvasLayer/Health")
 onready var coins = get_node("CanvasLayer/coinLabel")
-onready var display = get_node("CanvasLayer/ActivityDisplay")
+#onready var display = get_node("CanvasLayer/ActivityDisplay")
 
+onready var dialogue = get_node("CanvasLayer/Dialogue")
 
 onready var sfx = get_node("CanvasLayer/coinLabel/sfx")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	dialogue.get_node("fadeAnim").playback_speed = 1000
+	dialogue.get_node("fadeAnim").play("fade")
+	dialogue.get_node("fadeAnim").playback_speed = 1
+
+func showDialogue(dgSource:Array,NPCname:String):
+	dialogue.dialogue(dgSource,NPCname)
+	dialogue.get_node("fadeAnim").play_backwards("fade")
+
+func hideDialogue():
+	dialogue.get_node("fadeAnim").play("fade")
 
 var full = Rect2(Vector2(388,45),Vector2(53,46))
 var half = Rect2(Vector2(448,45),Vector2(53,46))
 var empty = Rect2(Vector2(508,45),Vector2(53,46))
 var prevCoins = 0
 var prevHealth = 0
-var disp = "test"
 var fading = false
 var coinFading = false
 
@@ -154,6 +163,8 @@ func checkHealthFade():
 			prevHealth = main.playerHealth #
 			t.set_wait_time(3)
 
+
+# warning-ignore:unused_argument
 func _process(delta):
 	coins.set_text(str(main.coins))
 	checkCoins()

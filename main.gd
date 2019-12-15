@@ -30,8 +30,6 @@ var futureRewards = ["string, please"]
 
 var playerHealth = 10
 
-var toggle = false
-
 func _process(delta):
 	if slowcoin > 0:
 		slowcoin -= 1

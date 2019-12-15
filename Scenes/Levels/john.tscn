@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Tilemaps/Base.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Objects/Collectables/coinBox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -21,5 +22,10 @@ triggered = true
 [node name="coinBox" parent="." instance=ExtResource( 3 )]
 position = Vector2( 522.789, 382.524 )
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="NPC" parent="." instance=ExtResource( 4 )]
+position = Vector2( 312.256, 349.484 )
+npcName = "Amy Mcalliston"
+dialogueSource = "res://NPC Dialogue/Debug/Template.gd"
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 45.2203, 264.361 )

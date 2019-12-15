@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/UI/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/SillyGames/SILLYGAMES-BOLD.OTF" type="DynamicFontData" id=2]
 [ext_resource path="res://Sprites/tiles/tiles.svg" type="Texture" id=3]
 [ext_resource path="res://Fonts/SUMMER IN DECEMBER - OTF.OTF" type="DynamicFontData" id=4]
 [ext_resource path="res://Sound/coins/coin2.wav" type="AudioStream" id=5]
-
+[ext_resource path="res://UI/Dialogue.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -101,6 +101,21 @@ size = 40
 font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=9]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
 resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -215,3 +230,12 @@ region_rect = Rect2( 312, 44, 47, 47 )
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="CanvasLayer/coinLabel"]
 stream = ExtResource( 5 )
+
+[node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 6 )]
+margin_left = -2.13415
+margin_top = -1.07545
+margin_right = -2.13416
+margin_bottom = -1.07544
+
+[node name="fadeAnim" type="AnimationPlayer" parent="CanvasLayer/Dialogue"]
+anims/fade = SubResource( 10 )
