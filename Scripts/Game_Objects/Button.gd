@@ -91,6 +91,8 @@ func _on_Button_body_entered(body): #if something's touching the button
 		sfx.play(0)
 	else: #if you didn't select momentary,
 		onButton = true #just set onButton (used earlier) to true 
+		main.interact = true
+		main.interactWith = "button"
 
 
 # warning-ignore:unused_argument
@@ -100,4 +102,6 @@ func _on_Button_body_exited(body): #when someone stops touching the button
 		sfx.play(0)
 	else: #if you didn't slect momentary 
 		onButton = false #just set onButton (used earlier) to false 
+		main.interact = false
+		main.interactWith = "nothing"
 	

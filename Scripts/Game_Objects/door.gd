@@ -42,20 +42,26 @@ onready var sound = get_node("doorOpen")
 
 func _ready():
 	if triggered:
+		link.connect("whenChanged",self,"whenLinkChanged")
 		link.initialize(sourceName,false)
 
+#when the link changes state
+func whenLinkChanged():
+	pass
+	if triggered:
+		if link.enabled:
+			sound2.play(0.5)
+			door1.set_region_rect(openDoor1Rect)
+			door2.set_region_rect(openDoor2Rect)
+		else:
+			sound.play(0.5)
+			door1.set_region_rect(closedDoor1Rect)
+			door2.set_region_rect(closedDoor2Rect)
 
 
 func _process(delta):
 	link.update()
-	
-	if triggered:
-		if link.enabled:
-			door1.set_region_rect(openDoor1Rect)
-			door2.set_region_rect(openDoor2Rect)
-		else:
-			door1.set_region_rect(closedDoor1Rect)
-			door2.set_region_rect(closedDoor2Rect)
+
 
 #when any key is pressed
 func _input(event):
@@ -68,28 +74,40 @@ func _input(event):
 #when the player touches the door
 func _on_door_body_entered(body):
 	#set onPlayer to true
-	if triggered && !link.enabled:
-		return
 	onPlayer = true
+	if triggered:
+		if link.enabled:
+			main.interact = true
+			main.interactWith = "door"
+		return
+	
 	
 	#open the door (switch door sprites to open version
 	door1.set_region_rect(openDoor1Rect)
 	door2.set_region_rect(openDoor2Rect)
 	
 	#play door sound
-	sound2.play(0.5)
-	
+	if !triggered:
+		sound2.play(0.5)
+	main.interact = true
+	main.interactWith = "door"
 
 #when the player walks away from the door
 func _on_door_body_exited(body):
-	if triggered && !link.enabled:
+	onPlayer = false #dissable onPlayer
+	main.interact = false
+	main.interactWith = "nothing"
+	
+	if triggered:
 		return
-	#dissable onPlayer
-	onPlayer = false
+	
+	
 	
 	#set the reigons on the sprites to closed version
 	door1.set_region_rect(closedDoor1Rect)
 	door2.set_region_rect(closedDoor2Rect)
 	
 	#play sound
-	sound.play(0.5)
+	if !triggered:
+		sound.play(0.5)
+	
