@@ -5,7 +5,7 @@ const head = preload("res://UI/Task.tscn")
 func header():
 	var taskDisplay = head.instance()
 	taskDisplay.advanced = true
-	get_node("CanvasLayer/TabContainer/Quests & Tasks/Split/Panel/TopContainer/CurrentContainer").add_child(taskDisplay)
+	get_node("CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer/CurrentContainer").add_child(taskDisplay)
 	
 	
 	
@@ -27,7 +27,7 @@ func addTask(location:String,place):
 	taskDisplay.get_node("TimeLimit").text = task.get_line()
 	taskDisplay.get_node("Ammount").text = task.get_line()
 	taskDisplay.place = place
-	get_node("CanvasLayer/TabContainer/Quests & Tasks/Split/Scroll/VContainer").add_child(taskDisplay)
+	get_node("CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer").add_child(taskDisplay)
 
 var prevID = 0
 
@@ -45,7 +45,7 @@ func _process(delta):
 			line = desc.get_line()
 		
 		if !desc.eof_reached():
-			get_node("CanvasLayer/TabContainer/Quests & Tasks/Split/Panel/TopContainer/descriptionText").text = desc.get_line()
+			get_node("CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer/descriptionText").text = desc.get_line()
 			pass
 	pass
 
