@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Tilemaps/Buildings.tres" type="TileSet" id=1]
 [ext_resource path="res://Tilemaps/Base.tres" type="TileSet" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Scenes/Objects/Jumper.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Objects/Indicator.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Objects/MusicAudio.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sound/Rolemusic_-_w1x.wav" type="AudioStream" id=8]
 
 [node name="Node2D" type="Node2D"]
 
@@ -76,3 +78,8 @@ position = Vector2( 180, 390 )
 position = Vector2( 293.819, 352.716 )
 scale = Vector2( 0.210682, 0.210682 )
 sourceName = "john"
+
+[node name="MusicAudio" parent="." instance=ExtResource( 7 )]
+stream = ExtResource( 8 )
+autoplay = true
+fadeTime = 0.5

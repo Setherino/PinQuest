@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sawsquarenoise_-_03_-_Towel_Defence_Ingame.wav-c472cb1b80dd16f85c915f834b61b4a8.sample"
+
+[deps]
+
+source_file="res://Sound/sawsquarenoise_-_03_-_Towel_Defence_Ingame.wav"
+dest_files=[ "res://.import/sawsquarenoise_-_03_-_Towel_Defence_Ingame.wav-c472cb1b80dd16f85c915f834b61b4a8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

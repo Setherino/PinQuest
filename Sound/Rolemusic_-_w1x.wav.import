@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Rolemusic_-_w1x.wav-f6177720a470a1931e9174c7516246dd.sample"
+
+[deps]
+
+source_file="res://Sound/Rolemusic_-_w1x.wav"
+dest_files=[ "res://.import/Rolemusic_-_w1x.wav-f6177720a470a1931e9174c7516246dd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

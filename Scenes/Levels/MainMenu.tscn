@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Tilemaps/Base.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Objects/Collectables/coinBox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Objects/MusicAudio.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sound/music.wav" type="AudioStream" id=9]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -25,7 +27,7 @@ position = Vector2( 1000, 520 )
 nextLevel = "res://Scenes/Levels/Simon.tscn"
 
 [node name="PinQuest" type="Sprite" parent="."]
-position = Vector2( 89.4735, 69.9991 )
+position = Vector2( -368.985, 265.584 )
 scale = Vector2( 0.0899636, 0.0899635 )
 texture = ExtResource( 3 )
 
@@ -33,12 +35,13 @@ texture = ExtResource( 3 )
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 69, 69 )
 format = 1
-tile_data = PoolIntArray( 262130, 7, 0, 196631, 11, 1, 327669, 7, 0, 262166, 11, 1, 262167, 11, 1, 393207, 7, 0, 393210, 7, 0, 327686, 11, 1, 327688, 11, 1, 327690, 11, 1, 327692, 11, 1, 327694, 11, 1, 327696, 11, 1, 327698, 11, 1, 327701, 11, 1, 327702, 11, 1, 327703, 11, 1, 327704, 11, 1, 327705, 11, 1, 327706, 11, 1, 327707, 11, 1, 327708, 11, 1, 327709, 11, 1, 393225, 6, 1, 393230, 6, 0, 393238, 11, 1, 393239, 11, 1, 458754, 10, 2, 458769, 7, 0, 458770, 7, 0, 458771, 7, 0, 458775, 11, 1 )
+tile_data = PoolIntArray( 262130, 7, 0, 196631, 11, 1, 327669, 7, 0, 262166, 11, 1, 262167, 11, 1, 393207, 7, 0, 393210, 7, 0, 327686, 11, 1, 327688, 11, 1, 327689, 10, 0, 327690, 11, 1, 327692, 11, 1, 327694, 10, 1, 327696, 11, 1, 327698, 11, 1, 327701, 11, 1, 327702, 11, 1, 327703, 11, 1, 327704, 11, 1, 327705, 11, 1, 327706, 11, 1, 327707, 11, 1, 327708, 11, 1, 327709, 11, 1, 393225, 9, 2, 393230, 9, 0, 393238, 11, 1, 393239, 11, 1, 458754, 10, 2, 458769, 7, 0, 458770, 7, 0, 458771, 7, 0, 458775, 11, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( -367.147, 348.708 )
 
 [node name="Node2D" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 246.496, 494.316 )
 
 [node name="Coin3" parent="Node2D" instance=ExtResource( 6 )]
@@ -71,3 +74,9 @@ position = Vector2( 151.09, 516.059 )
 
 [node name="coinBox6" parent="." instance=ExtResource( 7 )]
 position = Vector2( 250.84, 516.059 )
+
+[node name="MusicAudio" parent="." instance=ExtResource( 8 )]
+stream = ExtResource( 9 )
+volume_db = -80.0
+autoplay = true
+fadeTime = 0.5
