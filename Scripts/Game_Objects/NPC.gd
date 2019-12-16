@@ -1,16 +1,22 @@
+tool
 extends KinematicBody2D
 
+export(String, "Debug/", "LevelOne/", "LevelTwo/","LevelThree/","LevelFour/") var Folder
 #this is the NPC's name, obviously
 export var npcName = "john"
 #this is the file where all the dialogue is stored
-export var dialogueSource = "res://NPC Dialogue/Debug/Template.tres"
+export var dialogueSourceName = "Template"
 
+var dialogueSource = "res://NPC Dialogue/"
+
+#this is the texture of the NPC
+export var npcTexture : Texture
+export var dialogueIcon : Texture
 #This variable decides whether the NPC will load the dialogue into
 #memory when the level starts, or when the player talks to the NPC
 export var saveRam = true
 
-#represents which line of dialogue it's on
-
+onready var sprite = get_node("Sprite")
 
 #represents whether the player is currently touching the NPC
 var onNPC = false
@@ -23,10 +29,9 @@ var dgSource : File = File.new()
 var defaultDialogue = [ ]
 var taskDialogue = [ ]
 
+
 #this fills the first of the two arrays described above with information from the file.
-#
 func fillDefault():
-	print ("ass")
 	if dgSource.is_open():
 		dgSource.close()
 # warning-ignore:return_value_discarded
@@ -52,8 +57,17 @@ func fillTaskDG():
 		if line != "-END.": #make sure it's not the end header
 			taskDialogue.push_back(line) #and add it to the array
 
+func _process(delta):
+	if Engine.editor_hint:
+		sprite.set_texture(npcTexture)
 
 func _ready():
+	sprite.set_texture(npcTexture)
+	if Engine.editor_hint:
+		return
+	
+	dialogueSource = dialogueSource + Folder + dialogueSourceName + ".dial"
+	
 	if !dgSource.file_exists(dialogueSource): #if the file doesn't exist
 		print("ERROR!! " + npcName + " HAS AN INVALID DIALOGUE SOURCE")
 		print(dialogueSource + " SOURCE DOES NOT EXIST!")#print an error
@@ -71,15 +85,19 @@ func _input(event):
 		if saveRam && defaultDialogue.size() == 0:
 			fillDefault()
 			fillTaskDG()
-		Hud.showDialogue(defaultDialogue,npcName)
+		Hud.showDialogue(defaultDialogue,npcName,dialogueIcon)
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		onNPC = true
+		main.interact = true
+		main.interactWith = npcName
 
 
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
+		main.interact = false
+		main.interactWith = "nothing"
 		onNPC = false
 		if saveRam:
 			defaultDialogue.clear()

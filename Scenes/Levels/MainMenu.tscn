@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Tilemaps/Base.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Objects/Collectables/coinBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sprites/Misc/swifty.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Misc/sipp.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=11]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -37,7 +40,7 @@ format = 1
 tile_data = PoolIntArray( 262130, 7, 0, 196631, 11, 1, 327669, 7, 0, 262166, 11, 1, 262167, 11, 1, 393207, 7, 0, 393210, 7, 0, 327686, 11, 1, 327688, 11, 1, 327690, 11, 1, 327692, 11, 1, 327694, 11, 1, 327696, 11, 1, 327698, 11, 1, 327701, 11, 1, 327702, 11, 1, 327703, 11, 1, 327704, 11, 1, 327705, 11, 1, 327706, 11, 1, 327707, 11, 1, 327708, 11, 1, 327709, 11, 1, 393225, 6, 1, 393230, 6, 0, 393238, 11, 1, 393239, 11, 1, 458754, 10, 2, 458769, 7, 0, 458770, 7, 0, 458771, 7, 0, 458775, 11, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( -367.147, 348.708 )
+position = Vector2( -377.12, 352.318 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 246.496, 494.316 )
@@ -74,5 +77,14 @@ position = Vector2( 151.09, 516.059 )
 position = Vector2( 250.84, 516.059 )
 
 [node name="NPC" parent="." instance=ExtResource( 8 )]
-position = Vector2( 789.414, 477.5 )
-dialogueSource = "res://NPC Dialogue/Debug/Template.gd"
+position = Vector2( 778.357, 491.624 )
+scale = Vector2( 0.13, 0.13 )
+Folder = "Debug/"
+npcName = "Taylor"
+dialogueSourceName = "demo2"
+npcTexture = ExtResource( 9 )
+dialogueIcon = ExtResource( 10 )
+
+[node name="TaskManager" parent="." instance=ExtResource( 11 )]
+position = Vector2( 914.512, -112.372 )
+taskFileNames = PoolStringArray( "SecondFile", "amy", "claire", "jack" )

@@ -20,8 +20,8 @@ func _ready():
 	dialogue.get_node("fadeAnim").play("fade")
 	dialogue.get_node("fadeAnim").playback_speed = 1
 
-func showDialogue(dgSource:Array,NPCname:String):
-	dialogue.dialogue(dgSource,NPCname)
+func showDialogue(dgSource:Array,NPCname:String,icon:Texture):
+	dialogue.dialogue(dgSource,NPCname,icon)
 	dialogue.get_node("fadeAnim").play_backwards("fade")
 
 func hideDialogue():
@@ -163,6 +163,21 @@ func checkHealthFade():
 			prevHealth = main.playerHealth #
 			t.set_wait_time(3)
 
+var prevInteract = true
+
+func interactWith(): 
+	if main.interact == prevInteract:
+		return
+	else:
+		prevInteract = main.interact
+	if main.interact:
+		get_node("CanvasLayer/Interact/fadeAnim").playback_speed = 1000
+		get_node("CanvasLayer/Interact/fadeAnim").play_backwards("fade")
+		get_node("CanvasLayer/Interact").text = "Press 'E' to interact with " + main.interactWith
+	else:
+		get_node("CanvasLayer/Interact/fadeAnim").playback_speed = 2
+		get_node("CanvasLayer/Interact/fadeAnim").play("fade")
+
 
 # warning-ignore:unused_argument
 func _process(delta):
@@ -174,3 +189,4 @@ func _process(delta):
 	checkSix()
 	checkEight()
 	checkHealthFade()
+	interactWith()

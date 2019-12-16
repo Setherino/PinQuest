@@ -21,6 +21,8 @@ var type = "Unknown"
 var prevState = false
 
 
+signal whenChanged
+
 #constructor function does almost nothing
 func _init(Type:String):
 	type = Type
@@ -55,7 +57,9 @@ func update():
 	
 	if initialized: #if you're initialized
 		enabled = main.linkCodes[linkCode] #set enabled to the right thing
-		
+	
+	if hasChanged():
+		emit_signal("whenChanged")
 
 
 func getPrev( ):
@@ -74,9 +78,7 @@ func setto(to:bool):
 	main.linkCodes[linkCode] = to
 
 func on( ):
-	prevState = main.linkCodes[linkCode]
-	main.linkCodes[linkCode] = true
+	setto(true)
 
 func off( ):
-	prevState = main.linkCodes[linkCode]
-	main.linkCodes[linkCode] = false
+	setto(false)

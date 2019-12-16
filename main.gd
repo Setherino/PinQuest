@@ -1,8 +1,16 @@
+tool
 extends Spatial
 
 var jumpHeight = 0
 var forceJump = false
 
+#for deleting the list of tasks
+var deleteTaskList = false
+
+#represents whether the player can
+#interact with anything right now
+var interact = false
+var interactWith = "this"
 
 #for linkObjects
 var sourceNames = [ ]
@@ -13,16 +21,17 @@ var slowcoin = 0
 var coins = 0
 
 #marks whether the current task is complete
+var taskID = 0
 var taskComplete = false
-var currentTask = "nothing"
 var taskType = 0
+var taskName = "none"
+var timeLimit = 0
+var taskGoal = "noGoal"
+var taskAmmountNeeded = 0
 
-#these are all the arrays required for the task system
-var allTasks = [ ]
-var taskTypes = [ ]
-var taskTimer = [ ]
-var collectionTaskGoal = [ ]
-var speakingToGoal = [ ]
+var taskFileNames = [ ]
+var tasksComplete = [ ]
+
 
 var future : File = File.new()
 
@@ -31,6 +40,8 @@ var futureRewards = ["string, please"]
 var playerHealth = 10
 
 func _process(delta):
+	if Engine.editor_hint:
+		return
 	if slowcoin > 0:
 		slowcoin -= 1
 		coins += 1
@@ -38,6 +49,9 @@ func _process(delta):
 
 
 func _ready():
+	if Engine.editor_hint:
+		return
+	
 	futureRewards.clear()
 	future.open("res://Rewards/Future.tres",1)
 	while (!future.eof_reached()):

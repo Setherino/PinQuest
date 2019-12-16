@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Objects/Button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilemaps/Base.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Objects/Indicator.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/LogicGates/orGate.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/LogicGates/startWith.tscn" type="PackedScene" id=8]
 
 [node name="Simon" type="Node2D"]
 
@@ -31,7 +32,7 @@ tile_data = PoolIntArray( 65534, 0, 65537, 65535, 0, 65537, 15, 0, 65537, 16, 0,
 
 [node name="door2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 340.176, 517.024 )
-nextLevel = "res://Levels/john.tscn"
+nextLevel = "res://Scenes/Levels/MainMenu.tscn"
 triggered = true
 sourceName = "out"
 
@@ -63,4 +64,8 @@ position = Vector2( 691.247, 303.582 )
 triggered = true
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 190.172, 412.314 )
+position = Vector2( 155.823, 403.45 )
+
+[node name="startWith" parent="." instance=ExtResource( 8 )]
+position = Vector2( 195.129, 284.798 )
+sourceName = "jack"
