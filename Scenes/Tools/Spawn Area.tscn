@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Tools/Spawn Area.gd" type="Script" id=1]
+
+[node name="Spawn Area" type="Node2D"]
+position = Vector2( 455.245, 278.87 )
+script = ExtResource( 1 )
+spawnArea = Vector2( 498.04, 200 )

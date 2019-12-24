@@ -1,8 +1,8 @@
 TASK NAME
-TASK TYPE (1,2,3,4)
+TASK TYPE (1,2,3)
 GOAL
 TIME LIMIT
-AMMOUNT TO COLLECT (only for type 1)
+AMMOUNT TO COLLECT
 -DESCRIPTION:
 PUT THE DESCRIPTION HERE, DON'T REMOVE THE '-description' TAG.
 |----------------------Keep description within this area--------------------------------------|

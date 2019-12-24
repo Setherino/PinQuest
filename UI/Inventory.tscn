@@ -1,279 +1,295 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/UI/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://Misc/UITheme.tres" type="Theme" id=2]
-[ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Fonts/SUMMER IN DECEMBER - OTF.OTF"
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = SubResource( 1 )
 
 [node name="Inventory" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -3.85016
-margin_top = 0.663422
-margin_right = -3.85016
-margin_bottom = 0.663452
+margin_left = -2.90021
+margin_top = -1.77693
+margin_right = -2.90021
+margin_bottom = -1.77692
 script = ExtResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TabContainer" type="TabContainer" parent="CanvasLayer"]
-margin_left = 169.462
-margin_top = 74.561
-margin_right = 851.462
-margin_bottom = 454.561
+margin_left = 100.0
+margin_top = 35.0
+margin_right = 947.0
+margin_bottom = 539.0
 theme = ExtResource( 2 )
 tab_align = 0
 
 [node name="Quest" type="PanelContainer" parent="CanvasLayer/TabContainer"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 38.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_top = 28.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Quest"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 667.0
-margin_bottom = 331.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 843.0
+margin_bottom = 472.0
 
 [node name="Label" type="Label" parent="CanvasLayer/TabContainer/Quest/VBoxContainer"]
-margin_right = 660.0
-margin_bottom = 20.0
+margin_right = 839.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
 text = "Quest Completion:"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TabContainer/Quest/VBoxContainer"]
-margin_top = 24.0
-margin_right = 660.0
-margin_bottom = 172.0
-size_flags_vertical = 3
+margin_top = 28.0
+margin_right = 839.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer"]
-margin_top = 64.0
-margin_right = 109.0
-margin_bottom = 84.0
+margin_right = 129.0
+margin_bottom = 24.0
 text = "0/10 Coins collected"
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer"]
-margin_left = 113.0
-margin_right = 660.0
-margin_bottom = 20.0
+[node name="CoinsBar" type="ProgressBar" parent="CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer"]
+margin_left = 133.0
+margin_top = 2.0
+margin_right = 839.0
+margin_bottom = 22.0
 size_flags_horizontal = 3
+size_flags_vertical = 4
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 0 )
 value = 50.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/TabContainer/Quest/VBoxContainer"]
-margin_top = 176.0
-margin_right = 660.0
-margin_bottom = 324.0
-size_flags_vertical = 3
+margin_top = 56.0
+margin_right = 839.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer2"]
-margin_top = 64.0
-margin_right = 115.0
-margin_bottom = 84.0
+margin_right = 135.0
+margin_bottom = 24.0
 text = "0/10 Tasks Complete"
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer2"]
-margin_left = 119.0
-margin_right = 660.0
-margin_bottom = 20.0
+[node name="TasksBar" type="ProgressBar" parent="CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer2"]
+margin_left = 139.0
+margin_top = 2.0
+margin_right = 839.0
+margin_bottom = 22.0
 size_flags_horizontal = 3
-value = 50.0
+size_flags_vertical = 4
+value = 100.0
+
+[node name="Label2" type="Label" parent="CanvasLayer/TabContainer/Quest/VBoxContainer"]
+margin_top = 84.0
+margin_right = 839.0
+margin_bottom = 274.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "The BAA Future level focuses on basic buisiness skills,
+introduces your member to community service, and emphasizes
+the importance of FBLA involvement at the local level."
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/TabContainer/Quest/VBoxContainer"]
+margin_top = 278.0
+margin_right = 839.0
+margin_bottom = 468.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "Complete Quest"
 
 [node name="Tasks" type="PanelContainer" parent="CanvasLayer/TabContainer"]
 editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 38.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_top = 28.0
 
-[node name="Split" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks"]
+[node name="Split" type="VSplitContainer" parent="CanvasLayer/TabContainer/Tasks"]
 editor/display_folded = true
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 667.0
-margin_bottom = 337.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 843.0
+margin_bottom = 472.0
+size_flags_horizontal = 3
+split_offset = -60
 
-[node name="Panel" type="Panel" parent="CanvasLayer/TabContainer/Tasks/Split"]
-margin_right = 660.0
-margin_bottom = 163.0
+[node name="TopContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split"]
+editor/display_folded = true
+margin_right = 839.0
+margin_bottom = 168.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TopContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/Panel"]
-margin_top = 12.0
-margin_right = 660.0
-margin_bottom = 163.0
-size_flags_vertical = 3
-
-[node name="current Task" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer"]
-margin_right = 660.0
-margin_bottom = 14.0
+[node name="current Task" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
+margin_right = 839.0
+margin_bottom = 24.0
 text = "Current Task: "
 align = 1
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer"]
-margin_top = 18.0
-margin_right = 660.0
-margin_bottom = 22.0
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
+margin_top = 28.0
+margin_right = 839.0
+margin_bottom = 32.0
 
-[node name="CurrentContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer"]
+[node name="CurrentContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
+margin_top = 36.0
+margin_right = 839.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="Header" type="HBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer/CurrentContainer"]
 editor/display_folded = true
-margin_top = 26.0
-margin_right = 660.0
-margin_bottom = 40.0
+margin_right = 839.0
+margin_bottom = 24.0
 
-[node name="Header" type="HBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer/CurrentContainer"]
-editor/display_folded = true
-margin_right = 660.0
-margin_bottom = 14.0
-
-[node name="name" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer/CurrentContainer/Header"]
-margin_right = 128.0
-margin_bottom = 14.0
+[node name="name" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer/CurrentContainer/Header"]
+margin_right = 164.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Name"
 
-[node name="type" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer/CurrentContainer/Header"]
-margin_left = 132.0
-margin_right = 260.0
-margin_bottom = 14.0
+[node name="type" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer/CurrentContainer/Header"]
+margin_left = 168.0
+margin_right = 332.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Type"
 align = 1
 
-[node name="goal" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer/CurrentContainer/Header"]
-margin_left = 264.0
-margin_right = 392.0
-margin_bottom = 14.0
+[node name="goal" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer/CurrentContainer/Header"]
+margin_left = 336.0
+margin_right = 500.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Goal"
 align = 1
 
-[node name="time" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer/CurrentContainer/Header"]
-margin_left = 396.0
-margin_right = 524.0
-margin_bottom = 14.0
+[node name="time" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer/CurrentContainer/Header"]
+margin_left = 504.0
+margin_right = 668.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Time Limit"
 align = 1
 
-[node name="needed" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer/CurrentContainer/Header"]
-margin_left = 528.0
-margin_right = 660.0
-margin_bottom = 14.0
+[node name="needed" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer/CurrentContainer/Header"]
+margin_left = 672.0
+margin_right = 839.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "# Needed"
 align = 2
 
-[node name="HSeparator3" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer"]
-margin_top = 44.0
-margin_right = 660.0
-margin_bottom = 48.0
+[node name="HSeparator3" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
+margin_top = 64.0
+margin_right = 839.0
+margin_bottom = 68.0
 
-[node name="decription" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer"]
-margin_top = 52.0
-margin_right = 660.0
-margin_bottom = 66.0
+[node name="decription" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
+margin_top = 72.0
+margin_right = 839.0
+margin_bottom = 96.0
 text = "Task Description:"
 align = 1
 
-[node name="descriptionText" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Panel/TopContainer"]
-margin_top = 70.0
-margin_right = 660.0
-margin_bottom = 151.0
+[node name="descriptionText" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
+margin_top = 100.0
+margin_right = 839.0
+margin_bottom = 168.0
 size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "In the year 9, millions were murdered."
+size_flags_vertical = 3
+text = "You have no task selected. Select a task to continue"
 align = 1
 valign = 1
 
 [node name="Scroll" type="ScrollContainer" parent="CanvasLayer/TabContainer/Tasks/Split"]
-margin_top = 167.0
-margin_right = 660.0
-margin_bottom = 330.0
+editor/display_folded = true
+margin_top = 180.0
+margin_right = 839.0
+margin_bottom = 468.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="VContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll"]
-margin_right = 660.0
-margin_bottom = 163.0
+margin_right = 839.0
+margin_bottom = 288.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HSeparator2" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer"]
-margin_right = 660.0
+margin_right = 839.0
 margin_bottom = 4.0
 
 [node name="Header" type="HBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer"]
 margin_top = 8.0
-margin_right = 660.0
-margin_bottom = 22.0
+margin_right = 839.0
+margin_bottom = 32.0
 
 [node name="name" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_right = 106.0
-margin_bottom = 14.0
+margin_right = 136.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Name"
 
 [node name="type" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_left = 110.0
-margin_right = 216.0
-margin_bottom = 14.0
+margin_left = 140.0
+margin_right = 276.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Type"
 
 [node name="goal" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_left = 220.0
-margin_right = 326.0
-margin_bottom = 14.0
+margin_left = 280.0
+margin_right = 416.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Goal"
 
 [node name="time" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_left = 330.0
-margin_right = 436.0
-margin_bottom = 14.0
+margin_left = 420.0
+margin_right = 556.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Time Limit"
 
 [node name="needed" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_left = 440.0
-margin_right = 546.0
-margin_bottom = 14.0
+margin_left = 560.0
+margin_right = 696.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "# Needed"
 
 [node name="activate" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_left = 550.0
-margin_right = 660.0
-margin_bottom = 14.0
+margin_left = 700.0
+margin_right = 839.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Start Task"
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer"]
-margin_top = 26.0
-margin_right = 660.0
-margin_bottom = 30.0
+margin_top = 36.0
+margin_right = 839.0
+margin_bottom = 40.0
 
 [node name="Options" type="PanelContainer" parent="CanvasLayer/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 38.0
-margin_right = -4.0
-margin_bottom = -4.0
-
-[node name="TaskManager" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1281.76, 327.493 )
-taskFileNames = PoolStringArray( "Task1", "Task2", "Task3" )
+margin_top = 28.0

@@ -1,3 +1,6 @@
+#Definitely not written by Seth Ciancio, oh my god, yikes.
+#actually as of 12/21/19 it's not really that bad anymore, so.
+
 extends Control
 
 onready var zer = get_node("CanvasLayer/0")
@@ -10,85 +13,41 @@ onready var health = get_node("CanvasLayer/Health")
 onready var coins = get_node("CanvasLayer/coinLabel")
 #onready var display = get_node("CanvasLayer/ActivityDisplay")
 
-onready var dialogue = get_node("CanvasLayer/Dialogue")
-
 onready var sfx = get_node("CanvasLayer/coinLabel/sfx")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	dialogue.get_node("fadeAnim").playback_speed = 1000
-	dialogue.get_node("fadeAnim").play("fade")
-	dialogue.get_node("fadeAnim").playback_speed = 1
+#Health stuff...
 
-func showDialogue(dgSource:Array,NPCname:String,icon:Texture):
-	dialogue.dialogue(dgSource,NPCname,icon)
-	dialogue.get_node("fadeAnim").play_backwards("fade")
-
-func hideDialogue():
-	dialogue.get_node("fadeAnim").play("fade")
-
-var full = Rect2(Vector2(388,45),Vector2(53,46))
-var half = Rect2(Vector2(448,45),Vector2(53,46))
-var empty = Rect2(Vector2(508,45),Vector2(53,46))
+var full = Rect2(Vector2(388,45),Vector2(53,46))#area in sprite-sheet for full heart
+var half = Rect2(Vector2(448,45),Vector2(53,46))#for half heart
+var empty = Rect2(Vector2(508,45),Vector2(53,46)) #and for empty heart (like mine :( lol jk i love myself :)
 var prevCoins = 0
 var prevHealth = 0
 var fading = false
 var coinFading = false
 
-func checkZero():
-	if main.playerHealth < 2:
-		if main.playerHealth == 1:
-			zer.set_region_rect(half)
-		elif main.playerHealth == 0:
-			zer.set_region_rect(empty)
-	else:
-		zer.set_region_rect(full)
 
-func checkTwo():
-	if main.playerHealth < 4:
-		if main.playerHealth == 3:
-			two.set_region_rect(half)
-		elif main.playerHealth == 2:
-			two.set_region_rect(empty)
-	else:
-		two.set_region_rect(full)
-
-func checkFour():
-	if main.playerHealth < 6:
-		if main.playerHealth == 5:
-			four.set_region_rect(half)
-		elif main.playerHealth == 4:
-			four.set_region_rect(empty)
-	else:
-		four.set_region_rect(full)
-
-func checkSix():
-	if main.playerHealth < 8:
-		if main.playerHealth == 7:
-			six.set_region_rect(half)
-		elif main.playerHealth == 6:
-			six.set_region_rect(empty)
-	else:
-		six.set_region_rect(full)
-
-func checkEight():
-	if main.playerHealth < 10:
-		if main.playerHealth == 9:
-			eight.set_region_rect(half)
-		elif main.playerHealth == 8:
-			eight.set_region_rect(empty)
-	else:
-		eight.set_region_rect(full)
+#update one of the heath sprites
+func updateHealth(var node,var ammount):
+	#node = refreence to health sprite to update
+	#ammount, multiple of 2 that it represents (2,4,6,8,10)
+	if main.playerHealth < ammount: #if the player health is less than ammount
+		if main.playerHealth == ammount-1: #if it's one less than ammount then
+			node.set_region_rect(half) #you're half full
+		elif main.playerHealth <= ammount-2: #if it's more than 2 less than ammount 
+			node.set_region_rect(empty) #then you're empty! Inside. Like me. Again just kidding, I'm OK, just kinda tired, it's late right now. You know what, I'm going to bed.
+	else: #if it's more than the ammount
+		node.set_region_rect(full) #then you're a full heart
 
 
-func checkCoins():
-	if main.coins != prevCoins:
+#this function checks & updates the coins on the hud
+func checkCoins(): 
+	if main.coins != prevCoins: #if the number of coins have changed
 		sfx.set_pitch_scale(rand_range(.95,1.05))
-		sfx.play(0)
+		sfx.play(0) #play a sound with a ^^^ randomized pitch
 		var t = Timer.new() #this creates a timer that we'll use later
-		if !coinFading:
+		if !coinFading: #is the coin (not) fading?
 			prevCoins = main.coins
-			coinFading = true #well now we are
+			coinFading = true #well now it is!!
 			coins.get_node("fadeAnim").playback_speed = 1000
 			coins.get_node("fadeAnim").play_backwards("fade")
 			#use timer to wait for 3 seconds
@@ -98,6 +57,7 @@ func checkCoins():
 			t.start()
 			yield(t, "timeout")
 			#all that stuff up there is just to wait for 3 seconds
+			t.queue_free()
 			coins.get_node("fadeAnim").playback_speed = 1
 			coins.get_node("fadeAnim").play("fade")
 			coinFading = false #we're no longer fading
@@ -106,6 +66,7 @@ func checkCoins():
 			t.set_wait_time(3)
 			
 
+#adjusts speed of all the different health nodes
 func playbackSpeed(var speed):
 	health.get_node("fadeAnim").playback_speed = speed
 	zer.get_node("fadeAnim").playback_speed = speed
@@ -114,6 +75,7 @@ func playbackSpeed(var speed):
 	six.get_node("fadeAnim").playback_speed = speed
 	eight.get_node("fadeAnim").playback_speed = speed
 
+#stops playback of all health nodes
 func stopPlayback(var toThis):
 	health.get_node("fadeAnim").stop(toThis)
 	zer.get_node("fadeAnim").stop(toThis)
@@ -122,11 +84,11 @@ func stopPlayback(var toThis):
 	six.get_node("fadeAnim").stop(toThis)
 	eight.get_node("fadeAnim").stop(toThis)
 
-
+#fades all health nodes, in/out based on true/false
 func fade(var inout):
 	stopPlayback(true)
 	if inout:
-		playbackSpeed(1)
+		playbackSpeed(1) #fadeout is slow
 		health.get_node("fadeAnim").play("fade")
 		zer.get_node("fadeAnim").play("fade")
 		two.get_node("fadeAnim").play("fade")
@@ -134,7 +96,7 @@ func fade(var inout):
 		six.get_node("fadeAnim").play("fade")
 		eight.get_node("fadeAnim").play("fade")
 	else:
-		playbackSpeed(1000)
+		playbackSpeed(1000) #fade in is fast
 		health.get_node("fadeAnim").play_backwards("fade")
 		zer.get_node("fadeAnim").play_backwards("fade")
 		two.get_node("fadeAnim").play_backwards("fade")
@@ -183,10 +145,18 @@ func interactWith():
 func _process(delta):
 	coins.set_text(str(main.coins))
 	checkCoins()
-	checkZero()
-	checkTwo()
-	checkFour()
-	checkSix()
-	checkEight()
+	
+	#all of these functions of the same name update the various
+	#different health sprites, there are five
+	updateHealth(zer,2)
+	updateHealth(two,4)
+	updateHealth(four,6)
+	updateHealth(six,8)
+	updateHealth(eight,10)
+	
+	#this will fade out the health, or bring it in
+	#based on whether or not it's changed recently
 	checkHealthFade()
+	
+	#this updates the "press 'E' to interact with ...." at the top of the screen
 	interactWith()

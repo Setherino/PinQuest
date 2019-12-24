@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/collect.wav-74192a95279b1b09abf5720a947b16be.sample"
+
+[deps]
+
+source_file="res://Sound/coins/collect.wav"
+dest_files=[ "res://.import/collect.wav-74192a95279b1b09abf5720a947b16be.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

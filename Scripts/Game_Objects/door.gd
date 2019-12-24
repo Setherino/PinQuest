@@ -73,6 +73,10 @@ func _input(event):
 
 #when the player touches the door
 func _on_door_body_entered(body):
+	if body.name != "Player":
+		return
+	
+	
 	#set onPlayer to true
 	onPlayer = true
 	if triggered:
@@ -94,6 +98,9 @@ func _on_door_body_entered(body):
 
 #when the player walks away from the door
 func _on_door_body_exited(body):
+	if body.name != "Player":
+		return
+	
 	onPlayer = false #dissable onPlayer
 	main.interact = false
 	main.interactWith = "nothing"

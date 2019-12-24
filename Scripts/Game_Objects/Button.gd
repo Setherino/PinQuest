@@ -13,6 +13,7 @@ extends Area2D
 #door, you set the button's sourceName to "john" and the doors sourceName to, well, "john",
 #and the button now unlocks the door.
 
+#12/21/19, also soon enough you should be able to use that as part of a task.
 
 export var momentary = false #if this is true the button won't toggle, but will be momentary
 export var color = "yellow" #defines the color of the button (y,g,r,b)

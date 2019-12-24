@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Game_Objects/coinBox.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/tiles/tiles.svg" type="Texture" id=2]
 [ext_resource path="res://Sprites/coin.png" type="Texture" id=3]
-
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.8281, 3.60533 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 35.0545, 27.9825 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( -36.02, 36.72, 36.89, 36.51, 36.8, -34.74, -36.52, -34.64 )
 
 [node name="coinBox" type="Node2D"]
 script = ExtResource( 1 )
@@ -30,17 +32,17 @@ position = Vector2( 0, -31.9053 )
 shape = SubResource( 1 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+rotation = -1.56077
 emitting = false
-amount = 10
+amount = 6
 lifetime = 2.0
-explosiveness = 1.0
+explosiveness = 0.92
+randomness = 0.35
 texture = ExtResource( 3 )
-spread = 180.0
-flatness = 1.0
-gravity = Vector2( 0, 300 )
-initial_velocity = 200.0
+spread = 46.45
+gravity = Vector2( -200, 0 )
+initial_velocity = 264.2
 angular_velocity = 720.0
-linear_accel = 100.0
 radial_accel = -100.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -48,5 +50,8 @@ radial_accel = -100.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 0, 0.71698 )
 shape = SubResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 3 )
 [connection signal="body_entered" from="top" to="." method="_on_top_body_entered"]
 [connection signal="body_exited" from="top" to="." method="_on_top_body_exited"]

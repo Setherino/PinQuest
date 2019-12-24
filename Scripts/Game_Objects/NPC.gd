@@ -10,7 +10,7 @@ export var dialogueSourceName = "Template"
 var dialogueSource = "res://NPC Dialogue/"
 
 #this is the texture of the NPC
-export var npcTexture : Texture
+export var npcTexture : Texture setget setTexture
 export var dialogueIcon : Texture
 #This variable decides whether the NPC will load the dialogue into
 #memory when the level starts, or when the player talks to the NPC
@@ -29,6 +29,9 @@ var dgSource : File = File.new()
 var defaultDialogue = [ ]
 var taskDialogue = [ ]
 
+func setTexture(var text :Texture):
+	npcTexture = text
+	get_node("Sprite").texture = npcTexture
 
 #this fills the first of the two arrays described above with information from the file.
 func fillDefault():
@@ -52,17 +55,17 @@ func fillTaskDG():
 	dgSource.open(dialogueSource,1)
 	
 	var line = "" #creating a line variable to store the text
+	
+	while line != "-TASK DIALOGUE:":
+		line = dgSource.get_line()
+	
 	while line != "-END." && !dgSource.eof_reached(): #until you get to the end header
 		line = dgSource.get_line() #get the next line of text
 		if line != "-END.": #make sure it's not the end header
 			taskDialogue.push_back(line) #and add it to the array
 
-func _process(delta):
-	if Engine.editor_hint:
-		sprite.set_texture(npcTexture)
 
 func _ready():
-	sprite.set_texture(npcTexture)
 	if Engine.editor_hint:
 		return
 	
@@ -72,12 +75,20 @@ func _ready():
 		print("ERROR!! " + npcName + " HAS AN INVALID DIALOGUE SOURCE")
 		print(dialogueSource + " SOURCE DOES NOT EXIST!")#print an error
 		queue_free() #and delete yourself
-	print("saveram check")
 	if !saveRam:
 		fillDefault()
 		fillTaskDG()
-	print("did nothing")
-	
+
+
+func talkTo():
+	main.taskAmmountCollected = 1
+	Hud.hideTaskPannel()
+	Hud.showDialogue(taskDialogue,npcName,dialogueIcon)
+
+func deliver():
+	Hud.hideTaskPannel()
+	main.taskAmmountCollected = 2
+	Hud.showDialogue(taskDialogue,npcName,dialogueIcon)
 
 # warning-ignore:unused_argument
 func _input(event):
@@ -85,7 +96,13 @@ func _input(event):
 		if saveRam && defaultDialogue.size() == 0:
 			fillDefault()
 			fillTaskDG()
-		Hud.showDialogue(defaultDialogue,npcName,dialogueIcon)
+		if main.taskGoal == npcName && main.taskType != 1:
+			if main.taskType == 2:
+				talkTo()
+			elif main.taskType == 3:
+				deliver()
+		else:
+			Hud.showDialogue(defaultDialogue,npcName,dialogueIcon)
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
@@ -96,6 +113,15 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
+		if main.taskGoal == npcName:
+			if main.taskType == 2:
+				Hud.showMessage("Task Complete!","You successfully spoke with " +
+				 npcName + ". \nTo start a new task, open your task menu, and start one!")
+			elif main.taskType == 3:
+				Hud.showMessage("Task Complete!","You successfully delivered the item to " 
+				+ main.taskGoal + ".\nOpen your task menu to start a new task!")
+			main.resetTasks(true,false)
+		
 		main.interact = false
 		main.interactWith = "nothing"
 		onNPC = false
