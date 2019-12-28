@@ -1,0 +1,287 @@
+[gd_resource type="TileSet" load_steps=8 format=2]
+
+[ext_resource path="res://Sprites/Final/Outside/Tilemap.png" type="Texture" id=1]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( 31.7089, 30.0018, 42.7559, 38.3355, 52.8339, 38.3355, 63.8808, 31.7461, 63.8808, 15.0787, 54.5781, 20.8929, 43.5311, 20.8929, 31.5151, 13.5283 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 5.36807, 31.7449, 5.36807, 0.789612, 26.4984, 0.655029, 26.633, 31.7449 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( 4.86165, 0.385864, 26.1265, 0.385864, 26.1265, 31.8794, 4.99625, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 5.36807, 0.116699, 26.4984, 0, 26.4984, 31.8795, 5.50266, 31.8795 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 4.99623, 0, 27.0686, 0, 26.9341, 31.6102, 4.99623, 31.6102 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( 17.7986, 63.5345, 17.6048, 28.4555, 20.5119, 28.4555, 20.3181, 13.3386, 17.411, 13.3386, 17.6048, 16.4395, 13.1473, 16.4395, 12.9535, 12.5634, 10.6278, 12.5634, 10.434, 28.8431, 12.7597, 28.6493, 12.7597, 63.7283 )
+
+[resource]
+0/name = "House"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 224, 736, 128, 96 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/occluder = SubResource( 1 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [  ]
+0/z_index = 0
+1/name = "CleanRoad"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 320, 864, 32, 96 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [  ]
+1/z_index = 0
+2/name = "CrossWalk"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 288, 864, 32, 96 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [  ]
+2/z_index = 0
+3/name = "DirtyRoad1"
+3/texture = ExtResource( 1 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 256, 864, 32, 96 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shapes = [  ]
+3/z_index = 0
+4/name = "DirtyRoad2"
+4/texture = ExtResource( 1 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 224, 864, 32, 96 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shapes = [  ]
+4/z_index = 0
+5/name = "RoadEndRight"
+5/texture = ExtResource( 1 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 352, 864, 32, 96 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shapes = [  ]
+5/z_index = 0
+6/name = "RoadEndLeft"
+6/texture = ExtResource( 1 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 416, 864, 32, 96 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shapes = [  ]
+6/z_index = 0
+7/name = "Manhole"
+7/texture = ExtResource( 1 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 384, 896, 32, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shapes = [  ]
+7/z_index = 0
+8/name = "PowerLine"
+8/texture = ExtResource( 1 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 160, 896, 32, 64 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/occluder = SubResource( 4 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shapes = [  ]
+8/z_index = 0
+9/name = "CafeWall1"
+9/texture = ExtResource( 1 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 128, 768, 32, 64 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shapes = [  ]
+9/z_index = 0
+10/name = "CafeWall2"
+10/texture = ExtResource( 1 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 160, 768, 32, 64 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shapes = [  ]
+10/z_index = 0
+11/name = "CafeCornerR"
+11/texture = ExtResource( 1 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 192, 768, 32, 64 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shapes = [  ]
+11/z_index = 0
+12/name = "CafeKiosk"
+12/texture = ExtResource( 1 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 32, 768, 64, 64 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shapes = [  ]
+12/z_index = 0
+13/name = "CafeCornerL"
+13/texture = ExtResource( 1 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 0, 768, 32, 64 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shapes = [  ]
+13/z_index = 0
+14/name = "CafeDoorTop"
+14/texture = ExtResource( 1 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 96, 768, 32, 32 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 0, 0 )
+14/navigation_offset = Vector2( 0, 0 )
+14/shapes = [  ]
+14/z_index = 0
+15/name = "CafeDoorFake"
+15/texture = ExtResource( 1 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 96, 800, 32, 32 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shapes = [  ]
+15/z_index = 0
+16/name = "CafeRoofL"
+16/texture = ExtResource( 1 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 0, 704, 32, 64 )
+16/tile_mode = 2
+16/autotile/icon_coordinate = Vector2( 0, 0 )
+16/autotile/tile_size = Vector2( 32, 32 )
+16/autotile/spacing = 0
+16/autotile/occluder_map = [  ]
+16/autotile/navpoly_map = [  ]
+16/autotile/z_index_map = [  ]
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shapes = [  ]
+16/z_index = 0
+17/name = "CafeRoofR"
+17/texture = ExtResource( 1 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 160, 704, 32, 64 )
+17/tile_mode = 2
+17/autotile/icon_coordinate = Vector2( 0, 0 )
+17/autotile/tile_size = Vector2( 32, 32 )
+17/autotile/spacing = 0
+17/autotile/occluder_map = [  ]
+17/autotile/navpoly_map = [  ]
+17/autotile/z_index_map = [  ]
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shapes = [  ]
+17/z_index = 0
+18/name = "CafeRoof"
+18/texture = ExtResource( 1 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 32, 704, 128, 64 )
+18/tile_mode = 2
+18/autotile/icon_coordinate = Vector2( 0, 0 )
+18/autotile/tile_size = Vector2( 32, 32 )
+18/autotile/spacing = 0
+18/autotile/occluder_map = [  ]
+18/autotile/navpoly_map = [  ]
+18/autotile/z_index_map = [  ]
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shapes = [  ]
+18/z_index = 0
+19/name = "HouseRoof"
+19/texture = ExtResource( 1 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 224, 640, 128, 96 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shapes = [  ]
+19/z_index = 0
+20/name = "MiscDeco"
+20/texture = ExtResource( 1 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 160, 832, 64, 64 )
+20/tile_mode = 2
+20/autotile/icon_coordinate = Vector2( 0, 0 )
+20/autotile/tile_size = Vector2( 32, 32 )
+20/autotile/spacing = 0
+20/autotile/occluder_map = [ Vector2( 0, 0 ), SubResource( 2 ), Vector2( 1, 0 ), SubResource( 3 ) ]
+20/autotile/navpoly_map = [  ]
+20/autotile/z_index_map = [  ]
+20/occluder_offset = Vector2( 0, 0 )
+20/navigation_offset = Vector2( 0, 0 )
+20/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+20/z_index = 0
+21/name = "FountainStuff"
+21/texture = ExtResource( 1 )
+21/tex_offset = Vector2( 0, 0 )
+21/modulate = Color( 1, 1, 1, 1 )
+21/region = Rect2( 0, 832, 160, 128 )
+21/tile_mode = 2
+21/autotile/icon_coordinate = Vector2( 0, 0 )
+21/autotile/tile_size = Vector2( 32, 32 )
+21/autotile/spacing = 0
+21/autotile/occluder_map = [  ]
+21/autotile/navpoly_map = [  ]
+21/autotile/z_index_map = [  ]
+21/occluder_offset = Vector2( 0, 0 )
+21/navigation_offset = Vector2( 0, 0 )
+21/shapes = [  ]
+21/z_index = 0

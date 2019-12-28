@@ -1,10 +1,10 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://Tilemaps/Base.tres" type="TileSet" id=1]
+[ext_resource path="res://Sprites/Final/Outside/Base.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Game_Objects/door.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/PinQuestSplash-01.png" type="Texture" id=4]
-[ext_resource path="res://Tilemaps/Buildings.tres" type="TileSet" id=5]
+[ext_resource path="res://Sprites/Final/Outside/Buildings.tres" type="TileSet" id=5]
 [ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Game_Objects/NPC.gd" type="Script" id=7]
 [ext_resource path="res://Sprites/Misc/swifty.png" type="Texture" id=8]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Scripts/Game_Objects/Indicator.gd" type="Script" id=20]
 [ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Scripts/Tools/Spawn Area.gd" type="Script" id=22]
+
 
 [node name="MainMenu" type="Node2D"]
 
@@ -86,9 +87,9 @@ DeliverTo = "Taylor"
 texture = ExtResource( 14 )
 
 [node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 15 )]
-position = Vector2( 612.342, 492.311 )
+position = Vector2( 549.176, 508.746 )
 script = ExtResource( 16 )
-SPEED = 250
+SPEED = 400
 GRAVITY = 10
 JUMP = 350
 FallDamageHeight = 600

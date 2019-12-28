@@ -8,13 +8,13 @@ extends Control
 #main menu, and the game doesn't crash or anything.
 var level = "res://UI/mainMenu.tscn"
 
+onready var anim1 = get_node("canv/PanelContainer/pnlPlayer")
+onready var anim2 = get_node("canv/contain/txtPlayer")
+
 #this is what actually loads the next scene, it needs to be in it's
 #own function so it can be triggered by the timers signal
 func next_scene():
 	var file = File.new()
-	
-
-	
 	var location = level.insert(6,"temp/")
 	
 	#checking the temp folder for the scene
@@ -24,7 +24,17 @@ func next_scene():
 	else:
 		get_tree().change_scene(level)
 	
+	var t = Timer.new()
+	add_child(t)
+	t.set_wait_time(1)
+	t.set_one_shot(true)
+	#we wait for .1 seconds, and then load the next scene.
+	#this gives the engine time to actually render the loading screen.
+	t.connect("timeout",self,"queue_free")
+	t.start()
 	
+	anim1.play("fade")
+	anim2.play("fade")
 
 #this function returns one of the fun facts out of the file
 func getFact():
@@ -96,6 +106,9 @@ func saveToTemp():
 
 #this function runs when the loading screen is created.
 func _ready():
+	anim1.play_backwards("fade")
+	anim2.play_backwards("fade")
+	
 	var fact = getFact() #first we get a fun fact 
 	get_node("canv/contain/facts").text = fact #and add it
 	
@@ -106,7 +119,7 @@ func _ready():
 	#now we make a timer
 	var t = Timer.new()
 	add_child(t)
-	t.set_wait_time(0.1)
+	t.set_wait_time(1)
 	t.set_one_shot(true)
 	#we wait for .1 seconds, and then load the next scene.
 	#this gives the engine time to actually render the loading screen.

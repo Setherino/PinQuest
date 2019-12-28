@@ -20,7 +20,6 @@ func _ready():
 	#if main.exiting:
 	#	position = main.doorLevels.back()
 	#	main.doorLevels.pop_back()
-	Hud.clearload()
 	
 	anim.set_speed_scale(2)
 

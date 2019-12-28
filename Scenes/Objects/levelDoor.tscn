@@ -1,29 +1,25 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Game_Objects/door.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/tiles/tiles.svg" type="Texture" id=2]
+[ext_resource path="res://Sprites/Final/Outside/doors.png" type="Texture" id=2]
 [ext_resource path="res://Sound/door.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sound/door2.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30, 50 )
+extents = Vector2( 12.2666, 16.0252 )
 
 [node name="door" type="Area2D"]
+scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
 [node name="lowerDoor" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 1280, 506, 70, 70 )
-
-[node name="upperDoor" type="Sprite" parent="."]
-position = Vector2( 0, -68 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 1200, 506, 70, 70 )
+region_rect = Rect2( 0, 32, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -20 )
+visible = false
+position = Vector2( 0.513336, 0.277054 )
 shape = SubResource( 1 )
 
 [node name="doorOpen" type="AudioStreamPlayer2D" parent="."]
