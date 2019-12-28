@@ -35,6 +35,8 @@ func _process(delta):
 				ammountSpawned -= abs(prevCoins - main.taskAmmountCollected)
 				prevCoins = main.taskAmmountCollected
 			
+			
+			
 			var spawn = spawner.instance()
 			randomize()
 			spawn.position = Vector2(round(rand_range(spawnArea.x*-1,spawnArea.x)),round(rand_range(spawnArea.y*-1,spawnArea.y)))
@@ -50,3 +52,14 @@ func _draw():
 	if Engine.editor_hint: #if we're in the editor
 		#draw the rectangle
 		draw_rect(Rect2(Vector2(spawnArea.x*-1,spawnArea.y*-1),spawnArea*2),areaColor,false)
+
+
+func _ready():
+	main.connect("taskStarted",self,"_taskStart")
+	
+	if main.taskName == sourceTask:
+		main.taskTargetX = position.x
+
+func _taskStart():
+	if main.taskName == sourceTask:
+		main.taskTargetX = position.x

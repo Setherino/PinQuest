@@ -7,6 +7,16 @@ tool #this line means that the code is run in the editor. We do that
 #so that other tools can use the variables in main.gd while in the editor.
 extends Spatial
 
+#this is where the arrow points
+var taskTargetX = 0
+
+var playerX = 0
+
+var nextLevel = ""
+
+#is the current level an outdoor level
+var outdoors = false
+
 var jumpHeight = 0
 var forceJump = false
 
@@ -113,7 +123,8 @@ func _process(delta):
 		 #reduce it by one
 		
 
-
+func saveGame(var location):
+	pass
 
 func _ready():
 	if Engine.editor_hint: #if we're in the editor

@@ -32,31 +32,31 @@ func header():
 
 #adds task element to list
 func addTask(location:String,place):
-	
+
 	#create file variable
 	var task : File = File.new()
-	
+
 	#does the supplied location exist?
 	if !task.file_exists(location):
 		#if not, print an error
 		print("ERROR! " + location + " IS NOT A VALID TASK LOCATION!")
 		return #and stop the script
-	
+
 	task.open(location,1)
 	#open the file
 	var taskDisplay = tasks.instance()
 	#create an instance of the task
-	
+
 	#set the text for that instance, name, type, goal, time limit, and # to collect
 	taskDisplay.get_node("Name").text = task.get_line()
 	taskDisplay.get_node("Type").text = task.get_line()
 	taskDisplay.get_node("Goal").text = task.get_line()
 	taskDisplay.get_node("TimeLimit").text = task.get_line()
 	taskDisplay.get_node("Ammount").text = task.get_line()
-	
+
 	#place is it's place in the list, this is used in the element (see Scripts/UI/inventoryTask.gd)
 	taskDisplay.place = place
-	
+
 	#add the element to the scrolling VContainaer
 	get_node("CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer").add_child(taskDisplay)
 
@@ -68,16 +68,16 @@ func _process(delta):
 		prevID = main.taskID #reset prevID
 		if desc.is_open(): #if the desc file is open
 			desc.close() #close it
-		
+
 		#open desc to the current taskID's location (stored in an array in main.gd)
 		desc.open(main.taskFileNames[main.taskID],1)
-		
+
 		var line = ""
-		
+
 		#go through until you get to the end or the description
 		while line != "-DESCRIPTION:" && !desc.eof_reached():
 			line = desc.get_line()
-		
+
 		#if the description was found...
 		if !desc.eof_reached():
 			#get that line and set the current description text
@@ -91,14 +91,14 @@ func _ready():
 	get_node("CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer/Label").text = str(main.coins) + "/" + str(main.questCoins) + " Coins collected"
 	get_node("CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer/CoinsBar").value = main.coins
 	get_node("CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer/CoinsBar").max_value = main.questCoins
-	
-	get_node("CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer2/Label").text = str(main.AmmountOfTasksComplete) + "/" + str(main.questTasks) + " Coins collected"
+
+	get_node("CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer2/Label").text = str(main.AmmountOfTasksComplete) + "/" + str(main.questTasks) + " Tasks complete"
 	get_node("CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer2/TasksBar").value = main.AmmountOfTasksComplete
 	get_node("CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer2/TasksBar").max_value = main.questTasks
-	
+
 	header() #create header
 	#loop through the entire array
-	
+
 	if main.AmmountOfTasksComplete >= main.questTasks && main.coins >= main.questCoins:
 		button.disabled = false
 	else:
@@ -108,3 +108,8 @@ func _ready():
 		#add a task element for each item
 		addTask(main.taskFileNames[i],i)
 		i = i + 1 #iterate iterator
+
+#when the "complete quest" button is pressed...
+func _on_Button_pressed():
+	main.levelFolder = "na" #reset the levelFolder (used by the TaskManager)
+	Hud.startLoading(main.nextLevel) #load the next level w/ loading screen

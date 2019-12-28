@@ -34,6 +34,12 @@ var prevCollected = 0
 func _process(delta):
 	Time.text = "Time left: " + str(round(timer.get_time_left())) + " seconds"
 	
+	if main.playerX > main.taskTargetX:
+		get_node("CanvasLayer/arrow").set_flip_h(true)
+	else:
+		get_node("CanvasLayer/arrow").set_flip_h(false)
+	
+	
 	if prevCollected != main.taskAmmountCollected:
 		prevCollected = main.taskAmmountCollected
 		get_node("sfx").play(0)

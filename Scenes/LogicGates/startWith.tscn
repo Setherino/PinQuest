@@ -3,6 +3,8 @@
 [ext_resource path="res://Scripts/LogicGates/startWith.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
+
+
 [node name="startWith" type="Node2D"]
 script = ExtResource( 1 )
 

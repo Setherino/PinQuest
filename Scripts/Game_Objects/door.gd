@@ -69,7 +69,8 @@ func _input(event):
 	#we're touching the player
 	if Input.is_action_pressed("interact") and onPlayer:
 			#if so, change scenes
-			get_tree().change_scene(nextLevel)
+			Hud.startLoading(nextLevel)
+
 
 #when the player touches the door
 func _on_door_body_entered(body):
@@ -78,12 +79,9 @@ func _on_door_body_entered(body):
 	
 	
 	#set onPlayer to true
-	onPlayer = true
 	if triggered:
-		if link.enabled:
-			main.interact = true
-			main.interactWith = "door"
-		return
+		if !link.enabled:
+			return
 	
 	
 	#open the door (switch door sprites to open version
@@ -91,6 +89,7 @@ func _on_door_body_entered(body):
 	door2.set_region_rect(openDoor2Rect)
 	
 	#play door sound
+	onPlayer = true
 	if !triggered:
 		sound2.play(0.5)
 	main.interact = true

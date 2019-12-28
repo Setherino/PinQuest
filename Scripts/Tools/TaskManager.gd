@@ -17,29 +17,55 @@
 tool
 extends Node2D
 
+#here are all the elements that the level designer can modify to create tasks...
+
+#the folder where the task tile is stored
 export(String, "Debug", "LevelOne", "LevelTwo","LevelThree","LevelFour") var Folder
+
+#its name
 export var taskFileNames :PoolStringArray = ["Template","SecondFile"]
+
+#this is the button to display the tasks
 export var save = false
+
+#this button clears them
 export var deleteTaskList = false
+
+#the number of tasks / coins required to complete the level
 export var questTasksRequired = 0
 export var questCoinsRequired = 0
+
+ #the location of next level
+export var nextLevel = "level2"
+
 #loads task element so we can create them later
 const tasks = preload("res://UI/Task.tscn")
+
+
 
 #run when level starts
 func _ready():
 	#if we're not in the engine
-	
 	if !Engine.editor_hint:
+		#update the number of coins & tasks required
 		main.questCoins = questCoinsRequired
 		main.questTasks = questTasksRequired
+		
+		#if this is the first time loading the level...
 		if main.levelFolder == "na":
-			main.levelFolder = Folder
-			main.tasksComplete.clear()
+			main.levelFolder = Folder #set this to the correct folder
+			
+			#clear all the task arrays.
+			main.tasksComplete.clear() 
 			main.taskStarted.clear()
 			main.taskFileNames.clear()
-		else:
-			return
+		else:#if it's not the first time
+			return #stop the script
+		
+		#set the global nextLevel variable
+		main.nextLevel = nextLevel
+		
+		#loop through the array of tasks
 		var iterate = 0
 		while iterate < taskFileNames.size(): #loop for number of taskFiles there are
 			#adds to array of taskfile locations (with actual location)
@@ -48,6 +74,8 @@ func _ready():
 			main.taskStarted.append(false) #it also hasn't been started yet, so.
 			print(main.taskFileNames[iterate])
 			iterate += 1
+
+
 
 #adds the header task to the list of task elements
 func makeHeader():

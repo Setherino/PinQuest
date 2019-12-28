@@ -43,7 +43,6 @@ func fillDefault():
 	var line = dgSource.get_line() #creating a line variable to store the text
 	while line != "-TASK DIALOGUE:" && !dgSource.eof_reached(): #until you get to the task header...
 		line = dgSource.get_line() #get a line
-		print(line)
 		if line != "-TASK DIALOGUE:": #make sure it's not the task header
 			defaultDialogue.push_back(line) #if it's not, then add it to the array
 
@@ -65,10 +64,12 @@ func fillTaskDG():
 			taskDialogue.push_back(line) #and add it to the array
 
 
+
+
 func _ready():
 	if Engine.editor_hint:
 		return
-	
+	main.connect("taskStarted",self,"_taskStart")
 	dialogueSource = dialogueSource + Folder + dialogueSourceName + ".dial"
 	
 	if !dgSource.file_exists(dialogueSource): #if the file doesn't exist
@@ -111,17 +112,10 @@ func _on_Area2D_body_entered(body):
 		main.interactWith = npcName
 
 
+
+#when you leave the npc's hitbox
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
-		if main.taskGoal == npcName:
-			if main.taskType == 2:
-				Hud.showMessage("Task Complete!","You successfully spoke with " +
-				 npcName + ". \nTo start a new task, open your task menu, and start one!")
-			elif main.taskType == 3:
-				Hud.showMessage("Task Complete!","You successfully delivered the item to " 
-				+ main.taskGoal + ".\nOpen your task menu to start a new task!")
-			main.resetTasks(true,false)
-		
 		main.interact = false
 		main.interactWith = "nothing"
 		onNPC = false
@@ -129,3 +123,7 @@ func _on_Area2D_body_exited(body):
 			defaultDialogue.clear()
 			taskDialogue.clear()
 
+
+func _process(delta):
+	if main.taskGoal == npcName:
+		main.taskTargetX = position.x

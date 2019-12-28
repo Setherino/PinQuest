@@ -8,6 +8,7 @@ Folder = "Debug"
 taskFileNames = PoolStringArray( "Template", "SecondFile" )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

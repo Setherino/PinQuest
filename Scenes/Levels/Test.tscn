@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Tilemaps/IndoorTopDown.tres" type="TileSet" id=1]
-[ext_resource path="res://Scenes/Objects/Collectables/coinBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 
 [node name="Test" type="Node2D"]
@@ -20,17 +20,12 @@ cell_size = Vector2( 128, 128 )
 format = 1
 tile_data = PoolIntArray( 327656, 8, 0, 327664, 8, 0, 262144, 8, 0, 262158, 8, 0, 262165, 5, 0, 262176, 8, 0 )
 
-[node name="coinBox" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1214.75, 444.491 )
-
-[node name="coinBox2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1342.01, 444.491 )
-
-[node name="coinBox3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1465.65, 444.491 )
-
-[node name="coinBox4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1580.27, 444.491 )
+[node name="door" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1377.25, 346.941 )
+scale = Vector2( 0.998127, 1.00369 )
+nextLevel = "res://Scenes/Levels/testScene.tscn"
+sourceName = ""
+Exit = true
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1071.34, 392.648 )
+position = Vector2( 1372.71, 344.592 )

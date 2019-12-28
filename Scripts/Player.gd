@@ -6,8 +6,7 @@ export var GRAVITY = 10
 export var JUMP = 350
 export var FallDamageHeight = 600
 export var walkRangeScale = 1
-export var airResistance = 5
-
+export var outside = false
 
 #this is the motion variables that hold the x & y speeds of the player
 var motion = Vector2( )
@@ -17,7 +16,14 @@ const UP = Vector2(0,-1)
 onready var anim = get_node("Sprite/AnimationPlayer")
 onready var coin = get_node("coins")
 func _ready():
+	#so that the player apears outside the door they entered from
+	#if main.exiting:
+	#	position = main.doorLevels.back()
+	#	main.doorLevels.pop_back()
+	Hud.clearload()
+	
 	anim.set_speed_scale(2)
+
 
 
 
@@ -71,7 +77,7 @@ func onGround():
 
 #this runs every ??frame?? and does physics and movement
 func _physics_process(delta):
-
+	main.playerX = position.x
 	if is_on_ceiling() or is_on_floor():
 		collisionDetect()
 	prevMotion = motion
@@ -79,10 +85,12 @@ func _physics_process(delta):
 	#moving left
 	if Input.is_action_pressed("moveLeft"):
 		motion.x = -SPEED #move left
+		get_node("Sprite").set_flip_h(true)
 		anim.play("Walking") #play walking animation
 	elif Input.is_action_pressed("moveRight"):
 		motion.x = SPEED #move right
 		anim.play("Walking") #play walking animation
+		get_node("Sprite").set_flip_h(false)
 	else:
 		if motion.x > 1:
 			motion.x -= 20

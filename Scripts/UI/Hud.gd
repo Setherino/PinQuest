@@ -25,7 +25,6 @@ var prevHealth = 0
 var fading = false
 var coinFading = false
 
-
 #update one of the heath sprites
 func updateHealth(var node,var ammount):
 	#node = refreence to health sprite to update
