@@ -5,10 +5,10 @@
 [node name="TaskManager" type="Node2D"]
 script = ExtResource( 1 )
 Folder = "Debug"
-taskFileNames = PoolStringArray( "Template", "SecondFile" )
+taskFileNames = [ "task0", "task1", "task2", "task3" ]
+showTasks = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

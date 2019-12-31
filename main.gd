@@ -14,6 +14,8 @@ var playerX = 0
 
 var nextLevel = ""
 
+var vhsEffect = true
+
 #is the current level an outdoor level
 var outdoors = false
 

@@ -14,6 +14,8 @@ const message = preload("res://UI/Prompt.tscn")
 #the loading screen
 const loading = preload("res://UI/Loading.tscn")
 
+const vhsEffect = preload("res://Misc/VHS.tscn")
+
 #is the inventory open?
 var inventoryOpen = false
 
@@ -124,6 +126,12 @@ func showHud():
 	var HUD = HUDelement.instance()
 	add_child(HUD)
 
+#-------------------
+#VHS effect
+#-------------------
+
+func showVHS():
+	add_child(vhsEffect.instance())
+
 func _ready():
 	showHud()
-	pass

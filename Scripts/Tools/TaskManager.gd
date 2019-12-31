@@ -20,16 +20,18 @@ extends Node2D
 #here are all the elements that the level designer can modify to create tasks...
 
 #the folder where the task tile is stored
-export(String, "Debug", "LevelOne", "LevelTwo","LevelThree","LevelFour") var Folder
+export(String, "Debug", "LevelOne", "LevelTwo","LevelThree","LevelFour") var Folder setget setfolder
 
 #its name
-export var taskFileNames :PoolStringArray = ["Template","SecondFile"]
+export var taskFileNames :Array 
+
+export var showTasks = false setget hideShow
 
 #this is the button to display the tasks
-export var save = false
+var taskShow = false 
 
 #this button clears them
-export var deleteTaskList = false
+var hideTasks = false
 
 #the number of tasks / coins required to complete the level
 export var questTasksRequired = 0
@@ -41,10 +43,33 @@ export var nextLevel = "level2"
 #loads task element so we can create them later
 const tasks = preload("res://UI/Task.tscn")
 
+func setfolder(var folder):
+	taskFileNames.clear()
+	Folder = folder
+	autofill()
 
+func hideShow(var show):
+	showTasks = show
+	if show:
+		taskShow = true
+	else:
+		killChildren(true)
+
+#lol
+func killChildren(var del):
+	main.deleteTaskList = del
 
 #run when level starts
 func _ready():
+	if Engine.editor_hint:
+		var t = Timer.new()
+		t.set_wait_time(5)
+		t.set_one_shot(false)
+		t.connect("timeout",self,"autofill")
+		add_child(t)
+		t.start()
+	
+	
 	#if we're not in the engine
 	if !Engine.editor_hint:
 		#update the number of coins & tasks required
@@ -106,14 +131,37 @@ func addTask(location:String):
 	
 	#add the instance as a child of the container
 	get_node("PanelContainer").get_node("Container").add_child(taskDisplay)
-	
-	
+
+
+func autofill():
+	var file = File.new()
+	if file.file_exists("res://Tasks/" + Folder + "/task0.task"):
+		var i = 0
+		while(file.file_exists("res://Tasks/" + Folder + "/"+ "task" + str(i) + ".task")):
+			if !taskFileNames.has("task" + str(i)):
+				taskFileNames.append("task" + str(i))
+				#addTask("res://Tasks/" + Folder + "/"+ "task" + str(i) + ".task")
+			i += 1
+	else:
+		return
 
 func _process(delta):
-	main.deleteTaskList = deleteTaskList
-	if save:
-		print("saving")
-		save = false
+	if main.deleteTaskList:
+		if !has_node("PanelContainer/Container/Contain"):
+			main.deleteTaskList = false
+			hideTasks = false
+	
+	
+	if taskShow:
+		main.deleteTaskList = true
+		
+		if !has_node("PanelContainer/Container/Contain"):
+			main.deleteTaskList = false
+			hideTasks = false
+		else:
+			return
+		
+		taskShow = false
 		makeHeader()
 		var iterate = 0
 		while iterate < taskFileNames.size():
