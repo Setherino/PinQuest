@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=2]
+[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 9.43427, 6.53894 )
+
+[node name="Test World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, 944 )
+outside = false
+
+[node name="Tile" type="Node" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Tile"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 917504, 0, 0, 917505, 0, 1, 917506, 0, 1, 917507, 0, 1, 917508, 0, 1, 917509, 0, 1, 917510, 0, 1, 917511, 0, 1, 917512, 0, 1, 917513, 0, 1, 917514, 0, 1, 917515, 0, 2, 983040, 0, 65536, 983041, 0, 65537, 983042, 0, 65537, 983043, 0, 65537, 983044, 0, 65537, 983045, 0, 65537, 983046, 0, 65537, 983047, 0, 65537, 983048, 0, 65537, 983049, 0, 65537, 983050, 0, 65537, 983051, 0, 65538, 1048576, 0, 131072, 1048577, 0, 131073, 1048578, 0, 131073, 1048579, 0, 131073, 1048580, 0, 131073, 1048581, 0, 131073, 1048582, 0, 131073, 1048583, 0, 131073, 1048584, 0, 131073, 1048585, 0, 131073, 1048586, 0, 131073, 1048587, 0, 131074 )
+
+[node name="TileMap2" type="TileMap" parent="Tile"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 851968, 14, 65537, 851969, 14, 65537, 851970, 14, 65537, 851971, 14, 65537, 851972, 14, 65537, 851973, 14, 65537, 851974, 14, 65537, 851975, 14, 65537, 851976, 14, 65537, 851977, 14, 65537, 851978, 14, 65537, 851979, 14, 65537, 917504, 2, 0 )
+
+[node name="TileMap3" type="TileMap" parent="Tile"]
+scale = Vector2( 2, 2 )
+z_index = 1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 983040, 4, 0, 983041, 4, 1, 983042, 4, 2 )
+
+[node name="Top" parent="." instance=ExtResource( 3 )]
+position = Vector2( 373.031, 874.999 )
+scale = Vector2( 46.5822, 1.54869 )
+z_index = 1
+shape = SubResource( 1 )
+top = true
+
+[node name="Bottem" parent="." instance=ExtResource( 3 )]
+position = Vector2( 373.031, 1098.28 )
+scale = Vector2( 46.5822, 1.54869 )
+shape = SubResource( 1 )
+top = false
+
+[node name="Left Wall" type="StaticBody2D" parent="."]
+position = Vector2( 373.031, 1098.28 )
+scale = Vector2( 46.5822, 1.54869 )
+
+[node name="Left W" type="CollisionShape2D" parent="Left Wall"]
+position = Vector2( -9.06506, -92.116 )
+scale = Vector2( 0.11039, 16.3162 )
+shape = SubResource( 2 )
+
+[node name="Right Wall" type="StaticBody2D" parent="."]
+position = Vector2( 1241.53, 1087.73 )
+scale = Vector2( 46.5822, 1.54869 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall"]
+position = Vector2( -9.15414, -98.0892 )
+scale = Vector2( 0.11039, 16.3162 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2( 971.045, 1020.8 )
+scale = Vector2( 96.9485, 0.125625 )
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2( -9.10604, -130.535 )
+scale = Vector2( 0.112336, 16.3162 )
+shape = SubResource( 2 )

@@ -27,7 +27,7 @@ extents = Vector2( 16, 176 )
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 663.333, 860.667 )
+position = Vector2( 678, 874 )
 z_index = 1
 script = ExtResource( 2 )
 SPEED = 200

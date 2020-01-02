@@ -25,7 +25,6 @@ position = Vector2( 320, 944 )
 tutorial = true
 
 [node name="Tilemaps" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="map1BG" type="TileMap" parent="Tilemaps"]
 scale = Vector2( 2, 2 )
@@ -146,31 +145,19 @@ messageBody = "Use WASD or the ARROW KEYS to move to Claire, and speak with her.
 [node name="AnimatedSprite" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1232, 768 )
 z_index = 1
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite4" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1168, 768 )
 z_index = 1
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1296, 768 )
 z_index = 1
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1168, 848 )
 z_index = 1
 Anim = "BannerBlue"
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="NPC" parent="." instance=ExtResource( 12 )]
 position = Vector2( 800, 958.294 )
