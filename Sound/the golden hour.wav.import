@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/the golden hour.wav-b0a44c41e2266d58a19454d555d76408.sample"
+
+[deps]
+
+source_file="res://Sound/the golden hour.wav"
+dest_files=[ "res://.import/the golden hour.wav-b0a44c41e2266d58a19454d555d76408.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
