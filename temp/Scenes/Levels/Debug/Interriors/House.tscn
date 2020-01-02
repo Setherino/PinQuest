@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Game_Objects/door.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Tools/worldtop.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="House" type="Node2D"]
+
+[node name="bg" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131072, 17, 1, 131073, 17, 1, 131074, 17, 1, 131075, 17, 1, 131076, 17, 1, 131077, 17, 1, 131078, 17, 1, 131079, 17, 1, 131080, 17, 1, 131081, 17, 1, 131082, 17, 1, 131083, 17, 1, 131084, 17, 1, 131085, 17, 1, 131086, 17, 1, 131087, 17, 1, 196608, 14, 65536, 196609, 14, 65537, 196610, 14, 1, 196611, 14, 65537, 196612, 14, 65537, 196613, 14, 65537, 196614, 14, 65537, 196615, 14, 65537, 196616, 14, 65537, 196617, 14, 65537, 196618, 14, 1, 196619, 14, 65537, 196620, 14, 65537, 196621, 14, 65537, 196622, 14, 65537, 196623, 14, 65543, 262144, 6, 65536, 262145, 6, 65536, 262146, 6, 65536, 262147, 6, 65536, 262148, 6, 65536, 262149, 6, 65536, 262150, 6, 65536, 262151, 6, 65536, 262152, 6, 65536, 262153, 6, 65536, 262154, 6, 65536, 262155, 6, 65536, 262156, 6, 65536, 262157, 6, 65536, 262158, 6, 65536, 262159, 6, 65536, 327680, 6, 65536, 327681, 6, 65536, 327682, 6, 65536, 327683, 6, 65536, 327684, 6, 65536, 327685, 6, 65536, 327686, 6, 65536, 327687, 6, 65536, 327688, 6, 65536, 327689, 6, 65536, 327690, 6, 65536, 327691, 6, 65536, 327692, 6, 65536, 327693, 6, 65536, 327694, 6, 65536, 327695, 6, 65536, 393216, 6, 65536, 393217, 6, 65536, 393218, 6, 65536, 393219, 6, 65536, 393220, 6, 65536, 393221, 6, 65536, 393222, 6, 65536, 393223, 6, 65536, 393224, 6, 65536, 393225, 6, 65536, 393226, 6, 65536, 393227, 6, 65536, 393228, 6, 65536, 393229, 6, 65536, 393230, 6, 65536, 393231, 6, 65536 )
+
+[node name="fg" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 131074, 0, 1, 589831, 0, 65536, 655361, 0, 65537, 655367, 0, 131072, 720897, 0, 131073, 720903, 0 )
+
+[node name="door" type="Area2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 272, 224 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+nextLevel = "start"
+triggered = false
+sourceName = "N/A"
+doorType = 3
+
+[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 282, 238 )
+z_index = 1
+script = ExtResource( 5 )
+SPEED = 200
+GRAVITY = 10
+JUMP = 350
+FallDamageHeight = 600
+walkRangeScale = 1
+outside = false
+
+[node name="Node2D" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 480, 234 )
+scale = Vector2( 59.6251, 0.800729 )
+script = ExtResource( 7 )
+shape = SubResource( 1 )
+top = true
+
+[node name="Node2D2" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 480, 448 )
+scale = Vector2( 59.6251, 0.800729 )
+script = ExtResource( 7 )
+shape = SubResource( 1 )
+top = false
+[connection signal="body_entered" from="door" to="door" method="_on_door_body_entered"]
+[connection signal="body_exited" from="door" to="door" method="_on_door_body_exited"]

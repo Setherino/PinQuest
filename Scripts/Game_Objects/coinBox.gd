@@ -14,10 +14,10 @@ onready var colission = get_node("StaticBody2D")
 #triggered when *something* touches the top of the box
 func _on_top_body_entered(body):
 	#if times is > zero and the thing that touches the box is the player
-	if times > 0 and body.name == "Player":
-		main.forceJump = true #force the player to jump
+	print("entered")
+	if times > 0 and body.name == "notPlayer":
+		main.forceJump(-300)
 		times -= 1 #change times by -1
-		main.jumpHeight = 1 #set jumpheight to not zero (important for making the player jump by force)
 		main.slowcoin = coinsInBox #slowly adds all coins to coin value (see main.gd)
 		partic.set_emitting(true)  #start emiting coins
 		partic.restart() #reset

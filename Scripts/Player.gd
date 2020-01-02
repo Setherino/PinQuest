@@ -7,39 +7,107 @@ export var JUMP = 350
 export var FallDamageHeight = 600
 export var walkRangeScale = 1
 export var outside = false
+export var tutorial = false
+
 
 #this is the motion variables that hold the x & y speeds of the player
 var motion = Vector2( )
 const UP = Vector2(0,-1)
 
+#this is a node that has all the necissary character animations in it.
+var chars = preload("res://Scenes/Character factory.tscn").instance()
+
 #this is so we can use the animation node below the player
-onready var anim = get_node("Sprite/AnimationPlayer")
+onready var vhsEffect = get_node("VHS effect/ColorRect")
+onready var anim = get_node("Sprite")
 onready var coin = get_node("coins")
+onready var sprite = get_node("Sprite")
+
+var dying = false
+
+var animSprite
+
 func _ready():
-	#so that the player apears outside the door they entered from
-	#if main.exiting:
-	#	position = main.doorLevels.back()
-	#	main.doorLevels.pop_back()
+	Hud.tutorial = tutorial
 	
-	anim.set_speed_scale(2)
+	
+	#if the player isn't outside, get rid of the paralax garbabe
+	if !outside:
+		get_node("ParallaxLayers").queue_free()
+	else:
+		get_node("ParallaxLayers/ParallaxBackground/background").set_visible(true)
+		get_node("ParallaxLayers/ParallaxBackground2/foreground").set_visible(true)
+	#connect the forcejump signal
+	main.connect("forceJump",self,"makeJump")
+	
+	#set the animation scale
+	anim.set_speed_scale(1.2)
 
 
 
-
-#this makes the player jump, it's totally useless, and does not
-#need to be a function.
-func makeJump(height):
-	moveVert(height)
+#this makes the player jump, obviously.
+func makeJump(height,force = false):
+	if !force: #if it's not a forcejump...
+		motion.y += height #add the height to the player velocity
+	else: #if it is
+		motion.y = height  #set the velocity to the height
+	self.name = "notPlayer"
 
 var prevMotion = Vector2()
 
+#drops coins, playing the animation
 func dropCoins(var ammount:int):
 	main.slowcoin = -ammount
 	coin.amount = ammount
 	coin.restart()
 	coin.emitting = true
 
+#called when the player dies
+func playerDie():
+	main.movementEnabled = false
+	if main.coins > 0:
+		dropCoins(20)
+	
+	var t = Timer.new()
+	t.set_wait_time(2)
+	add_child(t)
+	t.set_one_shot(true)
+	t.connect("timeout",main,"playerDead")
+	t.start()
 
+var prevHelth = 10
+
+#resets the VHS effect
+func resetVHS():
+	vhsEffect.material.set_shader_param("redX", 0)
+	vhsEffect.material.set_shader_param("blueX", 0)
+
+func _process(delta):
+	if dying:
+		randomize()
+		sprite.material.set_shader_param("multiply",rand_range(1.0,3.0))
+	else:
+		sprite.material.set_shader_param("multiply",0)
+	
+	
+	if prevHelth != main.playerHealth:
+		randomize()
+		prevHelth = main.playerHealth
+		vhsEffect.material.set_shader_param("redX", rand_range(-2.0,2.0) * main.vhsEffect)
+		vhsEffect.material.set_shader_param("blueX", rand_range(-2.0,2.0) * main.vhsEffect)
+		vhsEffect.material.set_shader_param("greenX", rand_range(-2.0,2.0) * main.vhsEffect)
+		var t = Timer.new()
+		t.set_wait_time(.2)
+		add_child(t)
+		t.set_one_shot(true)
+		#we wait for .1 seconds, and then load the next scene.
+		#this gives the engine time to actually render the loading screen.
+		t.connect("timeout",self,"resetVHS")
+		t.start()
+	
+	if main.playerHealth < 1 && !dying:
+		dying = true
+		playerDie()
 
 func collisionDetect():
 	if abs(prevMotion.y) > FallDamageHeight * 2:
@@ -73,9 +141,34 @@ func onGround():
 	else:
 		return true
 
+var motionY = 0
+var idleFrame = 0
+func animation():
+	if motion.x > 1:
+		idleFrame = 2
+		anim.play("East")
+	elif motion.x < -1:
+		idleFrame = 3
+		anim.play("West")
+	elif motionY > 1:
+		idleFrame = 0
+		anim.play("South")
+	elif motionY < -1:
+		idleFrame = 1
+		anim.play("North")
+		print("north")
+	else:
+		anim.play("Idle")
+		anim.set_frame(idleFrame)
+	pass
+
 
 #this runs every ??frame?? and does physics and movement
+#it's kinda complex because of the isometric movement.
 func _physics_process(delta):
+	if !main.movementEnabled:
+		return
+	
 	main.playerX = position.x
 	if is_on_ceiling() or is_on_floor():
 		collisionDetect()
@@ -84,12 +177,8 @@ func _physics_process(delta):
 	#moving left
 	if Input.is_action_pressed("moveLeft"):
 		motion.x = -SPEED #move left
-		get_node("Sprite").set_flip_h(true)
-		anim.play("Walking") #play walking animation
 	elif Input.is_action_pressed("moveRight"):
 		motion.x = SPEED #move right
-		anim.play("Walking") #play walking animation
-		get_node("Sprite").set_flip_h(false)
 	else:
 		if motion.x > 1:
 			motion.x -= 20
@@ -97,29 +186,26 @@ func _physics_process(delta):
 			motion.x += 20
 		else:
 			motion.x = 0
-		anim.stop(true) #stop the animation
 	if !onGround():
 		motion.y += GRAVITY
 	elif Input.is_action_pressed("moveDown"):
 		if !main.atBottom:
 			move_and_slide(Vector2(0,SPEED))
+			motionY = SPEED
 		motion.y = 0
 	elif Input.is_action_pressed("moveUp"):
 		if !main.atTop:
 			move_and_slide(Vector2(0,-SPEED))
+			motionY = -SPEED
 		motion.y = 0
 	elif Input.is_action_just_pressed("Jump") or main.forceJump:
-		motion.y += -JUMP - GRAVITY + main.jumpHeight
-		self.name = "notPlayer"
+		makeJump(-JUMP - GRAVITY + main.jumpHeight)
 	else:
+		motionY = 0
 		motion.y = 0
 		self.name = "Player"
 	
-	
-	#if onGround() or main.jumpHeight > 0:
-	#		if Input.is_action_just_pressed("Jump") or main.forceJump:
-	#			motion.y += -JUMP - GRAVITY + main.jumpHeight
-	
+	animation()
 	get_node("shadowBody/camera").move_and_slide(Vector2(0,motion.y*.5),UP)
 	get_node("shadowBody").move_and_slide(Vector2(0,-motion.y),UP)
 	move_and_slide(motion,UP)

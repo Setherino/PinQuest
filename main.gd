@@ -7,14 +7,18 @@ tool #this line means that the code is run in the editor. We do that
 #so that other tools can use the variables in main.gd while in the editor.
 extends Spatial
 
+signal forceJump
+
+var taskDescription = "none"
+
 #this is where the arrow points
 var taskTargetX = 0
+
+var movementEnabled = true
 
 var playerX = 0
 
 var nextLevel = ""
-
-var vhsEffect = true
 
 #is the current level an outdoor level
 var outdoors = false
@@ -29,6 +33,10 @@ var deleteTaskList = false
 #interact with anything right now
 var interact = false
 var interactWith = "this"
+
+
+#for the VHS effect
+var vhsEffect = 3
 
 #for linkObjects
 var sourceNames = [ ]
@@ -75,18 +83,42 @@ var futureRewards = ["string, please"]
 
 var playerHealth = 10
 
+func forceJump(var height):
+	print("forcejump")
+	emit_signal("forceJump",height,true)
+
+#resets all variables to default levels
+func playerDead():
+	print("player dead")
+	clearSaved()
+	#calls reset tasks function, without success, hiding task pannel, and clearing progress
+	resetTasks(false,true,true)
+	tasksComplete.clear()
+	taskStarted.clear()
+	AmmountOfTasksComplete = 0
+	coins = 0
+	Hud.startLoading("res://Scenes/Levels/Debug/TestLevel.tscn",false)
+	playerHealth = 10
+
+#deletes temp folder, clears progress
+func clearSaved():
+	var dir = Directory.new()
+	dir.remove("res://temp/")
+
+
 func startTask():
 	emit_signal("taskStarted")
 	taskActive = true
 
 # HERE IS ACTUAL CODE!!
-func resetTasks(var success,var hideTaskPannel = true):
+func resetTasks(var success,var hideTaskPannel = true,clearProgress = false):
 	taskActive = false
 	if success:
 		tasksComplete[taskID] = true
 		AmmountOfTasksComplete += 1
-	else:
+	elif !clearProgress:
 		taskStarted[taskID] = false
+	
 	if hideTaskPannel:
 		Hud.hideTaskPannel()
 	taskID = 0
@@ -127,6 +159,12 @@ func _process(delta):
 
 func saveGame(var location):
 	pass
+
+signal JumpCheck
+
+func jumpCheck():
+	emit_signal("JumpCheck")
+
 
 func _ready():
 	if Engine.editor_hint: #if we're in the editor

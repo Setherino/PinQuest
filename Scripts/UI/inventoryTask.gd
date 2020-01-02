@@ -9,7 +9,7 @@
 #for, well the inventory. The main difference is the button.
 
 extends Control
-
+var description = "none"
 #the Start Task button
 onready var button = get_node("Activate")
 
@@ -46,6 +46,8 @@ func _on_Activate_pressed():
 	#oh, for the header, it reads the file. Wait, no. It should just read those variables.
 	#hm, some inneficiency to look at there maybe.
 	#it's the next day, and never mind, it's useful, I just used it in the _ready() func
+	
+	main.taskDescription = description
 	main.taskStarted[place] = true
 	Hud.showTaskPannel() #shows the task pannel, obvi
 	main.startTask()

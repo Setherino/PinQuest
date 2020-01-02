@@ -1,0 +1,29 @@
+[gd_resource type="SpriteFrames" format=2]
+
+[resource]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "Idle",
+"speed": 0.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "North",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "East",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "South",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "West",
+"speed": 10.0
+} ]

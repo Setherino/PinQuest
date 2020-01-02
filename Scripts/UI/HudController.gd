@@ -20,9 +20,10 @@ const vhsEffect = preload("res://Misc/VHS.tscn")
 var inventoryOpen = false
 
 #allows loading levels with loading screen
-func startLoading(var nextLevel):
+func startLoading(var nextLevel,save = true):
 	var loadUI = loading.instance() #create instance of loading screen
 	loadUI.level = nextLevel #set it's level variable
+	loadUI.save = save
 	add_child(loadUI) #add it to the screen
 
 #remove the loading screen
@@ -53,18 +54,22 @@ func getTaskMessage():
 	return output
 
 #displays a message
-func showMessage(var title,var msgBody,var type = false):
+func showMessage(var title,var msgBody,var type = false,var placement = Rect2(229,140,564,251)):
 	var prompt = message.instance() #create an instance of the message
 	prompt.get_node("Canvas/Pannel/VBox/Title").text =  title #set the correct text
 	prompt.get_node("Canvas/Pannel/VBox/Body").text =  msgBody #for the body too
 	prompt.type = type #set the type (usually false, true when starting a task)
+	prompt.placement = placement
 	add_child(prompt) #add the mesage instance to the queue (create it)
 
 #shows the task pannel (thing at the bottom of the screen during a task
 func showTaskPannel():
 	hideInventory() #hide the inventory
 	#display a message.
-	showMessage(getTaskTitle(),getTaskMessage(),true)
+	print(main.taskDescription)
+	print(getTaskMessage())
+	
+	showMessage(getTaskTitle(),main.taskDescription + getTaskMessage(),true)
 
 #this is triggered by the message node when that ^^^ is set to true
 func afterMessageTaskPannel():
@@ -73,19 +78,28 @@ func afterMessageTaskPannel():
 
 #hiding task pannel
 func hideTaskPannel():
-	#if has_node("TaskPannel"):
-	get_node("Taskpannel").queue_free() #delete it.
+	if has_node("Taskpannel"):
+		get_node("Taskpannel").queue_free() #delete it.
 
 #-------------------
 #inventory stuff...
 #-------------------
 
+var tutorial = false
+
+
 #show the inventory
-func showInventory():
+func showInventory(var size = Rect2(100,35,847,504)):
 	inventoryOpen = true #the inventory is now opepn
 	get_tree().paused = true #pause the game
 	var Inventory = inventoryUI.instance() #create an inventory instance
+	Inventory.inventoryPlacement = size
 	add_child(Inventory) #add it to the scene
+	
+	if tutorial:
+		showMessage("Welcome to the menu",
+		"Here you can view the progress on your quest. \n on the top of the inventory are tabs, why don't you click on one?",
+		false,Rect2(704,65,300,476))
 
 func hideInventory(): #hide inventory
 	get_tree().paused = false #unpause the game
@@ -98,9 +112,12 @@ func _input(event):
 		if inventoryOpen: #if the inventory is already open
 			hideInventory()
 		else:
-			showInventory()
+			if tutorial:
+				showInventory(Rect2(28,35,673,504))
+			else:
+				showInventory()
 
-
+#28,35 - 673,500
 #-------------------
 #dialogue stuff...
 #-------------------
@@ -120,18 +137,12 @@ func hideDialogue():
 #-------------------
 
 func hideHud():
-	get_node("Control").queue_free()
+	if has_node("Control"):
+		get_node("Control").queue_free()
 
 func showHud():
 	var HUD = HUDelement.instance()
 	add_child(HUD)
-
-#-------------------
-#VHS effect
-#-------------------
-
-func showVHS():
-	add_child(vhsEffect.instance())
 
 func _ready():
 	showHud()

@@ -1,0 +1,10 @@
+-DEFAULT DIALOGUE:
+Hi!
+I'm Claire, the tutorial NPC.
+I have nothing to say right now.
+Maybe if you start my task, I'll have some more to say.
+TASK DIALOGUE:
+Hey you did my task!
+Awesome.
+Well, now that you've talked with my, your task is done.
+-END.

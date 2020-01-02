@@ -8,8 +8,14 @@ extends Control
 #main menu, and the game doesn't crash or anything.
 var level = "res://UI/mainMenu.tscn"
 
+var save = true
+
 onready var anim1 = get_node("canv/PanelContainer/pnlPlayer")
 onready var anim2 = get_node("canv/contain/txtPlayer")
+
+func done():
+	queue_free()
+	
 
 #this is what actually loads the next scene, it needs to be in it's
 #own function so it can be triggered by the timers signal
@@ -18,19 +24,19 @@ func next_scene():
 	var location = level.insert(6,"temp/")
 	
 	#checking the temp folder for the scene
-	if file.file_exists(location):
+	if file.file_exists(location) && save:
 		print("loading from temp...")
 		get_tree().change_scene(location)
 	else:
 		get_tree().change_scene(level)
-	
+	main.movementEnabled = true
 	var t = Timer.new()
 	add_child(t)
 	t.set_wait_time(1)
 	t.set_one_shot(true)
 	#we wait for .1 seconds, and then load the next scene.
 	#this gives the engine time to actually render the loading screen.
-	t.connect("timeout",self,"queue_free")
+	t.connect("timeout",self,"done")
 	t.start()
 	
 	anim1.play("fade")
@@ -106,6 +112,7 @@ func saveToTemp():
 
 #this function runs when the loading screen is created.
 func _ready():
+	main.movementEnabled = false
 	anim1.play_backwards("fade")
 	anim2.play_backwards("fade")
 	
@@ -113,7 +120,8 @@ func _ready():
 	get_node("canv/contain/facts").text = fact #and add it
 	
 	#save the current level, so that if the player comes back it's all the same.
-	saveToTemp()
+	if save: #if we want to save (we do usually, except when the player dies)
+		saveToTemp()
 	
 	
 	#now we make a timer

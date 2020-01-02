@@ -11,7 +11,7 @@ func setShape(var extents:RectangleShape2D):
 
 
 func _on_Area2D_body_entered(body):
-	if body.name != "Player":
+	if body.name != "Player" && body.name != "notPlayer":
 		return
 	
 	if top:
@@ -21,7 +21,7 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_Area2D_body_exited(body):
-	if body.name != "Player":
+	if body.name != "Player" && body.name != "notPlayer":
 		return
 	
 	if top:

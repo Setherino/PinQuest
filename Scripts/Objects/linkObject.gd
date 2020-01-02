@@ -1,6 +1,5 @@
 extends Object
 
-
 #written by Seth Ciancio 12/6/19
 
 class_name linkObject

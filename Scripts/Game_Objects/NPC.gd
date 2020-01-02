@@ -7,21 +7,30 @@ export var npcName = "john"
 #this is the file where all the dialogue is stored
 export var dialogueSourceName = "Template"
 
+
+export(String, "Dog", "FemaleBaker", "FemaleElder","FemaleOfficeWorker","FemaleStudent","FemaleTrendy","FemaleYouth","MaleBusinessMan","OldBusinessMan","MaleCasual","MalePunk","MaleStudent","MaleStudent1","MaleTraditional","MaleTrafficCop","MaleYouth","Witch") var Appearance setget setChar
+
 var dialogueSource = "res://NPC Dialogue/"
 
-#this is the texture of the NPC
-export var npcTexture : Texture setget setTexture
+var characters = ["Dog", "FemaleBaker", "FemaleElder","FemaleOfficeWorker","FemaleStudent","FemaleTrendy","FemaleYouth","MaleBusinessMan","OldBusinessMan","MaleCasual","MalePunk","MaleStudent","MaleStudent1","MaleTraditional","MaleTrafficCop","MaleYouth","Witch"]
+
 export var dialogueIcon : Texture
+
+
 #This variable decides whether the NPC will load the dialogue into
 #memory when the level starts, or when the player talks to the NPC
-export var saveRam = true
+var saveRam = true
 
-onready var sprite = get_node("Sprite")
+#this is a node that has all the necissary character animations in it.
+var chars = preload("res://Scenes/Character factory.tscn").instance()
 
 #represents whether the player is currently touching the NPC
 var onNPC = false
 
 var dgSource : File = File.new()
+
+#whether or not the NPC will walk around randomly
+export var wander = false
 
 #these are the arrays which store the NPC's dialogue, there are two, because each NPC
 #has two sets of dialogue, one which plays normally, and one which plays while it's task is 
@@ -29,9 +38,22 @@ var dgSource : File = File.new()
 var defaultDialogue = [ ]
 var taskDialogue = [ ]
 
-func setTexture(var text :Texture):
-	npcTexture = text
-	get_node("Sprite").texture = npcTexture
+var animSprite
+
+func setChar(var character):
+	Appearance = character
+	
+	for i in characters:
+		if has_node(i):
+			get_node(i).queue_free()
+	
+	print("getting node" + str(characters.find(character)))
+	if characters.has(character):
+		animSprite = chars.getChar(characters.find(character))
+	else:
+		animSprite = chars.getChar(0)
+	
+	add_child(animSprite)
 
 #this fills the first of the two arrays described above with information from the file.
 func fillDefault():
@@ -42,6 +64,7 @@ func fillDefault():
 
 	var line = dgSource.get_line() #creating a line variable to store the text
 	while line != "-TASK DIALOGUE:" && !dgSource.eof_reached(): #until you get to the task header...
+		print("line " + line)
 		line = dgSource.get_line() #get a line
 		if line != "-TASK DIALOGUE:": #make sure it's not the task header
 			defaultDialogue.push_back(line) #if it's not, then add it to the array
@@ -69,6 +92,15 @@ func fillTaskDG():
 func _ready():
 	if Engine.editor_hint:
 		return
+	
+	
+	
+	#if characters.has(Appearance):
+	#	add_child(chars.getChar(characters.find(Appearance)))
+	#else:
+	#	add_child(chars.getChar(0))
+	
+	
 	main.connect("taskStarted",self,"_taskStart")
 	dialogueSource = dialogueSource + Folder + dialogueSourceName + ".dial"
 	
@@ -103,6 +135,7 @@ func _input(event):
 			elif main.taskType == 3:
 				deliver()
 		else:
+			print("showig")
 			Hud.showDialogue(defaultDialogue,npcName,dialogueIcon)
 
 func _on_Area2D_body_entered(body):
@@ -127,3 +160,53 @@ func _on_Area2D_body_exited(body):
 func _process(delta):
 	if main.taskGoal == npcName:
 		main.taskTargetX = position.x
+
+
+func makeTimer(trigger : String):
+	var t = Timer.new()
+	t.set_wait_time(rand_range(0.0,3.0))
+	t.set_one_shot(true)
+	t.connect("timeout",self,trigger)
+	add_child(t)
+	t.start()
+
+var motion = Vector2()
+
+func stop():
+	animSprite.play("Idle")
+	motion = Vector2(0,0)
+
+func go():
+	stopped = false
+var stopped = false
+var idleFrame = 0
+func _physics_process(delta):
+	if Engine.editor_hint:
+		return
+	
+	if wander && motion == Vector2(0,0) && !onNPC && !stopped:
+		randomize()
+		var direction = round(rand_range(1.0,5.0))
+		if direction == 2:
+			idleFrame = 2
+			animSprite.play("East")
+			motion = Vector2(100,0)
+			makeTimer("stop")
+		elif direction == 3:
+			idleFrame = 3
+			animSprite.play("West")
+			motion = Vector2(-100,0)
+			makeTimer("stop")
+		else:
+			stopped = true
+			makeTimer("go")
+			animSprite.play("Idle")
+			animSprite.set_frame(idleFrame)
+			idleFrame = 0
+	elif onNPC:
+		stop()
+	move_and_slide(motion)
+	
+	
+	
+	

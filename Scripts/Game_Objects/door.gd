@@ -1,10 +1,10 @@
 extends Area2D
 #Level door
-tool
+
 #written by Seth Ciancio, 12/1/19
 #updated by Seth Ciancio, 12/6/19
 #-added linkObjects & stuff
-var link : linkObject = linkObject.new("Door") 
+onready var link : linkObject = linkObject.new("Door") 
 #This is what allows us to interact with other linkObjects
 
 #this is the level we go to
@@ -30,9 +30,12 @@ var closedDoor1Rect = Rect2(closedDoor1,Vector2(32,32))
 #this allows us to access the two sound nodes, and the
 #two sprite nodes. There's two sprites because -I̶ ̶h̶a̶t̶e̶ ̶m̶y̶s̶e̶l̶f̶- I looOOveee sprite sheets
 onready var door1 = get_node("lowerDoor")
-onready var door2 = get_node("upperDoor")
 onready var sound2 = get_node("doorClose")
 onready var sound = get_node("doorOpen")
+
+var touchingBody = PhysicsBody2D
+
+var hasBody = false
 
 func changeTexture(var type):
 	doorType = type
@@ -70,6 +73,14 @@ func _process(delta):
 	if Engine.editor_hint:
 		return
 	link.update()
+	
+	if hasBody:
+		if touchingBody.name == "Player" && !onPlayer:
+			print("opening door... " + touchingBody.name)
+			touchingBody = NAN
+			onPlayer = true
+			openDoor()
+			hasBody = false
 
 
 #when any key is pressed
@@ -82,13 +93,7 @@ func _input(event):
 			#if so, change scenes
 			Hud.startLoading(nextLevel)
 
-
-#when the player touches the door
-func _on_door_body_entered(body):
-	if body.name != "Player":
-		return
-	
-	
+func openDoor():
 	#set onPlayer to true
 	if triggered:
 		if !link.enabled:
@@ -105,10 +110,29 @@ func _on_door_body_entered(body):
 	main.interact = true
 	main.interactWith = "door"
 
+#when the player touches the door
+func _on_door_body_entered(body):
+	if body.name == "Player" or body.name == "notPlayer":
+		hasBody = true
+		print("tocuhing body")
+		touchingBody = body
+		if body.name == "notPlayer":
+			return
+	else:
+		return
+	
+	openDoor()
+
 #when the player walks away from the door
 func _on_door_body_exited(body):
-	if body.name != "Player":
+	
+	if body.name != "Player" && body.name != "notPlayer":
 		return
+	
+	hasBody = false
+	#play sound
+	if !triggered && onPlayer:
+		sound.play(0.5)
 	
 	onPlayer = false #dissable onPlayer
 	main.interact = false
@@ -121,7 +145,4 @@ func _on_door_body_exited(body):
 	
 	#set the reigons on the sprites to closed version
 	door1.set_region_rect(closedDoor1Rect)
-	#play sound
-	if !triggered:
-		sound.play(0.5)
 	

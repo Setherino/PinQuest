@@ -9,7 +9,7 @@ func _ready():
 func _on_newGame_pressed():
 	Hud.showHud() #show the hud
 	#load the new level
-	get_tree().change_scene("res://Scenes/Levels/MainMenu.tscn")
+	get_tree().change_scene("res://Scenes/Levels/Debug/TestLevel.tscn")
 
 func _on_Exit_pressed():
 	get_tree().quit()

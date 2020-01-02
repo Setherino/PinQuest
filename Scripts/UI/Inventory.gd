@@ -22,6 +22,9 @@ const head = preload("res://UI/Task.tscn")
 
 onready var button = get_node("CanvasLayer/TabContainer/Quest/VBoxContainer/Button")
 
+var inventoryPlacement = Rect2(100,35,847,504)
+
+var tutorial = false
 
 #displays header
 func header():
@@ -29,6 +32,38 @@ func header():
 	taskDisplay.advanced = true #set that instance to advanced (see Scripts/UI/Task.gd)
 	get_node("CanvasLayer/TabContainer/Tasks/Split/TopContainer/CurrentContainer").add_child(taskDisplay)
 	#adds child to current container (for the current task)
+
+
+func getDesc(location):
+	var file = File.new()
+	
+	if file.file_exists(location):
+		file.open(location,1)
+	else:
+		return " "
+	var line
+	
+	while line != "-DESCRIPTION:" && !file.eof_reached():
+		line = file.get_line()
+		print("got line " + line)
+	
+	if file.eof_reached():
+		print("end of file reached")
+		return "none"
+	
+	line = ""
+	
+	print("end of file not reached")
+	
+	while !file.eof_reached():
+		line += file.get_line()
+		line += "\n"
+	
+	
+	
+	return line
+
+
 
 #adds task element to list
 func addTask(location:String,place):
@@ -56,10 +91,10 @@ func addTask(location:String,place):
 
 	#place is it's place in the list, this is used in the element (see Scripts/UI/inventoryTask.gd)
 	taskDisplay.place = place
-
+	taskDisplay.description = getDesc(location)
 	#add the element to the scrolling VContainaer
 	get_node("CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer").add_child(taskDisplay)
-
+	
 #previously selected task (used for updating the current task)
 var prevID = -1
 
@@ -73,7 +108,6 @@ func _process(delta):
 		desc.open(main.taskFileNames[main.taskID],1)
 
 		var line = ""
-
 		#go through until you get to the end or the description
 		while line != "-DESCRIPTION:" && !desc.eof_reached():
 			line = desc.get_line()
@@ -85,6 +119,9 @@ func _process(delta):
 
 #when the inventory is created
 func _ready():
+	get_node("CanvasLayer/TabContainer").set_position(inventoryPlacement.position)
+	get_node("CanvasLayer/TabContainer").set_size(inventoryPlacement.size)
+	
 	#updating coins and task bars & labels
 	#oh god this is awful, why did I do it like this??
 	print (str(main.questCoins) + " " + str(main.questTasks))

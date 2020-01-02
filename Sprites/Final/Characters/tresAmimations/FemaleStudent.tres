@@ -1,0 +1,66 @@
+[gd_resource type="SpriteFrames" load_steps=37 format=2]
+
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/Idle/Femalestudent1.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/Idle/Femalestudent2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/Idle/Femalestudent3.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/Idle/Femalestudent4.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingNorth/Femalestudentwalkingnorth1.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingNorth/Femalestudentwalkingnorth2.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingNorth/Femalestudentwalkingnorth3.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingNorth/Femalestudentwalkingnorth4.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingNorth/Femalestudentwalkingnorth5.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingNorth/Femalestudentwalkingnorth6.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingNorth/Femalestudentwalkingnorth7.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingNorth/Femalestudentwalkingnorth8.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingEast/Femalestudentwalkingeast1.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingEast/Femalestudentwalkingeast2.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingEast/Femalestudentwalkingeast3.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingEast/Femalestudentwalkingeast4.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingEast/Femalestudentwalkingeast5.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingEast/Femalestudentwalkingeast6.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingEast/Femalestudentwalkingeast7.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingEast/Femalestudentwalkingeast8.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingSouth/Femalestudentwalkingsouth1.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingSouth/Femalestudentwalkingsouth2.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingSouth/Femalestudentwalkingsouth3.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingSouth/Femalestudentwalkingsouth4.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingSouth/Femalestudentwalkingsouth5.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingSouth/Femalestudentwalkingsouth6.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingSouth/Femalestudentwalkingsouth7.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingSouth/Femalestudentwalkingsouth8.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingWest/Femalestudentwalkingwest1.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingWest/Femalestudentwalkingwest2.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingWest/Femalestudentwalkingwest3.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingWest/Femalestudentwalkingwest4.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingWest/Femalestudentwalkingwest5.png" type="Texture" id=33]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingWest/Femalestudentwalkingwest6.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingWest/Femalestudentwalkingwest7.png" type="Texture" id=35]
+[ext_resource path="res://Sprites/Final/Characters/FemaleStudent/WalkingWest/Femalestudentwalkingwest8.png" type="Texture" id=36]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "North",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "East",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "South",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "West",
+"speed": 10.0
+} ]
