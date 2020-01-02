@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Misc/brokenTV.shader" type="Shader" id=3]
-[ext_resource path="res://Sprites/Final/Characters/tresAmimations/FemaleElder.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://Sprites/Final/Characters/tresAmimations/Dog/dogEast.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://Sprites/coin.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Final/Misc/Sky.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Final/Outside/Tilemap.png" type="Texture" id=7]
@@ -155,7 +155,7 @@ position = Vector2( -577, -48 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "fregroundwires"
-frame = 13
+frame = 2
 speed_scale = 0.95
 playing = true
 centered = false
@@ -165,7 +165,7 @@ position = Vector2( 95, -47.2234 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "fregroundwires"
-frame = 14
+frame = 11
 playing = true
 centered = false
 
@@ -174,7 +174,6 @@ position = Vector2( 767, -48 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "fregroundwires"
-frame = 11
 speed_scale = 1.05
 playing = true
 centered = false
