@@ -30,7 +30,9 @@ func _process(delta):
 		ammountSpawned = 0
 	
 	if main.taskType == 1:
+		print("task started")
 		if main.taskName == sourceTask:
+			print("my task")
 			if prevCoins != main.taskAmmountCollected:
 				ammountSpawned -= abs(prevCoins - main.taskAmmountCollected)
 				prevCoins = main.taskAmmountCollected

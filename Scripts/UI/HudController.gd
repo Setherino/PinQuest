@@ -35,6 +35,7 @@ func clearload():
 #task stuff...
 #-------------------
 
+
 #returns the title of the task message.
 func getTaskTitle():
 	return "Task started: " + main.taskName
@@ -54,12 +55,15 @@ func getTaskMessage():
 	return output
 
 #displays a message
-func showMessage(var title,var msgBody,var type = false,var placement = Rect2(229,140,564,251)):
+func showMessage(var title,var msgBody,var type = false,var placement = Rect2(229,140,564,251),var tutorial = false):
 	var prompt = message.instance() #create an instance of the message
 	prompt.get_node("Canvas/Pannel/VBox/Title").text =  title #set the correct text
 	prompt.get_node("Canvas/Pannel/VBox/Body").text =  msgBody #for the body too
 	prompt.type = type #set the type (usually false, true when starting a task)
 	prompt.placement = placement
+	prompt.tutorial = tutorial
+	if tutorial:
+		prompt.set_name("TutorialMessage")
 	add_child(prompt) #add the mesage instance to the queue (create it)
 
 #shows the task pannel (thing at the bottom of the screen during a task
@@ -87,24 +91,30 @@ func hideTaskPannel():
 
 var tutorial = false
 
-
 #show the inventory
 func showInventory(var size = Rect2(100,35,847,504)):
+	if has_node("Message"):
+		get_node("Message").queue_free()
 	inventoryOpen = true #the inventory is now opepn
 	get_tree().paused = true #pause the game
 	var Inventory = inventoryUI.instance() #create an inventory instance
+	
 	Inventory.inventoryPlacement = size
 	add_child(Inventory) #add it to the scene
 	
 	if tutorial:
-		showMessage("Welcome to the menu",
-		"Here you can view the progress on your quest. \n on the top of the inventory are tabs, why don't you click on one?",
-		false,Rect2(704,65,300,476))
+		showMessage("Welcome to the menu!",
+		"Here you can view the progress on your quest. \n on the top of the inventory are tabs,\n why don't you click on one?",
+		false,Rect2(704,65,300,476),tutorial)
 
 func hideInventory(): #hide inventory
+	
+	if has_node("TutorialMessage"):
+		get_node("TutorialMessage").queue_free()
 	get_tree().paused = false #unpause the game
 	inventoryOpen = false #inventory is no longer open
-	get_node("Inventory").queue_free() #delete it
+	if has_node("Inventory"):
+		get_node("Inventory").queue_free() #delete it
 
 #when any key is pressed
 func _input(event):

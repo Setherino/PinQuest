@@ -89,7 +89,7 @@ func _input(event):
 		return
 	#check if it was the one we care about, and if
 	#we're touching the player
-	if Input.is_action_pressed("interact") and onPlayer:
+	if Input.is_action_just_pressed("interact") and onPlayer:
 			#if so, change scenes
 			Hud.startLoading(nextLevel)
 

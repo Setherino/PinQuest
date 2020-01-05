@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Tools/worldtop.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/Tools/Spawn Area.gd" type="Script" id=9]
+[ext_resource path="res://icon.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -30,13 +33,13 @@ tile_data = PoolIntArray( 0, 131074, 0, 1, 589831, 0, 65536, 655361, 0, 65537, 6
 position = Vector2( 272, 224 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
-nextLevel = "start"
+nextLevel = "res://Scenes/Levels/Debug/TestLevel.tscn"
 triggered = false
 sourceName = "N/A"
 doorType = 3
 
 [node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 288.667, 231.333 )
+position = Vector2( 282.333, 230.667 )
 z_index = 1
 script = ExtResource( 5 )
 SPEED = 200
@@ -60,5 +63,14 @@ scale = Vector2( 59.6251, 0.800729 )
 script = ExtResource( 7 )
 shape = SubResource( 1 )
 top = false
+
+[node name="Spawn Area" type="Node2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 752, 352 )
+script = ExtResource( 9 )
+spawnArea = Vector2( 200, 80 )
+areaColor = Color( 0.196078, 0.980392, 1, 1 )
+sourceTask = "Indoors"
+ammountToSpawn = 5
+texture = ExtResource( 10 )
 [connection signal="body_entered" from="door" to="door" method="_on_door_body_entered"]
 [connection signal="body_exited" from="door" to="door" method="_on_door_body_exited"]

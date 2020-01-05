@@ -32,13 +32,23 @@ func _process(delta):
 	if main.deleteTaskList: #if the deleteTaskList variable is true,
 		queue_free() #stop existing (delete)
 
+func getType(type:String):
+	match type:
+		"Collection":
+			return 1
+		"Talk to NPC":
+			return 2
+		"Delivery":
+			return 3
+	pass
+
 #when the button is pressed
 func _on_Activate_pressed():
 	
 	#set all the current task stuff to whatever your
 	#text says it should be, this includes
 	main.taskName = get_node("Name").text #the task name
-	main.taskType = int(get_node("Type").text) #the task type (1,2,3,4)
+	main.taskType = getType(get_node("Type").text) #the task type (1,2,3,4)
 	main.taskGoal = get_node("Goal").text # the task goal
 	main.timeLimit = int(get_node("TimeLimit").text) #the task's time limit
 	main.taskAmmountNeeded = int(get_node("Ammount").text) #the ammount of stuff to collect

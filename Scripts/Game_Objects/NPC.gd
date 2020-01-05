@@ -93,14 +93,6 @@ func _ready():
 	if Engine.editor_hint:
 		return
 	
-	
-	
-	#if characters.has(Appearance):
-	#	add_child(chars.getChar(characters.find(Appearance)))
-	#else:
-	#	add_child(chars.getChar(0))
-	
-	
 	main.connect("taskStarted",self,"_taskStart")
 	dialogueSource = dialogueSource + Folder + dialogueSourceName + ".dial"
 	
@@ -206,7 +198,3 @@ func _physics_process(delta):
 	elif onNPC:
 		stop()
 	move_and_slide(motion)
-	
-	
-	
-	

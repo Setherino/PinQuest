@@ -6,9 +6,9 @@
 [ext_resource path="res://Tilemaps/Final_Outdoor_Two.tres" type="TileSet" id=4]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Objects/Collectables/coinBox.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=8]
+[ext_resource path="res://icon.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Tools/MessageTrigger.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Tools/AnimatedSprite.tscn" type="PackedScene" id=12]
@@ -25,11 +25,16 @@ extents = Vector2( 16, 176 )
 position = Vector2( 320, 944 )
 tutorial = true
 
-[node name="Coin" parent="Player" instance=ExtResource( 2 )]
-position = Vector2( 784, 16 )
+[node name="Coin" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1024, 944 )
+damage = true
+
+[node name="Coin2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1024, 1041 )
 damage = true
 
 [node name="Tilemaps" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="map1BG" type="TileMap" parent="Tilemaps"]
 scale = Vector2( 2, 2 )
@@ -59,6 +64,7 @@ cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="Doors" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="door2" parent="Doors" instance=ExtResource( 5 )]
 position = Vector2( 672, 864 )
@@ -69,6 +75,7 @@ position = Vector2( -224, 864 )
 doorType = 2
 
 [node name="World Edges" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="World Edges"]
 editor/display_folded = true
@@ -104,55 +111,115 @@ top = false
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 688, 944 )
+position = Vector2( 672, 944 )
+damage = true
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 2 )]
+position = Vector2( 672, 1041 )
 damage = true
 
 [node name="Coin2" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 608, 944 )
 damage = true
 
+[node name="Coin9" parent="Coins" instance=ExtResource( 2 )]
+position = Vector2( 608, 1041 )
+damage = true
+
 [node name="Coin3" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 928, 944 )
+damage = true
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 2 )]
+position = Vector2( 928, 1041 )
 damage = true
 
 [node name="Coin4" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 848, 944 )
 damage = true
 
-[node name="coinBox" parent="Coins/Coin4" instance=ExtResource( 7 )]
-position = Vector2( -323, 80 )
+[node name="Coin8" parent="Coins" instance=ExtResource( 2 )]
+position = Vector2( 848, 1041 )
+damage = true
 
 [node name="Coin5" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 768, 944 )
+position = Vector2( 737, 943 )
+damage = true
+
+[node name="Coin10" parent="Coins" instance=ExtResource( 2 )]
+position = Vector2( 737, 1040 )
 damage = true
 
 [node name="TaskTargets" type="Node" parent="."]
+editor/display_folded = true
 
-[node name="TaskTarget2" parent="TaskTargets" instance=ExtResource( 8 )]
+[node name="TaskTarget2" parent="TaskTargets" instance=ExtResource( 7 )]
 position = Vector2( 673.027, 736 )
-source = "John"
-byGoal = true
+source = "Indoors"
 
-[node name="Spawn Area" parent="TaskTargets" instance=ExtResource( 9 )]
+[node name="Spawn Area" parent="TaskTargets" instance=ExtResource( 8 )]
 position = Vector2( 1272.5, 986.904 )
 spawnArea = Vector2( 400, 100 )
-areaColor = Color( 1, 0.5, 0.5, 1 )
-sourceTask = "none"
-ammountToSpawn = 5
-texture = null
+sourceTask = "Collection"
+texture = ExtResource( 9 )
 
 [node name="TaskManager" parent="." instance=ExtResource( 10 )]
 position = Vector2( -288, 1584 )
-taskFileNames = [ "task0", "task1", "task2" ]
 questTasksRequired = 3
 questCoinsRequired = 5
-nextLevel = "level2"
 
 [node name="MessageTrigger" parent="." instance=ExtResource( 11 )]
 position = Vector2( 320, 960 )
 z_index = 1
 messageTitle = "Welcome to Pin Quest!"
 messageBody = "Use WASD or the ARROW KEYS to move to Claire, and speak with her."
+
+[node name="MessageTrigger2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 416, 880 )
+scale = Vector2( 0.346025, 0.49694 )
+z_index = 1
+messageTitle = "Just a tip!"
+messageBody = "Some doors can NOT be opened."
+
+[node name="MessageTrigger6" parent="." instance=ExtResource( 11 )]
+position = Vector2( 144, 960 )
+scale = Vector2( -0.576178, 2.44858 )
+z_index = 1
+messageTitle = "Hey! What are you doin!?"
+messageBody = "You can't go left. Haven't you ever played mario?"
+oneShot = false
+maxTriggers = 0
+
+[node name="MessageTrigger7" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1904, 960 )
+scale = Vector2( -0.576178, 2.44858 )
+z_index = 1
+messageTitle = "Stop!"
+messageBody = "That's where the tutorial level ends."
+oneShot = false
+maxTriggers = 0
+
+[node name="MessageTrigger3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 928, 880 )
+scale = Vector2( 0.346025, 0.49694 )
+z_index = 1
+messageTitle = "Just a tip!"
+messageBody = "Some doors can NOT be opened."
+
+[node name="MessageTrigger5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1696, 880 )
+scale = Vector2( 0.346025, 0.49694 )
+z_index = 1
+messageTitle = "Just a tip!"
+messageBody = "Some doors can NOT be opened."
+
+[node name="MessageTrigger4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 672, 880 )
+scale = Vector2( 0.346025, 0.49694 )
+z_index = 1
+messageTitle = "Just a tip!"
+messageBody = "Some doors can be opened."
+maxTriggers = 2
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1232, 768 )
@@ -190,5 +257,3 @@ Folder = "Debug/"
 npcName = "Claire"
 dialogueSourceName = "Claire"
 Appearance = "FemaleTrendy"
-dialogueIcon = null
-wander = false

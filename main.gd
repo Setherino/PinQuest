@@ -100,9 +100,10 @@ func playerDead():
 	Hud.startLoading("res://Scenes/Levels/Debug/TestLevel.tscn",false)
 	playerHealth = 10
 
-#deletes temp folder, clears progress
+#deletes temp folder, clearing progress
 func clearSaved():
 	var dir = Directory.new()
+	levelFolder = "na"
 	dir.remove("res://temp/")
 
 

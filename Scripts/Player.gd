@@ -78,9 +78,19 @@ func playerDie():
 var prevHelth = 10
 
 #resets the VHS effect
-func resetVHS():
-	vhsEffect.material.set_shader_param("redX", 0)
-	vhsEffect.material.set_shader_param("blueX", 0)
+func resetVHS(timerClear:Timer):
+	timerClear.queue_free()
+	if main.playerHealth >= 8:
+		vhsEffect.material.set_shader_param("redX", 0)
+		vhsEffect.material.set_shader_param("blueX", 0)
+	elif main.playerHealth < 8 && main.playerHealth >= 2:
+		vhsEffect.material.set_shader_param("redX", main.vhsEffect * 0.5)
+		vhsEffect.material.set_shader_param("blueX", main.vhsEffect * 0.5)
+	elif main.playerHealth < 2:
+		vhsEffect.material.set_shader_param("redX", main.vhsEffect)
+		vhsEffect.material.set_shader_param("blueX", main.vhsEffect)
+	print("reset shader to " + str(vhsEffect.material.get_shader_param("redX")))
+	print("reset shader to " + str(vhsEffect.material.get_shader_param("blueX")))
 
 func _process(delta):
 	if dying:
@@ -95,14 +105,16 @@ func _process(delta):
 		prevHelth = main.playerHealth
 		vhsEffect.material.set_shader_param("redX", rand_range(-2.0,2.0) * main.vhsEffect)
 		vhsEffect.material.set_shader_param("blueX", rand_range(-2.0,2.0) * main.vhsEffect)
-		vhsEffect.material.set_shader_param("greenX", rand_range(-2.0,2.0) * main.vhsEffect)
 		var t = Timer.new()
 		t.set_wait_time(.2)
 		add_child(t)
 		t.set_one_shot(true)
 		#we wait for .1 seconds, and then load the next scene.
 		#this gives the engine time to actually render the loading screen.
-		t.connect("timeout",self,"resetVHS")
+		
+		var temp = Array()
+		temp.append(t)
+		t.connect("timeout",self,"resetVHS",temp)
 		t.start()
 	
 	if main.playerHealth < 1 && !dying:

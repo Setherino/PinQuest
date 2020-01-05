@@ -11,7 +11,6 @@
 extends Control
 
 var desc : File = File.new()
-
 #referance for task element
 const tasks = preload("res://UI/inventoryTask.tscn")
 
@@ -63,7 +62,14 @@ func getDesc(location):
 	
 	return line
 
-
+func getType(type:int):
+	match type:
+		1:
+			return "Collection"
+		2:
+			return "Talk to NPC"
+		3:
+			return "Delivery"
 
 #adds task element to list
 func addTask(location:String,place):
@@ -84,7 +90,7 @@ func addTask(location:String,place):
 
 	#set the text for that instance, name, type, goal, time limit, and # to collect
 	taskDisplay.get_node("Name").text = task.get_line()
-	taskDisplay.get_node("Type").text = task.get_line()
+	taskDisplay.get_node("Type").text = getType(int(task.get_line()))
 	taskDisplay.get_node("Goal").text = task.get_line()
 	taskDisplay.get_node("TimeLimit").text = task.get_line()
 	taskDisplay.get_node("Ammount").text = task.get_line()

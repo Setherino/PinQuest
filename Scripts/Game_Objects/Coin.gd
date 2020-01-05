@@ -16,5 +16,5 @@ func _on_Area2D_body_entered(body):
 		if !damage:
 			main.coins += 1 #iterate coins variable by one
 		else:
-			main.playerHealth -= 2
+			main.playerHealth -= 1
 		queue_free()
