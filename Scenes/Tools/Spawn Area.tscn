@@ -5,4 +5,4 @@
 [node name="Spawn Area" type="Node2D"]
 position = Vector2( 455.245, 278.87 )
 script = ExtResource( 1 )
-spawnArea = Vector2( 498.04, 200 )
+spawnArea = Vector2( 500, 200 )

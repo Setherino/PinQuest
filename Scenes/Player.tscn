@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Sprites/Final/Outside/Animations/wires.tres" type="SpriteFrames" id=8]
 [ext_resource path="res://Sprites/Final/gradient.png" type="Texture" id=9]
 [ext_resource path="res://Misc/VHS.shader" type="Shader" id=10]
+[ext_resource path="res://Sound/sfx/test.wav" type="AudioStream" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -156,7 +157,6 @@ position = Vector2( -577, -48 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "fregroundwires"
-frame = 10
 speed_scale = 0.95
 playing = true
 centered = false
@@ -166,7 +166,6 @@ position = Vector2( 95, -47.2234 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "fregroundwires"
-frame = 10
 playing = true
 centered = false
 
@@ -175,7 +174,7 @@ position = Vector2( 767, -48 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "fregroundwires"
-frame = 8
+frame = 13
 speed_scale = 1.05
 playing = true
 centered = false
@@ -197,7 +196,10 @@ layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="VHS effect"]
 material = SubResource( 3 )
-margin_left = -75.0
+margin_left = -77.0
 margin_top = -164.0
-margin_right = 1129.0
+margin_right = 1127.0
 margin_bottom = 593.0
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )

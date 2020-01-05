@@ -1,6 +1,6 @@
 extends Control
 
-#these are all the varios UI elements loaded by the hud...
+#these are all the various UI elements loaded by the hud...
 #inventory
 const inventoryUI = preload("res://UI/Inventory.tscn")
 #coins and health
@@ -34,7 +34,6 @@ func clearload():
 #-------------------
 #task stuff...
 #-------------------
-
 
 #returns the title of the task message.
 func getTaskTitle():
@@ -93,6 +92,7 @@ var tutorial = false
 
 #show the inventory
 func showInventory(var size = Rect2(100,35,847,504)):
+	hideDialogue()
 	if has_node("Message"):
 		get_node("Message").queue_free()
 	inventoryOpen = true #the inventory is now opepn
@@ -140,7 +140,8 @@ func showDialogue(dgSource:Array,NPCname:String,icon:Texture):
 
 #for hiding dialogue
 func hideDialogue():
-	get_node("Dialogue").queue_free()
+	if has_node("Dialogue"):
+		get_node("Dialogue").queue_free()
 
 #-------------------
 #HUD stuff...

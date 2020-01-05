@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -52,3 +53,14 @@ spawnArea = Vector2( 200, 80 )
 areaColor = Color( 0.196078, 0.980392, 1, 1 )
 sourceTask = "Indoors"
 texture = ExtResource( 6 )
+
+[node name="NPC" parent="." instance=ExtResource( 7 )]
+position = Vector2( 160, 352 )
+Folder = "Debug/"
+npcName = "Tony"
+dialogueSourceName = "Tony"
+Appearance = "MaleStudent"
+wander = true
+stillness = 2
+wanderArea = Vector2( 150, 80 )
+areaColor = Color( 1, 0.501961, 0.501961, 0.423529 )

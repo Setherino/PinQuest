@@ -1,7 +1,11 @@
 extends Node2D
 tool
+
+
 export var spawnArea = Vector2(250,100) setget setSpawnArea
 export var areaColor = Color(1,.5,.5) setget setAreaColor
+export var randomRotation = true
+export var spriteScale = 1.0
 export var sourceTask = "none"
 export var ammountToSpawn = 5
 export var texture : Texture
@@ -44,6 +48,9 @@ func _process(delta):
 			spawn.position = Vector2(round(rand_range(spawnArea.x*-1,spawnArea.x)),round(rand_range(spawnArea.y*-1,spawnArea.y)))
 			spawn.texture = texture
 			spawn.taskSource = sourceTask
+			spawn.scale = Vector2(spriteScale,spriteScale)
+			if randomRotation:
+				spawn.rotation_degrees = randi()%360
 			if ammountSpawned < ammountToSpawn:
 				add_child(spawn) #create the items
 				ammountSpawned += 1

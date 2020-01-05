@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/Tools/Spawn Area.gd" type="Script" id=9]
 [ext_resource path="res://icon.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Objects/NPC.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -39,7 +41,7 @@ sourceName = "N/A"
 doorType = 3
 
 [node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 282.333, 230.667 )
+position = Vector2( 277, 230.667 )
 z_index = 1
 script = ExtResource( 5 )
 SPEED = 200
@@ -69,8 +71,24 @@ position = Vector2( 752, 352 )
 script = ExtResource( 9 )
 spawnArea = Vector2( 200, 80 )
 areaColor = Color( 0.196078, 0.980392, 1, 1 )
+randomRotation = true
+spriteScale = 1.0
 sourceTask = "Indoors"
 ammountToSpawn = 5
 texture = ExtResource( 10 )
+
+[node name="NPC" type="Node2D" parent="." instance=ExtResource( 11 )]
+position = Vector2( 160, 352 )
+script = ExtResource( 12 )
+Folder = "Debug/"
+npcName = "Tony"
+dialogueSourceName = "Tony"
+Appearance = "MaleStudent"
+dialogueIcon = null
+wander = true
+stillness = 2
+speed = 100
+wanderArea = Vector2( 150, 80 )
+areaColor = Color( 1, 0.501961, 0.501961, 0.423529 )
 [connection signal="body_entered" from="door" to="door" method="_on_door_body_entered"]
 [connection signal="body_exited" from="door" to="door" method="_on_door_body_exited"]

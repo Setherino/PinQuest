@@ -27,7 +27,7 @@ func _process(delta):
 			0:
 				textBody.text = "Welcome to the quest menu.\nHere you can view your\n progress on your currnet quest.\nFor this quest, you need\nTo get " + str(main.questCoins) + " coins, and you need\nTo complete " + str(main.questTasks) + " tasks.\nOnce you've completed them, click 'Complete Quest'\nFor now, click on one of the other \ntabs at the top of the screen." 
 			1:
-				textBody.text = "Welcome to the task menu.\nHere you can see your current\nTask, as well as all the tasks you've\nYet to complete"
+				textBody.text = "Welcome to the task menu.\nHere you can see your current\nTask, as well as all the tasks you've\nYet to complete. Go ahead and start a task.\nOnce you do, follow the instructions in the pop-up."
 			2:
 				textBody.text = "three"
 			3:

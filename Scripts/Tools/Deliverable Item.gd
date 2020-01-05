@@ -4,6 +4,12 @@ extends Node2D
 export var sourceTask = "none"
 export var DeliverTo = "person"
 export var texture : Texture setget setTexture
+export var spriteScale = 1.0 setget setScale
+
+func setScale(var scal):
+	spriteScale = scal
+	get_node("Sprite").scale = Vector2(scal,scal)
+
 
 func setTexture(var text : Texture):
 	get_node("Sprite").texture = text

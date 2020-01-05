@@ -1,21 +1,22 @@
 tool
 extends KinematicBody2D
-
-export(String, "Debug/", "LevelOne/", "LevelTwo/","LevelThree/","LevelFour/") var Folder
+var Folder
 #this is the NPC's name, obviously
-export var npcName = "john"
+var npcName = "john"
 #this is the file where all the dialogue is stored
-export var dialogueSourceName = "Template"
+var dialogueSourceName = "Template"
 
-
-export(String, "Dog", "FemaleBaker", "FemaleElder","FemaleOfficeWorker","FemaleStudent","FemaleTrendy","FemaleYouth","MaleBusinessMan","OldBusinessMan","MaleCasual","MalePunk","MaleStudent","MaleStudent1","MaleTraditional","MaleTrafficCop","MaleYouth","Witch") var Appearance setget setChar
+var Appearance
 
 var dialogueSource = "res://NPC Dialogue/"
 
 var characters = ["Dog", "FemaleBaker", "FemaleElder","FemaleOfficeWorker","FemaleStudent","FemaleTrendy","FemaleYouth","MaleBusinessMan","OldBusinessMan","MaleCasual","MalePunk","MaleStudent","MaleStudent1","MaleTraditional","MaleTrafficCop","MaleYouth","Witch"]
 
-export var dialogueIcon : Texture
+var dialogueIcon : Texture
 
+var changeDirection = false
+
+var wanderArea
 
 #This variable decides whether the NPC will load the dialogue into
 #memory when the level starts, or when the player talks to the NPC
@@ -29,9 +30,9 @@ var onNPC = false
 
 var dgSource : File = File.new()
 
-#whether or not the NPC will walk around randomly
-export var wander = false
+var wander
 
+var stillness
 #these are the arrays which store the NPC's dialogue, there are two, because each NPC
 #has two sets of dialogue, one which plays normally, and one which plays while it's task is 
 #happening
@@ -86,12 +87,28 @@ func fillTaskDG():
 		if line != "-END.": #make sure it's not the end header
 			taskDialogue.push_back(line) #and add it to the array
 
-
+var speed
 
 
 func _ready():
 	if Engine.editor_hint:
 		return
+	setChar(get_parent().Appearance)
+	print("I EXIST!!")
+	
+	Folder = get_parent().Folder
+	npcName = get_parent().npcName
+	dialogueSourceName = get_parent().dialogueSourceName
+	dialogueIcon = get_parent().dialogueIcon
+	wander = get_parent().wander
+	print(Appearance)
+	stillness = get_parent().stillness
+	wanderArea = get_parent().wanderArea
+	speed = get_parent().speed
+	
+	animSprite.set_speed_scale(1.0 + (speed * 0.001))
+	
+	set_name(npcName) #Used by NPC wall
 	
 	main.connect("taskStarted",self,"_taskStart")
 	dialogueSource = dialogueSource + Folder + dialogueSourceName + ".dial"
@@ -153,48 +170,70 @@ func _process(delta):
 	if main.taskGoal == npcName:
 		main.taskTargetX = position.x
 
-
-func makeTimer(trigger : String):
-	var t = Timer.new()
-	t.set_wait_time(rand_range(0.0,3.0))
-	t.set_one_shot(true)
-	t.connect("timeout",self,trigger)
-	add_child(t)
-	t.start()
-
-var motion = Vector2()
-
-func stop():
-	animSprite.play("Idle")
-	motion = Vector2(0,0)
+var motion = Vector2(0,0)
+var goalPos = Vector2(0,0)
+var animFrame = 0
+var stopped = false
 
 func go():
 	stopped = false
-var stopped = false
-var idleFrame = 0
+
+func makeTimer(var instruction,var time = 2.0):
+	var t = Timer.new()
+	t.set_wait_time(time)
+	t.set_one_shot(true)
+	t.connect("timeout",self,instruction)
+	add_child(t)
+	t.start()
+
+func getMotion():
+	if goalPos.x > position.x:
+		motion.x = speed
+		animSprite.play("East")
+		animFrame = 2
+	elif goalPos.x < position.x:
+		motion.x = -speed
+		animSprite.play("West")
+		animFrame = 3
+	elif goalPos.y > position.y:
+		motion.y = speed
+		animSprite.play("South")
+		animFrame = 0
+	elif goalPos.y < position.y:
+		motion.y = -speed
+		animSprite.play("North")
+		animFrame = 1
+
+
 func _physics_process(delta):
-	if Engine.editor_hint:
+	if Engine.editor_hint or !wander:
 		return
 	
-	if wander && motion == Vector2(0,0) && !onNPC && !stopped:
+	if goalPos == Vector2(0,0) && !stopped:
 		randomize()
-		var direction = round(rand_range(1.0,5.0))
-		if direction == 2:
-			idleFrame = 2
-			animSprite.play("East")
-			motion = Vector2(100,0)
-			makeTimer("stop")
-		elif direction == 3:
-			idleFrame = 3
-			animSprite.play("West")
-			motion = Vector2(-100,0)
-			makeTimer("stop")
+		var direction = randi()%int(stillness+2)
+		print(direction)
+		if direction == 0: #left/right
+			goalPos = Vector2(round(rand_range(wanderArea.x*-1,wanderArea.x)),position.y)
+		elif direction == 1: #up/down
+			goalPos = Vector2(position.x,round(rand_range(wanderArea.y*-1,wanderArea.y)))
 		else:
-			stopped = true
-			makeTimer("go")
-			animSprite.play("Idle")
-			animSprite.set_frame(idleFrame)
-			idleFrame = 0
-	elif onNPC:
-		stop()
-	move_and_slide(motion)
+			goalPos = Vector2(0,0)
+	
+	
+	
+	if goalPos == Vector2(0,0) or onNPC:
+		motion = Vector2(0,0)
+		animSprite.play("Idle")
+		animSprite.set_frame(animFrame)
+		stopped = true
+		makeTimer("go")
+	else:
+		getMotion()
+	
+	if (abs(goalPos.x - position.x) > 10):
+		move_and_slide(Vector2(motion.x,0))
+	elif (abs(goalPos.y - position.y) > 10):
+		move_and_slide(Vector2(0,motion.y))
+	else:
+		goalPos = Vector2(0,0)

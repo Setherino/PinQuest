@@ -1,18 +1,20 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Tilemaps/Final_Outdoors_One.tres" type="TileSet" id=3]
-[ext_resource path="res://Tilemaps/Final_Outdoor_Two.tres" type="TileSet" id=4]
-[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=8]
-[ext_resource path="res://icon.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Tilemaps/Final_Outdoors_One.tres" type="TileSet" id=1]
+[ext_resource path="res://Tilemaps/Final_Outdoor_Two.tres" type="TileSet" id=2]
+[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=7]
+[ext_resource path="res://MiscImages/Coke.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Tools/AnimatedSprite.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Tools/MessageTrigger.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Tools/AnimatedSprite.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Tools/Deliverable Item.tscn" type="PackedScene" id=14]
+[ext_resource path="res://MiscImages/PaperStack.png" type="Texture" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 176 )
@@ -21,58 +23,48 @@ extents = Vector2( 16, 176 )
 
 [node name="TestLevel" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 320, 944 )
-tutorial = true
-
-[node name="Coin" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1024, 944 )
-damage = true
-
-[node name="Coin2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1024, 1041 )
-damage = true
-
 [node name="Tilemaps" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="map1BG" type="TileMap" parent="Tilemaps"]
 scale = Vector2( 2, 2 )
-tile_set = ExtResource( 3 )
+z_index = -2
+tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 393237, 22, 1, 458773, 22, 1, 458774, 21, 65540, 524291, 19, 0, 524295, 19, 0, 524299, 19, 0, 524309, 22, 1, 524310, 21, 65540, 524311, 19, 0, 524318, 22, 1, 524319, 22, 1, 524322, 19, 0, 589845, 22, 1, 589846, 21, 65540, 589854, 22, 1, 589855, 22, 1, 720889, 16, 0, 655361, 17, 0, 655381, 22, 1, 655382, 21, 65540, 655390, 22, 1, 655391, 22, 1, 786425, 16, 65536, 720897, 17, 65536, 720899, 0, 0, 720903, 0, 0, 720907, 0, 0, 720917, 22, 1, 720918, 21, 65540, 720919, 0, 0, 720926, 22, 1, 720927, 22, 1, 720930, 0, 0, 851961, 13, 0, 851962, 12, 0, 851964, 14, 0, 851965, 9, 0, 851966, 9, 0, 851967, 10, 0, 786432, 9, 0, 786433, 11, 0, 786453, 22, 1, 786454, 21, 65540, 786457, 21, 131074, 786462, 22, 1, 786463, 22, 1, 917500, 15, 0, 851972, 20, 1, 851977, 20, 0, 851983, 21, 196609, 851984, 21, 196609, 851985, 21, 196609, 851986, 21, 196609, 851987, 21, 196609, 851988, 21, 196609, 851989, 21, 196609, 851990, 21, 196612, 851991, 20, 0, 851995, 22, 1, 851996, 22, 1, 851997, 22, 1, 851998, 22, 1, 851999, 22, 1, 983034, 1, 0, 983035, 1, 0, 983036, 1, 0, 983037, 1, 0, 983038, 1, 0, 983039, 1, 0, 917504, 1, 0, 917505, 1, 0, 917506, 1, 0, 917507, 1, 0, 917508, 1, 0, 917509, 1, 0, 917510, 1, 0, 917511, 1, 0, 917512, 1, 0, 917513, 1, 0, 917514, 1, 0, 917515, 1, 0, 917516, 1, 0, 917517, 5, 0, 917518, 2, 0, 917519, 6, 0, 917520, 1, 0, 917521, 4, 0, 917522, 1, 0, 917523, 1, 0, 917524, 1, 0, 917525, 1, 0, 917526, 1, 0, 917527, 1, 0, 917528, 1, 0, 917529, 1, 0, 917530, 1, 0, 917531, 1, 0, 917532, 1, 0, 917533, 1, 0, 917534, 1, 0, 917535, 1, 0, 917536, 1, 0, 917537, 1, 0, 917538, 1, 0, 917539, 1, 0, 917540, 1, 0, 917541, 1, 0, 917542, 1, 0, 983075, 7, 0, 1179637, 22, 1, 1179638, 22, 1, 1179639, 22, 1, 1179640, 22, 1, 1179641, 22, 1, 1179642, 22, 1, 1179643, 22, 1, 1179644, 22, 1, 1179645, 22, 1, 1179646, 22, 1, 1179647, 22, 1, 1114112, 22, 1, 1114113, 22, 1, 1114114, 22, 1, 1114115, 22, 1, 1114116, 22, 1, 1114117, 22, 1, 1114118, 22, 1, 1114119, 22, 1, 1114120, 22, 1, 1114121, 22, 1, 1114122, 22, 1, 1114123, 22, 1, 1114124, 22, 1, 1114125, 22, 1, 1114126, 22, 1, 1114127, 22, 1, 1114128, 22, 1, 1114129, 22, 1, 1114130, 22, 1, 1114131, 22, 1, 1114132, 22, 1, 1114133, 22, 1, 1114134, 22, 1, 1114135, 22, 1, 1114136, 22, 1, 1114137, 22, 1, 1114138, 22, 1, 1114139, 22, 1, 1114140, 22, 1, 1114141, 22, 1, 1114142, 22, 1, 1114143, 22, 1, 1114144, 22, 1, 1114145, 22, 1, 1114146, 22, 1, 1114147, 22, 1, 1114148, 22, 1, 1114149, 22, 1, 1114150, 22, 1, 1245173, 22, 1, 1245174, 22, 1, 1245175, 22, 1, 1245176, 22, 1, 1245177, 22, 1, 1245178, 22, 1, 1245179, 22, 1, 1245180, 22, 1, 1245181, 22, 1, 1245182, 22, 1, 1245183, 22, 1, 1179648, 22, 1, 1179649, 22, 1, 1179650, 22, 1, 1179651, 22, 1, 1179652, 22, 1, 1179653, 22, 1, 1179654, 22, 1, 1179655, 22, 1, 1179656, 22, 1, 1179657, 22, 1, 1179658, 22, 1, 1179659, 22, 1, 1179660, 22, 1, 1179661, 22, 1, 1179662, 22, 1, 1179663, 22, 1, 1179664, 22, 1, 1179665, 22, 1, 1179666, 22, 1, 1179667, 22, 1, 1179668, 22, 1, 1179669, 22, 1, 1179670, 22, 1, 1179671, 22, 1, 1179672, 22, 1, 1179673, 22, 1, 1179674, 22, 1, 1179675, 22, 1, 1179676, 22, 1, 1179677, 22, 1, 1179678, 22, 1, 1179679, 22, 1, 1179680, 22, 1, 1179681, 22, 1, 1179682, 22, 1, 1179683, 22, 1, 1179684, 22, 1, 1179685, 22, 1, 1179686, 22, 1, 1310709, 22, 1, 1310710, 22, 1, 1310711, 22, 1, 1310712, 22, 1, 1310713, 22, 1, 1310714, 22, 1, 1310715, 22, 1, 1310716, 22, 1, 1310717, 22, 1, 1310718, 22, 1, 1310719, 22, 1, 1245184, 22, 1, 1245185, 22, 1, 1245186, 22, 1, 1245187, 22, 1, 1245188, 22, 1, 1245189, 22, 1, 1245190, 22, 1, 1245191, 22, 1, 1245192, 22, 1, 1245193, 22, 1, 1245194, 22, 1, 1245195, 22, 1, 1245196, 22, 1, 1245197, 22, 1, 1245198, 22, 1, 1245199, 22, 1, 1245200, 22, 1, 1245201, 22, 1, 1245202, 22, 1, 1245203, 22, 1, 1245204, 22, 1, 1245205, 22, 1, 1245206, 22, 1, 1245207, 22, 1, 1245208, 22, 1, 1245209, 22, 1, 1245210, 22, 1, 1245211, 22, 1, 1245212, 22, 1, 1245213, 22, 1, 1245214, 22, 1, 1245215, 22, 1, 1245216, 22, 1, 1245217, 22, 1, 1245218, 22, 1, 1245219, 22, 1, 1245220, 22, 1, 1245221, 22, 1, 1245222, 22, 1, 1376245, 22, 1, 1376246, 22, 1, 1376247, 22, 1, 1376248, 22, 1, 1376249, 22, 1, 1376250, 22, 1, 1376251, 22, 1, 1376252, 22, 1, 1376253, 22, 1, 1376254, 22, 1, 1376255, 22, 1, 1310720, 22, 1, 1310721, 22, 1, 1310722, 22, 1, 1310723, 22, 1, 1310724, 22, 1, 1310725, 22, 1, 1310726, 22, 1, 1310727, 22, 1, 1310728, 22, 1, 1310729, 22, 1, 1310730, 22, 1, 1310731, 22, 1, 1310732, 22, 1, 1310733, 22, 1, 1310734, 22, 1, 1310735, 22, 1, 1310736, 22, 1, 1310737, 22, 1, 1310738, 22, 1, 1310739, 22, 1, 1310740, 22, 1, 1310741, 22, 1, 1310742, 22, 1, 1310743, 22, 1, 1310744, 22, 1, 1310745, 22, 1, 1310746, 22, 1, 1310747, 22, 1, 1310748, 22, 1, 1310749, 22, 1, 1310750, 22, 1, 1310751, 22, 1, 1310752, 22, 1, 1310753, 22, 1, 1310754, 22, 1, 1310755, 22, 1, 1310756, 22, 1, 1310757, 22, 1, 1310758, 22, 1 )
 
 [node name="map2BG" type="TileMap" parent="Tilemaps"]
 scale = Vector2( 2, 2 )
-tile_set = ExtResource( 4 )
+z_index = -2
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 458754, 7, 0, 524303, 9, 0, 524305, 6, 0, 524315, 8, 0, 786434, 3, 0, 851970, 3, 0, 1179649, 6, 0 )
 
 [node name="map2FG" type="TileMap" parent="Tilemaps"]
 scale = Vector2( 2, 2 )
-tile_set = ExtResource( 4 )
+z_index = -2
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 589856, 9, 0, 1179676, 9, 0 )
 
 [node name="map1FG" type="TileMap" parent="Tilemaps"]
 scale = Vector2( 2, 2 )
-tile_set = ExtResource( 3 )
+z_index = -2
+tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="Doors" type="Node" parent="."]
-editor/display_folded = true
 
-[node name="door2" parent="Doors" instance=ExtResource( 5 )]
+[node name="door2" parent="Doors" instance=ExtResource( 3 )]
 position = Vector2( 672, 864 )
 nextLevel = "res://Scenes/Levels/Debug/Interriors/House.tscn"
 
-[node name="door4" parent="Doors" instance=ExtResource( 5 )]
-position = Vector2( -224, 864 )
-doorType = 2
+[node name="door3" parent="Doors" instance=ExtResource( 3 )]
+position = Vector2( 928, 864 )
+nextLevel = "res://Scenes/Levels/Debug/Interriors/House2.tscn"
 
 [node name="World Edges" type="Node" parent="."]
 editor/display_folded = true
@@ -88,6 +80,7 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="World Edges"]
+editor/display_folded = true
 position = Vector2( 1936, 958.294 )
 __meta__ = {
 "_edit_group_": true
@@ -96,13 +89,13 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World Edges/StaticBody2D2"]
 shape = SubResource( 1 )
 
-[node name="Top" parent="World Edges" instance=ExtResource( 6 )]
+[node name="Top" parent="World Edges" instance=ExtResource( 4 )]
 position = Vector2( 1008, 848 )
 scale = Vector2( 156.114, -2.58868 )
 shape = SubResource( 2 )
 top = true
 
-[node name="Bottom" parent="World Edges" instance=ExtResource( 6 )]
+[node name="Bottom" parent="World Edges" instance=ExtResource( 4 )]
 position = Vector2( 992, 1104 )
 scale = Vector2( 156.114, -2.58868 )
 shape = SubResource( 2 )
@@ -110,150 +103,183 @@ top = false
 
 [node name="Coins" type="Node" parent="."]
 
-[node name="Coin" parent="Coins" instance=ExtResource( 2 )]
+[node name="Coin" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 544, 945 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 480, 945 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 736, 944 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 5 )]
 position = Vector2( 672, 944 )
-damage = true
 
-[node name="Coin6" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 672, 1041 )
-damage = true
-
-[node name="Coin2" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 608, 944 )
-damage = true
-
-[node name="Coin9" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 608, 1041 )
-damage = true
-
-[node name="Coin3" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 928, 944 )
-damage = true
-
-[node name="Coin7" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 928, 1041 )
-damage = true
-
-[node name="Coin4" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 848, 944 )
-damage = true
-
-[node name="Coin8" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 848, 1041 )
-damage = true
-
-[node name="Coin5" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 737, 943 )
-damage = true
-
-[node name="Coin10" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 737, 1040 )
-damage = true
+[node name="Coin5" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 609, 944 )
 
 [node name="TaskTargets" type="Node" parent="."]
-editor/display_folded = true
 
-[node name="TaskTarget2" parent="TaskTargets" instance=ExtResource( 7 )]
+[node name="TaskTarget2" parent="TaskTargets" instance=ExtResource( 6 )]
 position = Vector2( 673.027, 736 )
 source = "Indoors"
 
-[node name="Spawn Area" parent="TaskTargets" instance=ExtResource( 8 )]
+[node name="TaskTarget3" parent="TaskTargets" instance=ExtResource( 6 )]
+position = Vector2( 929.027, 736 )
+source = "Old Zach"
+byGoal = true
+
+[node name="Spawn Area" parent="TaskTargets" instance=ExtResource( 7 )]
 position = Vector2( 1272.5, 986.904 )
 spawnArea = Vector2( 400, 100 )
+spriteScale = 0.1
 sourceTask = "Collection"
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
-[node name="TaskManager" parent="." instance=ExtResource( 10 )]
+[node name="TaskManager" parent="." instance=ExtResource( 9 )]
 position = Vector2( -288, 1584 )
+taskFileNames = [ "task0", "task1", "task2" ]
 questTasksRequired = 3
 questCoinsRequired = 5
+nextLevel = "level2"
 
-[node name="MessageTrigger" parent="." instance=ExtResource( 11 )]
-position = Vector2( 320, 960 )
-z_index = 1
-messageTitle = "Welcome to Pin Quest!"
-messageBody = "Use WASD or the ARROW KEYS to move to Claire, and speak with her."
+[node name="AnimatedSprites" type="Node" parent="."]
 
-[node name="MessageTrigger2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 416, 880 )
-scale = Vector2( 0.346025, 0.49694 )
-z_index = 1
-messageTitle = "Just a tip!"
-messageBody = "Some doors can NOT be opened."
-
-[node name="MessageTrigger6" parent="." instance=ExtResource( 11 )]
-position = Vector2( 144, 960 )
-scale = Vector2( -0.576178, 2.44858 )
-z_index = 1
-messageTitle = "Hey! What are you doin!?"
-messageBody = "You can't go left. Haven't you ever played mario?"
-oneShot = false
-maxTriggers = 0
-
-[node name="MessageTrigger7" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1904, 960 )
-scale = Vector2( -0.576178, 2.44858 )
-z_index = 1
-messageTitle = "Stop!"
-messageBody = "That's where the tutorial level ends."
-oneShot = false
-maxTriggers = 0
-
-[node name="MessageTrigger3" parent="." instance=ExtResource( 11 )]
-position = Vector2( 928, 880 )
-scale = Vector2( 0.346025, 0.49694 )
-z_index = 1
-messageTitle = "Just a tip!"
-messageBody = "Some doors can NOT be opened."
-
-[node name="MessageTrigger5" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1696, 880 )
-scale = Vector2( 0.346025, 0.49694 )
-z_index = 1
-messageTitle = "Just a tip!"
-messageBody = "Some doors can NOT be opened."
-
-[node name="MessageTrigger4" parent="." instance=ExtResource( 11 )]
-position = Vector2( 672, 880 )
-scale = Vector2( 0.346025, 0.49694 )
-z_index = 1
-messageTitle = "Just a tip!"
-messageBody = "Some doors can be opened."
-maxTriggers = 2
-
-[node name="AnimatedSprite" parent="." instance=ExtResource( 12 )]
+[node name="AnimatedSprite" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1232, 768 )
 z_index = 1
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite4" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1168, 768 )
+[node name="AnimatedSprite5" parent="AnimatedSprites" instance=ExtResource( 10 )]
+position = Vector2( 784, 736 )
 z_index = 1
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite3" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1296, 768 )
+[node name="AnimatedSprite6" parent="AnimatedSprites" instance=ExtResource( 10 )]
+position = Vector2( 480, 896 )
 z_index = 1
+Anim = "Plant"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1168, 848 )
+[node name="AnimatedSprite2" parent="AnimatedSprites" instance=ExtResource( 10 )]
+position = Vector2( 1392, 832 )
 z_index = 1
-Anim = "BannerBlue"
+Anim = "BannerRed"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="NPC" parent="." instance=ExtResource( 13 )]
-position = Vector2( 800, 958.294 )
+[node name="AnimatedSprite10" parent="AnimatedSprites" instance=ExtResource( 10 )]
+position = Vector2( 1440, 832 )
+z_index = 1
+Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
+
+[node name="AnimatedSprite7" parent="AnimatedSprites" instance=ExtResource( 10 )]
+position = Vector2( 1936, 928 )
+z_index = 1
+Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
+
+[node name="AnimatedSprite13" parent="AnimatedSprites" instance=ExtResource( 10 )]
+position = Vector2( 112, 928 )
+z_index = 1
+Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
+
+[node name="AnimatedSprite8" parent="AnimatedSprites" instance=ExtResource( 10 )]
+position = Vector2( 1936, 980.295 )
+z_index = 1
+Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
+
+[node name="AnimatedSprite11" parent="AnimatedSprites" instance=ExtResource( 10 )]
+position = Vector2( 112, 980.295 )
+z_index = 1
+Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
+
+[node name="AnimatedSprite9" parent="AnimatedSprites" instance=ExtResource( 10 )]
+position = Vector2( 1936, 1024 )
+z_index = 1
+Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
+
+[node name="AnimatedSprite12" parent="AnimatedSprites" instance=ExtResource( 10 )]
+position = Vector2( 112, 1024 )
+z_index = 1
+Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
+
+[node name="Messagetriggers" type="Node" parent="."]
+
+[node name="MessageTrigger" parent="Messagetriggers" instance=ExtResource( 11 )]
+position = Vector2( 320, 960 )
+z_index = 1
+messageTitle = "Welcome to Pin Quest!"
+messageBody = "Use WASD or the ARROW KEYS to move to Claire, and speak with her."
+
+[node name="MessageTrigger6" parent="Messagetriggers" instance=ExtResource( 11 )]
+position = Vector2( 160, 960 )
+rotation = 3.14159
+scale = Vector2( 0.576178, -2.44858 )
+z_index = 1
+messageTitle = "Hey! What are you doin!?"
+messageBody = "You can't go left. Haven't you ever played mario?"
+triggeredInAir = true
+oneShot = false
+maxTriggers = 0
+
+[node name="MessageTrigger7" parent="Messagetriggers" instance=ExtResource( 11 )]
+position = Vector2( 1904, 960 )
+rotation = 3.14159
+scale = Vector2( 0.576178, -2.44858 )
+z_index = 1
+messageTitle = "Stop!"
+messageBody = "That's where the tutorial level ends."
+triggeredInAir = true
+oneShot = false
+maxTriggers = 0
+
+[node name="NPC" parent="." instance=ExtResource( 12 )]
+position = Vector2( 800, 948.295 )
 z_index = 1
 Folder = "Debug/"
 npcName = "Claire"
 dialogueSourceName = "Claire"
 Appearance = "FemaleTrendy"
+stillness = 0
+wanderArea = Vector2( 250, 90 )
+areaColor = Color( 0.517184, 0.375366, 0.960938, 0.298039 )
+
+[node name="Player" parent="." instance=ExtResource( 13 )]
+position = Vector2( 288, 948.295 )
+z_index = 2
+tutorial = true
+
+[node name="Deliverable Item" parent="." instance=ExtResource( 14 )]
+position = Vector2( 720, 984.589 )
+sourceTask = "Delivery"
+DeliverTo = "Old Zach"
+texture = ExtResource( 15 )
+spriteScale = 0.05

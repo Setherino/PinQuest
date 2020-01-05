@@ -9,6 +9,7 @@ export var walkRangeScale = 1
 export var outside = false
 export var tutorial = false
 
+onready var sound = get_node("sfx")
 
 #this is the motion variables that hold the x & y speeds of the player
 var motion = Vector2( )
@@ -79,6 +80,7 @@ var prevHelth = 10
 
 #resets the VHS effect
 func resetVHS(timerClear:Timer):
+	sound.stop()
 	timerClear.queue_free()
 	if main.playerHealth >= 8:
 		vhsEffect.material.set_shader_param("redX", 0)
@@ -89,13 +91,23 @@ func resetVHS(timerClear:Timer):
 	elif main.playerHealth < 2:
 		vhsEffect.material.set_shader_param("redX", main.vhsEffect)
 		vhsEffect.material.set_shader_param("blueX", main.vhsEffect)
-	print("reset shader to " + str(vhsEffect.material.get_shader_param("redX")))
-	print("reset shader to " + str(vhsEffect.material.get_shader_param("blueX")))
+
+#the positions in the sound file that it will play.
+var soundStart = [0.00,2.17,4.48,6.83,8.40,10.29,12.18,13.93,15.83,17.28]
+
+func glitchFX():
+	randomize()
+	var item = randi()%soundStart.size()
+	sound.play(soundStart[item])
+
+
 
 func _process(delta):
 	if dying:
 		randomize()
 		sprite.material.set_shader_param("multiply",rand_range(1.0,3.0))
+		if !sound.is_playing():
+			glitchFX()
 	else:
 		sprite.material.set_shader_param("multiply",0)
 	
@@ -105,6 +117,7 @@ func _process(delta):
 		prevHelth = main.playerHealth
 		vhsEffect.material.set_shader_param("redX", rand_range(-2.0,2.0) * main.vhsEffect)
 		vhsEffect.material.set_shader_param("blueX", rand_range(-2.0,2.0) * main.vhsEffect)
+		glitchFX()
 		var t = Timer.new()
 		t.set_wait_time(.2)
 		add_child(t)
@@ -168,7 +181,6 @@ func animation():
 	elif motionY < -1:
 		idleFrame = 1
 		anim.play("North")
-		print("north")
 	else:
 		anim.play("Idle")
 		anim.set_frame(idleFrame)
