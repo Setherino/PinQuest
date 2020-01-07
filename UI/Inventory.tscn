@@ -115,24 +115,98 @@ custom_fonts/font = SubResource( 2 )
 text = "Complete Quest"
 
 [node name="Tasks" type="PanelContainer" parent="CanvasLayer/TabContainer"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
 
 [node name="Split" type="VSplitContainer" parent="CanvasLayer/TabContainer/Tasks"]
-editor/display_folded = true
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 669.0
 margin_bottom = 472.0
 size_flags_horizontal = 3
-split_offset = -60
+split_offset = 25
+
+[node name="Scroll" type="ScrollContainer" parent="CanvasLayer/TabContainer/Tasks/Split"]
+margin_right = 665.0
+margin_bottom = 253.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll"]
+margin_right = 665.0
+margin_bottom = 253.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer"]
+margin_right = 665.0
+margin_bottom = 4.0
+
+[node name="current Task2" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer"]
+margin_top = 8.0
+margin_right = 665.0
+margin_bottom = 32.0
+text = "Un-completed tasks:"
+align = 1
+
+[node name="Header" type="HBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer"]
+margin_top = 36.0
+margin_right = 665.0
+margin_bottom = 60.0
+
+[node name="name" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
+margin_right = 107.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Name"
+
+[node name="type" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
+margin_left = 111.0
+margin_right = 218.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Type"
+
+[node name="goal" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
+margin_left = 222.0
+margin_right = 329.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Goal"
+
+[node name="time" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
+margin_left = 333.0
+margin_right = 440.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Time Limit"
+
+[node name="needed" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
+margin_left = 444.0
+margin_right = 551.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "# Needed"
+
+[node name="activate" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
+margin_left = 555.0
+margin_right = 665.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "-"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer"]
+margin_top = 64.0
+margin_right = 665.0
+margin_bottom = 68.0
 
 [node name="TopContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split"]
-editor/display_folded = true
+margin_top = 265.0
 margin_right = 665.0
-margin_bottom = 168.0
+margin_bottom = 468.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -142,15 +216,10 @@ margin_bottom = 24.0
 text = "Current Task: "
 align = 1
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
+[node name="CurrentContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
 margin_top = 28.0
 margin_right = 665.0
-margin_bottom = 32.0
-
-[node name="CurrentContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
-margin_top = 36.0
-margin_right = 665.0
-margin_bottom = 60.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 
 [node name="Header" type="HBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer/CurrentContainer"]
@@ -197,97 +266,26 @@ text = "# Needed"
 align = 2
 
 [node name="HSeparator3" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
-margin_top = 64.0
+margin_top = 56.0
 margin_right = 665.0
-margin_bottom = 68.0
+margin_bottom = 60.0
 
 [node name="decription" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
-margin_top = 72.0
+margin_top = 64.0
 margin_right = 665.0
-margin_bottom = 96.0
+margin_bottom = 88.0
 text = "Task Description:"
 align = 1
 
 [node name="descriptionText" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/TopContainer"]
-margin_top = 100.0
+margin_top = 92.0
 margin_right = 665.0
-margin_bottom = 168.0
+margin_bottom = 203.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "You have no task selected. Select a task to continue"
 align = 1
 valign = 1
-
-[node name="Scroll" type="ScrollContainer" parent="CanvasLayer/TabContainer/Tasks/Split"]
-editor/display_folded = true
-margin_top = 180.0
-margin_right = 665.0
-margin_bottom = 468.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-scroll_horizontal_enabled = false
-
-[node name="VContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll"]
-margin_right = 665.0
-margin_bottom = 288.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer"]
-margin_right = 665.0
-margin_bottom = 4.0
-
-[node name="Header" type="HBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer"]
-margin_top = 8.0
-margin_right = 665.0
-margin_bottom = 32.0
-
-[node name="name" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_right = 107.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-text = "Name"
-
-[node name="type" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_left = 111.0
-margin_right = 218.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-text = "Type"
-
-[node name="goal" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_left = 222.0
-margin_right = 329.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-text = "Goal"
-
-[node name="time" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_left = 333.0
-margin_right = 440.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-text = "Time Limit"
-
-[node name="needed" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_left = 444.0
-margin_right = 551.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-text = "# Needed"
-
-[node name="activate" type="Label" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer/Header"]
-margin_left = 555.0
-margin_right = 665.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-text = "Start Task"
-align = 1
-
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll/VContainer"]
-margin_top = 36.0
-margin_right = 665.0
-margin_bottom = 40.0
 
 [node name="Options" type="PanelContainer" parent="CanvasLayer/TabContainer"]
 visible = false

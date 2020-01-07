@@ -105,24 +105,13 @@ func addTask(location:String,place):
 var prevID = -1
 
 func _process(delta):
-	if main.taskID != prevID: #if the current ID has changed (it's changed by the inventoryTask elements)
+	if main.taskID != prevID && main.taskID != 0: #if the current ID has changed (it's changed by the inventoryTask elements)
 		prevID = main.taskID #reset prevID
-		if desc.is_open(): #if the desc file is open
-			desc.close() #close it
-
-		#open desc to the current taskID's location (stored in an array in main.gd)
-		desc.open(main.taskFileNames[main.taskID],1)
-
-		var line = ""
-		#go through until you get to the end or the description
-		while line != "-DESCRIPTION:" && !desc.eof_reached():
-			line = desc.get_line()
-
-		#if the description was found...
-		if !desc.eof_reached():
-			#get that line and set the current description text
-			get_node("CanvasLayer/TabContainer/Tasks/Split/TopContainer/descriptionText").text = desc.get_line()
-
+		#set description using getDesc
+		get_node("CanvasLayer/TabContainer/Tasks/Split/TopContainer/descriptionText").text = getDesc(main.taskFileNames[main.taskID])
+	elif main.taskID == 0:
+		get_node("CanvasLayer/TabContainer/Tasks/Split/TopContainer/descriptionText").text = "You have no current task.\nPress 'Start Task' to start a task."
+		pass
 #when the inventory is created
 func _ready():
 	get_node("CanvasLayer/TabContainer").set_position(inventoryPlacement.position)

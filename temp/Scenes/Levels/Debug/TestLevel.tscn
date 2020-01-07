@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Outdoors_One.tres" type="TileSet" id=1]
 [ext_resource path="res://Tilemaps/Final_Outdoor_Two.tres" type="TileSet" id=2]
@@ -6,21 +6,26 @@
 [ext_resource path="res://Scripts/Game_Objects/door.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/Tools/worldtop.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scripts/Tools/TaskGoal.gd" type="Script" id=8]
-[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scripts/Tools/Spawn Area.gd" type="Script" id=10]
-[ext_resource path="res://MiscImages/Coke.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scripts/Tools/TaskManager.gd" type="Script" id=13]
-[ext_resource path="res://Scenes/Tools/AnimatedSprite.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Scripts/Tools/AnimatedSprite.gd" type="Script" id=15]
-[ext_resource path="res://Scenes/Tools/MessageTrigger.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scripts/Tools/MessageTrigger.gd" type="Script" id=17]
-[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Scenes/Objects/NPC.gd" type="Script" id=19]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=21]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/Game_Objects/Coin.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/Tools/TaskGoal.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/Tools/Spawn Area.gd" type="Script" id=12]
+[ext_resource path="res://MiscImages/Coke.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scripts/Tools/TaskManager.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/Tools/AnimatedSprite.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scripts/Tools/AnimatedSprite.gd" type="Script" id=17]
+[ext_resource path="res://Scenes/Tools/MessageTrigger.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scripts/Tools/MessageTrigger.gd" type="Script" id=19]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Objects/NPC.gd" type="Script" id=21]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=23]
+[ext_resource path="res://Scenes/Tools/Deliverable Item.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Scripts/Tools/Deliverable Item.gd" type="Script" id=25]
+[ext_resource path="res://MiscImages/PaperStack.png" type="Texture" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 176 )
@@ -30,6 +35,7 @@ extents = Vector2( 16, 176 )
 [node name="TestLevel" type="Node2D"]
 
 [node name="Tilemaps" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="map1BG" type="TileMap" parent="Tilemaps"]
 scale = Vector2( 2, 2 )
@@ -63,6 +69,7 @@ cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="Doors" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="door2" type="Area2D" parent="Doors" instance=ExtResource( 3 )]
 position = Vector2( 672, 864 )
@@ -120,35 +127,77 @@ shape = SubResource( 2 )
 top = false
 
 [node name="Coins" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Coin" type="Node2D" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 544, 945 )
+z_index = 1
+z_as_relative = false
+script = ExtResource( 8 )
+damage = false
+triggeredWhileJumping = true
+
+[node name="Coin2" type="Node2D" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 480, 945 )
+z_index = 1
+z_as_relative = false
+script = ExtResource( 8 )
+damage = false
+triggeredWhileJumping = true
+
+[node name="Coin3" type="Node2D" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 736, 944 )
+z_index = 1
+z_as_relative = false
+script = ExtResource( 8 )
+damage = false
+triggeredWhileJumping = true
+
+[node name="Coin4" type="Node2D" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 672, 944 )
+z_index = 1
+z_as_relative = false
+script = ExtResource( 8 )
+damage = false
+triggeredWhileJumping = true
+
+[node name="Coin5" type="Node2D" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 609, 944 )
+z_index = 1
+z_as_relative = false
+script = ExtResource( 8 )
+damage = false
+triggeredWhileJumping = true
 
 [node name="TaskTargets" type="Node" parent="."]
+editor/display_folded = true
 
-[node name="TaskTarget2" type="Node2D" parent="TaskTargets" instance=ExtResource( 7 )]
+[node name="TaskTarget2" type="Node2D" parent="TaskTargets" instance=ExtResource( 9 )]
 position = Vector2( 673.027, 736 )
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 source = "Indoors"
 byGoal = false
 
-[node name="TaskTarget3" type="Node2D" parent="TaskTargets" instance=ExtResource( 7 )]
+[node name="TaskTarget3" type="Node2D" parent="TaskTargets" instance=ExtResource( 9 )]
 position = Vector2( 929.027, 736 )
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 source = "Old Zach"
 byGoal = true
 
-[node name="Spawn Area" type="Node2D" parent="TaskTargets" instance=ExtResource( 9 )]
+[node name="Spawn Area" type="Node2D" parent="TaskTargets" instance=ExtResource( 11 )]
 position = Vector2( 1272.5, 986.904 )
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 spawnArea = Vector2( 400, 100 )
 areaColor = Color( 1, 0.5, 0.5, 1 )
 randomRotation = true
 spriteScale = 0.1
 sourceTask = "Collection"
 ammountToSpawn = 5
-texture = ExtResource( 11 )
+texture = ExtResource( 13 )
 
-[node name="TaskManager" type="Node2D" parent="." instance=ExtResource( 12 )]
+[node name="TaskManager" type="Node2D" parent="." instance=ExtResource( 14 )]
 position = Vector2( -288, 1584 )
-script = ExtResource( 13 )
+script = ExtResource( 15 )
 Folder = "Debug"
 taskFileNames = [ "task0", "task1", "task2" ]
 showTasks = true
@@ -157,147 +206,149 @@ questCoinsRequired = 5
 nextLevel = "level2"
 
 [node name="AnimatedSprites" type="Node" parent="."]
+editor/display_folded = true
 
-[node name="AnimatedSprite" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 14 )]
+[node name="AnimatedSprite" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 16 )]
 position = Vector2( 1232, 768 )
 scale = Vector2( 2, 2 )
 z_index = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 Anim = "Lanterns"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite5" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 14 )]
+[node name="AnimatedSprite5" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 16 )]
 position = Vector2( 784, 736 )
 scale = Vector2( 2, 2 )
 z_index = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 Anim = "Lanterns"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite6" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 14 )]
+[node name="AnimatedSprite6" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 16 )]
 position = Vector2( 480, 896 )
 scale = Vector2( 2, 2 )
 z_index = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 Anim = "Plant"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite2" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 14 )]
+[node name="AnimatedSprite2" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 16 )]
 position = Vector2( 1392, 832 )
 scale = Vector2( 2, 2 )
 z_index = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 Anim = "BannerRed"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite10" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 14 )]
+[node name="AnimatedSprite10" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 16 )]
 position = Vector2( 1440, 832 )
 scale = Vector2( 2, 2 )
 z_index = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 Anim = "BannerRed"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite7" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 14 )]
+[node name="AnimatedSprite7" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 16 )]
 position = Vector2( 1936, 928 )
 scale = Vector2( 2, 2 )
 z_index = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 Anim = "BannerRed"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite13" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 14 )]
+[node name="AnimatedSprite13" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 16 )]
 position = Vector2( 112, 928 )
 scale = Vector2( 2, 2 )
 z_index = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 Anim = "BannerRed"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite8" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 14 )]
+[node name="AnimatedSprite8" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 16 )]
 position = Vector2( 1936, 980.295 )
 scale = Vector2( 2, 2 )
 z_index = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 Anim = "BannerRed"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite11" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 14 )]
+[node name="AnimatedSprite11" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 16 )]
 position = Vector2( 112, 980.295 )
 scale = Vector2( 2, 2 )
 z_index = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 Anim = "BannerRed"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite9" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 14 )]
+[node name="AnimatedSprite9" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 16 )]
 position = Vector2( 1936, 1024 )
 scale = Vector2( 2, 2 )
 z_index = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 Anim = "BannerRed"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite12" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 14 )]
+[node name="AnimatedSprite12" type="Node2D" parent="AnimatedSprites" instance=ExtResource( 16 )]
 position = Vector2( 112, 1024 )
 scale = Vector2( 2, 2 )
 z_index = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 Anim = "BannerRed"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
 [node name="Messagetriggers" type="Node" parent="."]
+editor/display_folded = true
 
-[node name="MessageTrigger6" type="Node2D" parent="Messagetriggers" instance=ExtResource( 16 )]
+[node name="MessageTrigger6" type="Node2D" parent="Messagetriggers" instance=ExtResource( 18 )]
 position = Vector2( 160, 960 )
 rotation = 3.14159
 scale = Vector2( 0.576178, -2.44858 )
 z_index = 1
-script = ExtResource( 17 )
+script = ExtResource( 19 )
 messageTitle = "Hey! What are you doin!?"
 messageBody = "You can't go left. Haven't you ever played mario?"
 triggeredInAir = true
 oneShot = false
 maxTriggers = 0
 
-[node name="MessageTrigger7" type="Node2D" parent="Messagetriggers" instance=ExtResource( 16 )]
+[node name="MessageTrigger7" type="Node2D" parent="Messagetriggers" instance=ExtResource( 18 )]
 position = Vector2( 1904, 960 )
 rotation = 3.14159
 scale = Vector2( 0.576178, -2.44858 )
 z_index = 1
-script = ExtResource( 17 )
+script = ExtResource( 19 )
 messageTitle = "Stop!"
 messageBody = "That's where the tutorial level ends."
 triggeredInAir = true
 oneShot = false
 maxTriggers = 0
 
-[node name="NPC" type="Node2D" parent="." instance=ExtResource( 18 )]
+[node name="NPC" type="Node2D" parent="." instance=ExtResource( 20 )]
 position = Vector2( 800, 948.295 )
 z_index = 1
-script = ExtResource( 19 )
+script = ExtResource( 21 )
 Folder = "Debug/"
 npcName = "Claire"
 dialogueSourceName = "Claire"
@@ -309,17 +360,25 @@ speed = 100
 wanderArea = Vector2( 250, 90 )
 areaColor = Color( 0.517184, 0.375366, 0.960938, 0.298039 )
 
-[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 20 )]
-position = Vector2( 1102.33, 878.296 )
+[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 22 )]
+position = Vector2( 929.998, 861.629 )
 z_index = 2
-script = ExtResource( 21 )
+script = ExtResource( 23 )
 SPEED = 200
 GRAVITY = 10
 JUMP = 350
 FallDamageHeight = 600
 walkRangeScale = 1
 outside = true
-tutorial = true
+tutorial = false
+
+[node name="Deliverable Item" type="Node2D" parent="." instance=ExtResource( 24 )]
+position = Vector2( 1789, 972.589 )
+script = ExtResource( 25 )
+sourceTask = "Delivery"
+DeliverTo = "Old Zach"
+texture = ExtResource( 26 )
+spriteScale = 0.05
 [connection signal="body_entered" from="Doors/door2" to="Doors/door2" method="_on_door_body_entered"]
 [connection signal="body_exited" from="Doors/door2" to="Doors/door2" method="_on_door_body_exited"]
 [connection signal="body_entered" from="Doors/door3" to="Doors/door3" method="_on_door_body_entered"]

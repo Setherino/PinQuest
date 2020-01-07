@@ -38,7 +38,7 @@ sourceName = "N/A"
 doorType = 3
 
 [node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 277.334, 230.667 )
+position = Vector2( 272.667, 230.667 )
 z_index = 1
 script = ExtResource( 5 )
 SPEED = 200

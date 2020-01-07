@@ -214,8 +214,12 @@ func _physics_process(delta):
 		var direction = randi()%int(stillness+2)
 		print(direction)
 		if direction == 0: #left/right
+			if wanderArea.x <= 2:
+				goalPos = Vector2(position.x,round(rand_range(wanderArea.y*-1,wanderArea.y)))
 			goalPos = Vector2(round(rand_range(wanderArea.x*-1,wanderArea.x)),position.y)
 		elif direction == 1: #up/down
+			if wanderArea.y <= 2:
+				goalPos = Vector2(round(rand_range(wanderArea.x*-1,wanderArea.x)),position.y)
 			goalPos = Vector2(position.x,round(rand_range(wanderArea.y*-1,wanderArea.y)))
 		else:
 			goalPos = Vector2(0,0)
