@@ -1,87 +1,107 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Scripts/Tools/AnimatedSprite.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_289.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_290.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_291.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_292.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_293.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_294.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_295.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_296.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_297.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_298.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_299.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_300.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_301.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_302.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_303.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/00.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/01.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/02.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/03.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/04.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/05.png" type="Texture" id=22]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/06.png" type="Texture" id=23]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/07.png" type="Texture" id=24]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/08.png" type="Texture" id=25]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/09.png" type="Texture" id=26]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/10.png" type="Texture" id=27]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/11.png" type="Texture" id=28]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/12.png" type="Texture" id=29]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/13.png" type="Texture" id=30]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/14.png" type="Texture" id=31]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant1.png" type="Texture" id=32]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant2.png" type="Texture" id=33]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant3.png" type="Texture" id=34]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant4.png" type="Texture" id=35]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant5.png" type="Texture" id=36]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant6.png" type="Texture" id=37]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant7.png" type="Texture" id=38]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant8.png" type="Texture" id=39]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant9.png" type="Texture" id=40]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant10.png" type="Texture" id=41]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant11.png" type="Texture" id=42]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant12.png" type="Texture" id=43]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant13.png" type="Texture" id=44]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant14.png" type="Texture" id=45]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant15.png" type="Texture" id=46]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_306.png" type="Texture" id=47]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_307.png" type="Texture" id=48]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_308.png" type="Texture" id=49]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_309.png" type="Texture" id=50]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_310.png" type="Texture" id=51]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_311.png" type="Texture" id=52]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_312.png" type="Texture" id=53]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_313.png" type="Texture" id=54]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_314.png" type="Texture" id=55]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_315.png" type="Texture" id=56]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_316.png" type="Texture" id=57]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_317.png" type="Texture" id=58]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_318.png" type="Texture" id=59]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_319.png" type="Texture" id=60]
-[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_320.png" type="Texture" id=61]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_272.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_273.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_274.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_275.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_276.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_277.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_278.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_279.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_280.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_281.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_282.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_283.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_284.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_285.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Final/Outside/Animations/Tree/0_286.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_289.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_290.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_291.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_292.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_293.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_294.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_295.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_296.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_297.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_298.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_299.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_300.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_301.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_302.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_blue/0_303.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_306.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_307.png" type="Texture" id=33]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_308.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_309.png" type="Texture" id=35]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_310.png" type="Texture" id=36]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_311.png" type="Texture" id=37]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_312.png" type="Texture" id=38]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_313.png" type="Texture" id=39]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_314.png" type="Texture" id=40]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_315.png" type="Texture" id=41]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_316.png" type="Texture" id=42]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_317.png" type="Texture" id=43]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_318.png" type="Texture" id=44]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_319.png" type="Texture" id=45]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Banner_red/0_320.png" type="Texture" id=46]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant1.png" type="Texture" id=47]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant2.png" type="Texture" id=48]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant3.png" type="Texture" id=49]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant4.png" type="Texture" id=50]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant5.png" type="Texture" id=51]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant6.png" type="Texture" id=52]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant7.png" type="Texture" id=53]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant8.png" type="Texture" id=54]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant9.png" type="Texture" id=55]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant10.png" type="Texture" id=56]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant11.png" type="Texture" id=57]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant12.png" type="Texture" id=58]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant13.png" type="Texture" id=59]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant14.png" type="Texture" id=60]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Misc_pottedplant/Misc_pottedplant15.png" type="Texture" id=61]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/00.png" type="Texture" id=62]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/01.png" type="Texture" id=63]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/02.png" type="Texture" id=64]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/03.png" type="Texture" id=65]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/04.png" type="Texture" id=66]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/05.png" type="Texture" id=67]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/06.png" type="Texture" id=68]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/07.png" type="Texture" id=69]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/08.png" type="Texture" id=70]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/09.png" type="Texture" id=71]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/10.png" type="Texture" id=72]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/11.png" type="Texture" id=73]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/12.png" type="Texture" id=74]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/13.png" type="Texture" id=75]
+[ext_resource path="res://Sprites/Final/Misc/Animations/Lanterns_on_rope/14.png" type="Texture" id=76]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
-"name": "BannerBlue",
+"name": "Tree",
 "speed": 12.0
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
 "loop": true,
-"name": "Lanterns",
+"name": "BannerBlue",
 "speed": 12.0
 }, {
 "frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
 "loop": true,
-"name": "Plant",
+"name": "BannerRed",
 "speed": 12.0
 }, {
 "frames": [ ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ) ],
 "loop": true,
-"name": "BannerRed",
+"name": "Plant",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 76 ) ],
+"loop": true,
+"name": "Lanterns",
 "speed": 12.0
 } ]
 
@@ -92,7 +112,6 @@ Anim = "Lanterns"
 
 [node name="animation" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "Lanterns"
-frame = 12
-speed_scale = 1.01802
+animation = "Tree"
+speed_scale = 1.01064
 playing = true

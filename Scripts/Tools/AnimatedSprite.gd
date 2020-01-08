@@ -1,7 +1,7 @@
 extends Node2D
 tool
 
-export(String, "BannerBlue", "BannerRed", "Lanterns","Plant") var Anim setget setAnim
+export(String, "BannerBlue", "BannerRed", "Lanterns","Plant","Tree") var Anim setget setAnim
 
 export var speedScale = 1  setget setSpeed
 
