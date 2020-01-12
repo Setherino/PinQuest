@@ -155,88 +155,55 @@ editor/display_folded = true
 [node name="AnimatedSprite" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1232, 768 )
 z_index = 1
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite5" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 784, 736 )
 z_index = 1
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite6" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 480, 896 )
 z_index = 1
 Anim = "Plant"
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite2" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1392, 832 )
 z_index = 1
 Anim = "BannerRed"
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite10" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1440, 832 )
 z_index = 1
 Anim = "BannerRed"
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite7" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1936, 928 )
 z_index = 1
 Anim = "BannerRed"
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite13" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 112, 928 )
 z_index = 1
 Anim = "BannerRed"
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite8" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1936, 980.295 )
 z_index = 1
 Anim = "BannerRed"
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite11" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 112, 980.295 )
 z_index = 1
 Anim = "BannerRed"
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite9" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1936, 1024 )
 z_index = 1
 Anim = "BannerRed"
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="AnimatedSprite12" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 112, 1024 )
 z_index = 1
 Anim = "BannerRed"
-speedScale = 1
-playBackwards = false
-automaticallyDesync = true
 
 [node name="Messagetriggers" type="Node" parent="."]
 editor/display_folded = true
@@ -281,7 +248,7 @@ wanderArea = Vector2( 250, 90 )
 areaColor = Color( 0.517184, 0.375366, 0.960938, 0.298039 )
 
 [node name="Player" parent="." instance=ExtResource( 13 )]
-position = Vector2( 288, 948.295 )
+position = Vector2( 322, 929.295 )
 z_index = 2
 
 [node name="Deliverable Item" parent="." instance=ExtResource( 14 )]

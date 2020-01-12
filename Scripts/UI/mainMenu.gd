@@ -8,8 +8,8 @@ func _ready():
 #when the player clicks the "new game" button.
 func _on_newGame_pressed():
 	Hud.showHud() #show the hud
-	#load the new level
-	get_tree().change_scene("res://Scenes/Levels/Debug/TestLevel.tscn")
+	#load the new level & select a character
+	Hud.characterSelect("res://Scenes/Levels/Debug/TestLevel.tscn")
 
 func _on_Exit_pressed():
 	get_tree().quit()

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Misc/VHS.shader" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 1 )
+shader_param/redX = 0.0
+shader_param/blueX = 0.0
+shader_param/greenX = null
+
+[node name="VHS effect" type="CanvasLayer"]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 3 )
+margin_left = -77.0
+margin_top = -164.0
+margin_right = 1127.0
+margin_bottom = 593.0

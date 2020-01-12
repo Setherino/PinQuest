@@ -127,13 +127,14 @@ func _input(event):
 			else:
 				showInventory()
 
-#28,35 - 673,500
 #-------------------
 #dialogue stuff...
 #-------------------
 
 #for showing the dialouge
 func showDialogue(dgSource:Array,NPCname:String,icon:Texture):
+	if has_node("Dialogue"):
+		return
 	var Dialogue = DialogueUI.instance() #create dialogue instance
 	add_child(Dialogue) #add it to the scene
 	get_node("Dialogue").dialogue(dgSource,NPCname,icon) #trigger the dialogue function
@@ -144,6 +145,21 @@ func hideDialogue():
 		get_node("Dialogue").queue_free()
 
 #-------------------
+#Character selection screen
+#-------------------
+
+onready var characterSelect = preload("res://UI/CharacterSelect.tscn")
+
+func characterSelect(var nextLevel):
+	if has_node("CharacterSelect"):
+		return
+	
+	var charSel = characterSelect.instance()
+	charSel.nextLevelLoad = nextLevel
+	add_child(charSel)
+
+
+#-------------------
 #HUD stuff...
 #-------------------
 
@@ -152,7 +168,11 @@ func hideHud():
 		get_node("Control").queue_free()
 
 func showHud():
+	if has_node("HUDElement"):
+		return
+	
 	var HUD = HUDelement.instance()
+	HUD.set_name("HUDElement")
 	add_child(HUD)
 
 func _ready():

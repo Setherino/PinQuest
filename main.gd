@@ -35,6 +35,8 @@ var interact = false
 var interactWith = "this"
 
 
+var playerCharacter : int
+
 #for the VHS effect
 var vhsEffect = 3
 

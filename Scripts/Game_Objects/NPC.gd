@@ -144,7 +144,6 @@ func _input(event):
 			elif main.taskType == 3:
 				deliver()
 		else:
-			print("showig")
 			Hud.showDialogue(defaultDialogue,npcName,dialogueIcon)
 
 func _on_Area2D_body_entered(body):
@@ -212,13 +211,14 @@ func _physics_process(delta):
 	if goalPos == Vector2(0,0) && !stopped:
 		randomize()
 		var direction = randi()%int(stillness+2)
-		print(direction)
 		if direction == 0: #left/right
 			if wanderArea.x <= 2:
+				print("meme")
 				goalPos = Vector2(position.x,round(rand_range(wanderArea.y*-1,wanderArea.y)))
 			goalPos = Vector2(round(rand_range(wanderArea.x*-1,wanderArea.x)),position.y)
 		elif direction == 1: #up/down
 			if wanderArea.y <= 2:
+				print("meme")
 				goalPos = Vector2(round(rand_range(wanderArea.x*-1,wanderArea.x)),position.y)
 			goalPos = Vector2(position.x,round(rand_range(wanderArea.y*-1,wanderArea.y)))
 		else:

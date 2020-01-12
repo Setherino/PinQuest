@@ -20,17 +20,34 @@ var chars = preload("res://Scenes/Character factory.tscn").instance()
 
 #this is so we can use the animation node below the player
 onready var vhsEffect = get_node("VHS effect/ColorRect")
-onready var anim = get_node("Sprite")
 onready var coin = get_node("coins")
-onready var sprite = get_node("Sprite")
-
+var sprite
+var anim
 var dying = false
 
 var animSprite
 
-func _ready():
-	Hud.tutorial = tutorial
+
+export(String, "Dog", "FemaleBaker", "FemaleElder","FemaleOfficeWorker","FemaleStudent","FemaleTrendy","FemaleYouth","MaleBusinessMan","OldBusinessMan","MaleCasual","MalePunk","MaleStudent","MaleStudent1","MaleTraditional","MaleTrafficCop","MaleYouth","Witch") var Appearance setget setChar
+
+var characters = ["Dog", "FemaleBaker", "FemaleElder","FemaleOfficeWorker","FemaleStudent","FemaleTrendy","FemaleYouth","MaleBusinessMan","OldBusinessMan","MaleCasual","MalePunk","MaleStudent","MaleStudent1","MaleTraditional","MaleTrafficCop","MaleYouth","Witch"]
+
+func setChar(character : int):
 	
+	animSprite = chars.getChar(character)
+	
+	animSprite.position.y = 13
+	sprite = animSprite
+	anim = animSprite
+	add_child(animSprite)
+
+
+
+
+func _ready():
+	setChar(main.playerCharacter)
+	Hud.tutorial = tutorial
+	get_node("Sprite").queue_free()
 	
 	#if the player isn't outside, get rid of the paralax garbabe
 	if !outside:
@@ -105,11 +122,12 @@ func glitchFX():
 func _process(delta):
 	if dying:
 		randomize()
-		sprite.material.set_shader_param("multiply",rand_range(1.0,3.0))
+		#sprite.material.set_shader_param("multiply",rand_range(1.0,3.0))
 		if !sound.is_playing():
 			glitchFX()
 	else:
-		sprite.material.set_shader_param("multiply",0)
+		pass
+		#sprite.material.set_shader_param("multiply",0)
 	
 	
 	if prevHelth != main.playerHealth:
