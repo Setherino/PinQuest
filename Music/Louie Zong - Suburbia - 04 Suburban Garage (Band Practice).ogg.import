@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - Suburbia - 04 Suburban Garage (Band Practice).ogg-ab45cc761d2bb1f9ec75a1f2906be69c.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - Suburbia - 04 Suburban Garage (Band Practice).ogg"
+dest_files=[ "res://.import/Louie Zong - Suburbia - 04 Suburban Garage (Band Practice).ogg-ab45cc761d2bb1f9ec75a1f2906be69c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

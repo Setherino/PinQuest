@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - sanctuary.ogg-e99bbce3d3dcec22daae9d1f4ebdd674.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - sanctuary.ogg"
+dest_files=[ "res://.import/Louie Zong - sanctuary.ogg-e99bbce3d3dcec22daae9d1f4ebdd674.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

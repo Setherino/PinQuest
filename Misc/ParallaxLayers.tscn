@@ -7,6 +7,7 @@
 [node name="ParallaxLayers" type="Node2D"]
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 380 )
 transform = Transform2D( 1, 0, 0, 1, 0, 380 )
@@ -69,7 +70,7 @@ position = Vector2( -577, -48 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 2 )
 animation = "fregroundwires"
-frame = 3
+frame = 9
 speed_scale = 0.95
 playing = true
 centered = false
@@ -79,7 +80,7 @@ position = Vector2( 95, -47.2234 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 2 )
 animation = "fregroundwires"
-frame = 8
+frame = 1
 playing = true
 centered = false
 
@@ -88,7 +89,7 @@ position = Vector2( 767, -48 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 2 )
 animation = "fregroundwires"
-frame = 12
+frame = 7
 speed_scale = 1.05
 playing = true
 centered = false

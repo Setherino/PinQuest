@@ -44,15 +44,12 @@ func getDesc(location):
 	
 	while line != "-DESCRIPTION:" && !file.eof_reached():
 		line = file.get_line()
-		print("got line " + line)
 	
 	if file.eof_reached():
-		print("end of file reached")
 		return "none"
 	
 	line = ""
 	
-	print("end of file not reached")
 	
 	while !file.eof_reached():
 		line += file.get_line()
@@ -112,14 +109,36 @@ func _process(delta):
 	elif main.taskID == 0:
 		get_node("CanvasLayer/TabContainer/Tasks/Split/TopContainer/descriptionText").text = "You have no current task.\nPress 'Start Task' to start a task."
 		pass
+
+var characters = ["Dog", "Baker",
+ "Elder","OfficeWorker",
+"Student1","Trendy","NO",
+"BusinessMan","OldBusinessMan",
+"Casual","Punk","Student2",
+"Student3","Robes",
+"TrafficCop","NO"]
+
+
 #when the inventory is created
 func _ready():
+	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/Toggle Switches/Mute").set_pressed(!Hud.get_node("HUDElement").get_mute())
+	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/Toggle Switches/ChangeSong").set_pressed(main.changeOnDoor)
+	
+	
+	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/MusicVolume/Label").text = "Music Volume        (" + str(round(((30 + Hud.get_node("HUDElement").getMusicVolume()) / 30) * 100)) + "%)"
+	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/MusicVolume/MusicSlider").set_value(Hud.get_node("HUDElement").getMusicVolume())
+	
+	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/SFX volume/Label").text = "Sound Effect Volume  (" + str(round(((30 + main.SFXVolume) / 30) * 100)) + "%)"
+	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/SFX volume/SFXVolume").set_value(main.SFXVolume)
+	
+	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/PlayerModel/Label").text = "Selected Player Model: " + characters[main.playerCharacter]
+	
+	
 	get_node("CanvasLayer/TabContainer").set_position(inventoryPlacement.position)
 	get_node("CanvasLayer/TabContainer").set_size(inventoryPlacement.size)
 	
 	#updating coins and task bars & labels
 	#oh god this is awful, why did I do it like this??
-	print (str(main.questCoins) + " " + str(main.questTasks))
 	get_node("CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer/Label").text = str(main.coins) + "/" + str(main.questCoins) + " Coins collected"
 	get_node("CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer/CoinsBar").value = main.coins
 	get_node("CanvasLayer/TabContainer/Quest/VBoxContainer/HBoxContainer/CoinsBar").max_value = main.questCoins
@@ -145,3 +164,50 @@ func _ready():
 func _on_Button_pressed():
 	main.levelFolder = "na" #reset the levelFolder (used by the TaskManager)
 	Hud.startLoading(main.nextLevel) #load the next level w/ loading screen
+
+
+func _on_HSlider_value_changed(value):
+	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/HBoxContainer/Label").text = "VHS Damage Effect (" + str(round(value)) + ")"
+	main.vhsEffect = round(value)
+
+
+func _on_changeModel_pressed():
+	Hud.characterSelect(Hud.saveToTemp())
+	
+
+func _on_Quit_pressed():
+	get_tree().quit()
+
+func _on_SFXVolume_value_changed(value):
+	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/SFX volume/Label").text = "Sound Effect Volume  (" + str(round(((30 + value) / 30) * 100)) + "%)"
+	get_node("sfx").set_volume_db(value-10)
+	get_node("sfx").play()
+	if value == -30:
+		main.SFXVolume = -80
+	else:
+		main.SFXVolume = value
+	pass
+	
+	main.updateVolume()
+
+func _on_MusicSlider_value_changed(value):
+	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/MusicVolume/Label").text = "Music Volume        (" + str(round(((30 + value) / 30) * 100)) + "%)"
+	if Hud.has_node("HUDElement"):
+		if value == -30:
+			Hud.get_node("HUDElement").setMusicVolume(-80)
+		else:
+			Hud.get_node("HUDElement").setMusicVolume(value)
+		pass
+
+
+func _on_Mute_toggled(button_pressed):
+	Hud.get_node("HUDElement").set_mute(!button_pressed)
+
+
+func _on_ChangeSong_toggled(button_pressed):
+	main.changeOnDoor = button_pressed
+
+
+func _on_Shuffle_pressed():
+	Hud.get_node("HUDElement").musicStreams.shuffle()
+	Hud.get_node("HUDElement").changeSong(-1)

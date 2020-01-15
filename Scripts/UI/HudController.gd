@@ -21,6 +21,8 @@ var inventoryOpen = false
 
 #allows loading levels with loading screen
 func startLoading(var nextLevel,save = true):
+	
+	
 	var loadUI = loading.instance() #create instance of loading screen
 	loadUI.level = nextLevel #set it's level variable
 	loadUI.save = save
@@ -92,6 +94,9 @@ var tutorial = false
 
 #show the inventory
 func showInventory(var size = Rect2(100,35,847,504)):
+	if main.jumping:
+		return
+	
 	hideDialogue()
 	if has_node("Message"):
 		get_node("Message").queue_free()
@@ -164,8 +169,8 @@ func characterSelect(var nextLevel):
 #-------------------
 
 func hideHud():
-	if has_node("Control"):
-		get_node("Control").queue_free()
+	if has_node("HUDElement"):
+		get_node("HUDElement").queue_free()
 
 func showHud():
 	if has_node("HUDElement"):
@@ -177,3 +182,54 @@ func showHud():
 
 func _ready():
 	showHud()
+	
+
+#--------------
+#saving stuff
+#--------------
+
+
+#takes a file name and returns the file's directory
+func getDir(var fileName):
+	var lastSlash = fileName.find_last("/")
+	
+	fileName.erase(lastSlash,fileName.length()-lastSlash)
+	
+	return fileName
+
+func saveToTemp():
+	var packedScene = PackedScene.new() #create a new packed scene resource
+	packedScene.pack(get_tree().get_current_scene()) #fill it with the current scene
+	
+	#get it's (the current scene's) location.
+	var saveLocation = str(get_tree().get_current_scene().filename)
+	
+	#modify it's location to inculde a "temp/" in front...
+	
+	if saveLocation.find("res://temp/",0) == -1: #if it doesn't have temp/
+		saveLocation = saveLocation.insert(6,"temp/") #add it.
+		#we insert it in place 6 so it looks like: "res://temp/level..."
+		#                                      so,  123456temp/...
+	
+	#print newly modified saveLocation
+	print("attempting to save in... " + saveLocation)
+	
+	var directory = Directory.new() #making a new directory object
+	var file = File.new() #create a new file object
+	
+	print("looking for directory " + getDir(saveLocation))
+	if directory.dir_exists(getDir(saveLocation)):
+		print("Directory exists! Moving on.")
+	else:
+		print("Directory doesn't exist! Making directory.")
+		directory.make_dir_recursive(getDir(saveLocation))
+	
+	
+	if file.file_exists(saveLocation): #if the file already exists
+		print("save file exists already, deleting...")
+		
+		directory.remove(saveLocation) #delete
+	
+	ResourceSaver.save(saveLocation,packedScene)
+	
+	return saveLocation

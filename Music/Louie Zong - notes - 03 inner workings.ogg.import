@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - notes - 03 inner workings.ogg-d409019a6d59bc673f9e01b6eb48c77b.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - notes - 03 inner workings.ogg"
+dest_files=[ "res://.import/Louie Zong - notes - 03 inner workings.ogg-d409019a6d59bc673f9e01b6eb48c77b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

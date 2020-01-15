@@ -15,6 +15,8 @@ onready var coins = get_node("CanvasLayer/coinLabel")
 
 onready var sfx = get_node("CanvasLayer/coinLabel/sfx")
 
+onready var music = get_node("music")
+
 #Health stuff...
 
 var full = Rect2(Vector2(388,45),Vector2(53,46))#area in sprite-sheet for full heart
@@ -25,13 +27,46 @@ var prevHealth = 0
 var fading = false
 var coinFading = false
 
+var musicStreams : Array
+
+var musicStream
+
+func changeVolume():
+	sfx.set_volume_db(main.SFXVolume - 10)
+
+
+func _ready():
+	main.connect("volumeChange",self,"changeVolume")
+	if musicStreams.size() > 1:
+		randomize()
+		musicStreams.shuffle()
+		print(musicStreams[0])
+		get_tree().get_root().get_node("Hud/HUDElement/music").stream = load("res://Music/" + musicStreams[0])
+		music.play()
+		return
+	
+	var musicFolder = Directory.new()
+	musicFolder.open("res://Music/")
+	musicFolder.list_dir_begin(true,false)
+	var fileName = musicFolder.get_next()
+	while fileName != "":
+		if fileName.ends_with("ogg"):
+			print("yeet " + str(musicStreams.size()))
+			musicStreams.append(fileName)
+		fileName = musicFolder.get_next()
+	randomize()
+	musicStreams.shuffle()
+	print(musicStreams[0])
+	get_tree().get_root().get_node("Hud/HUDElement/music").stream = load("res://Music/" + musicStreams[0])
+	music.play()
+
 #update one of the heath sprites
 func updateHealth(var node,var ammount):
 	#node = refreence to health sprite to update
 	#ammount, multiple of 2 that it represents (2,4,6,8,10)
 	if main.playerHealth < ammount: #if the player health is less than ammount
 		if main.playerHealth == ammount-1: #if it's one less than ammount then
-			node.set_region_rect(half) #you're half full
+			node.set_region_rect(half) #you're half full 
 		elif main.playerHealth <= ammount-2: #if it's more than 2 less than ammount 
 			node.set_region_rect(empty) #then you're empty! Inside. Like me. Again just kidding, I'm OK, just kinda tired, it's late right now. You know what, I'm going to bed.
 	else: #if it's more than the ammount
@@ -159,3 +194,49 @@ func _process(delta):
 	
 	#this updates the "press 'E' to interact with ...." at the top of the screen
 	interactWith()
+var currentSong = 0
+
+
+
+#changes the current song
+func changeSong(var nextSong):
+	if music.is_playing():
+		music.stop() #stop the song, if it's playing
+		
+		if nextSong == -1:
+			if currentSong < musicStreams.size()-1:
+				nextSong = currentSong + 1
+			else:
+				nextSong = 0
+		
+		
+	#load the new song, I don't know why we have to do it like this, but we do.
+	get_tree().get_root().get_node("Hud/HUDElement/music").stream = load("res://Music/" + musicStreams[nextSong])
+	currentSong = nextSong #update the current song variable
+	music.play() #play the song
+
+
+
+func _on_music_finished():
+	print("nextSong")
+	changeSong(-1)
+	#somebody once told me the world was gonna roll me, I ain't the sharpest tool in the sheeeeddddddd
+
+func get_mute():
+	
+	if music.get_volume_db() < -79:
+		print("true")
+		return true
+	else:
+		print("false")
+		return false
+func getMusicVolume():
+	return music.get_volume_db()
+func setMusicVolume(var volume):
+	music.set_volume_db(volume)
+
+func set_mute(yesNo : bool):
+	if yesNo:
+		music.set_volume_db(-80)
+	else:
+		music.set_volume_db(0)

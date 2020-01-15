@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - Suburbia - 06 Mom & Pop Store (Closing Shop).ogg-285b491051acacae373a9698b609975c.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - Suburbia - 06 Mom & Pop Store (Closing Shop).ogg"
+dest_files=[ "res://.import/Louie Zong - Suburbia - 06 Mom & Pop Store (Closing Shop).ogg-285b491051acacae373a9698b609975c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

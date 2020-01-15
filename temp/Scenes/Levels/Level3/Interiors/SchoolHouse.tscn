@@ -1,0 +1,146 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Game_Objects/door.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Tools/worldtop.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Objects/NPC.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 179.059, 16 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 96, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 256 )
+
+[node name="House" type="Node2D"]
+
+[node name="bg" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131077, 17, 1, 131078, 17, 1, 131079, 17, 1, 131080, 17, 1, 131081, 17, 1, 131082, 17, 1, 131083, 17, 1, 131084, 17, 1, 131085, 17, 1, 131086, 17, 1, 131087, 17, 1, 196613, 14, 65537, 196614, 14, 65537, 196615, 14, 65537, 196616, 14, 65537, 196617, 14, 65537, 196618, 14, 1, 196619, 14, 65537, 196620, 14, 65537, 196621, 14, 65537, 196622, 14, 65537, 196623, 14, 65543, 262149, 6, 65536, 262150, 6, 65536, 262151, 6, 65536, 262152, 6, 65536, 262153, 6, 65536, 262154, 6, 65536, 262155, 6, 65536, 262156, 6, 65536, 262157, 6, 65536, 262158, 6, 65536, 262159, 6, 65536, 327685, 6, 65536, 327686, 6, 65536, 327687, 6, 65536, 327688, 6, 65536, 327689, 6, 65536, 327690, 6, 65536, 327691, 6, 65536, 327692, 6, 65536, 327693, 6, 65536, 327694, 6, 65536, 327695, 6, 65536, 393221, 6, 65536, 393222, 6, 65536, 393223, 6, 65536, 393224, 6, 65536, 393225, 6, 65536, 393226, 6, 65536, 393227, 6, 65536, 393228, 6, 65536, 393229, 6, 65536, 393230, 6, 65536, 393231, 6, 65536, 458757, 6, 65536, 458758, 6, 65536, 458759, 6, 65536, 458760, 6, 65536, 458761, 6, 65536, 458762, 6, 65536, 458763, 6, 65536, 458764, 6, 65536, 458765, 6, 65536, 458766, 6, 65536, 458767, 6, 65536 )
+
+[node name="fg" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 131074, 0, 1, 589831, 0, 65536, 655361, 0, 65537, 655367, 0, 131072, 720897, 0, 131073, 720903, 0, 196614, 10, 65537, 327690, 8, 0, 327691, 8, 0, 327692, 8, 0, 327694, 8, 0, 327695, 8, 0, 458762, 8, 0, 458763, 8, 0, 458764, 8, 0, 458765, 8, 0, 458766, 8, 0, 458767, 8, 0 )
+
+[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 872.333, 220.526 )
+z_index = 1
+script = ExtResource( 3 )
+SPEED = 200
+GRAVITY = 10
+JUMP = 350
+FallDamageHeight = 600
+walkRangeScale = 1
+outside = false
+tutorial = false
+Appearance = ""
+
+[node name="door" type="Area2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 864, 224 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 5 )
+nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+triggered = false
+sourceName = "N/A"
+doorType = 3
+
+[node name="Node2D" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 480, 224 )
+scale = Vector2( 59.6251, 0.800729 )
+script = ExtResource( 7 )
+shape = SubResource( 1 )
+top = true
+
+[node name="Node2D2" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 480, 512 )
+scale = Vector2( 59.6251, 0.800729 )
+script = ExtResource( 7 )
+shape = SubResource( 1 )
+top = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 832, 470 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2( 736, 341.446 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2( 992, 342 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 304, 279 )
+shape = SubResource( 4 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2( 1040, 323 )
+shape = SubResource( 4 )
+
+[node name="NPC" type="Node2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 400, 368 )
+script = ExtResource( 9 )
+Folder = "LevelThree/"
+npcName = "Ms. Baker"
+dialogueSourceName = "MsBaker"
+Appearance = "FemaleBaker"
+dialogueIcon = null
+wander = false
+stillness = 5.0
+speed = 100
+wanderArea = Vector2( 0, 0 )
+areaColor = Color( 1, 0.5, 0.5, 1 )
+
+[node name="NPC2" type="Node2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 720, 404 )
+script = ExtResource( 9 )
+Folder = "LevelThree/"
+npcName = "Katie"
+dialogueSourceName = "Child"
+Appearance = "FemaleYouth"
+dialogueIcon = null
+wander = true
+stillness = 0
+speed = 100
+wanderArea = Vector2( 250, 40 )
+areaColor = Color( 0.0196078, 0.74902, 1, 0.168627 )
+
+[node name="NPC3" type="Node2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 528, 304 )
+script = ExtResource( 9 )
+Folder = "LevelThree/"
+npcName = "Johnothan"
+dialogueSourceName = "Johno"
+Appearance = "MaleYouth"
+dialogueIcon = null
+wander = true
+stillness = 2
+speed = 100
+wanderArea = Vector2( 100, 50 )
+areaColor = Color( 1, 0.501961, 0.501961, 0.231373 )
+[connection signal="body_entered" from="door" to="door" method="_on_door_body_entered"]
+[connection signal="body_exited" from="door" to="door" method="_on_door_body_exited"]

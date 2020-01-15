@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - HOLDING HANDS.ogg-f7e2e725c9b639e1a106e93e55dbc961.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - HOLDING HANDS.ogg"
+dest_files=[ "res://.import/Louie Zong - HOLDING HANDS.ogg-f7e2e725c9b639e1a106e93e55dbc961.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

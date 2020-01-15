@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - adventuring.ogg-7abc8a9378dbf1450308ee4bf238d5df.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - adventuring.ogg"
+dest_files=[ "res://.import/Louie Zong - adventuring.ogg-7abc8a9378dbf1450308ee4bf238d5df.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

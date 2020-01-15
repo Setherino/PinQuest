@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - matter over mind.ogg-4c92a552e29aa7ea8f75f684e760785d.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - matter over mind.ogg"
+dest_files=[ "res://.import/Louie Zong - matter over mind.ogg-4c92a552e29aa7ea8f75f684e760785d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

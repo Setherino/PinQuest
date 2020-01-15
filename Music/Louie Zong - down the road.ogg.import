@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - down the road.ogg-a4b43eed60b03b9659876e8588a0dec3.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - down the road.ogg"
+dest_files=[ "res://.import/Louie Zong - down the road.ogg-a4b43eed60b03b9659876e8588a0dec3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

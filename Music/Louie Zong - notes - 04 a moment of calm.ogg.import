@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - notes - 04 a moment of calm.ogg-3176b6fbbbf5403baadd0a85e2dc9e21.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - notes - 04 a moment of calm.ogg"
+dest_files=[ "res://.import/Louie Zong - notes - 04 a moment of calm.ogg-3176b6fbbbf5403baadd0a85e2dc9e21.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

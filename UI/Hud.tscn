@@ -3,8 +3,9 @@
 [ext_resource path="res://Scripts/UI/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/SillyGames/SILLYGAMES-BOLD.OTF" type="DynamicFontData" id=2]
 [ext_resource path="res://Sprites/tiles/tiles.svg" type="Texture" id=3]
-[ext_resource path="res://Fonts/SUMMER IN DECEMBER - OTF.OTF" type="DynamicFontData" id=4]
-[ext_resource path="res://Sound/coins/coin2.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sound/coins/coin2.wav" type="AudioStream" id=4]
+[ext_resource path="res://Fonts/SUMMER IN DECEMBER - OTF.OTF" type="DynamicFontData" id=5]
+[ext_resource path="res://Music/Louie Zong - Suburbia - 06 Mom & Pop Store (Closing Shop).ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -95,11 +96,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=8]
-size = 40
-font_data = ExtResource( 4 )
-
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -114,11 +111,11 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=9]
 size = 42
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -206,15 +203,6 @@ region_rect = Rect2( 508, 45, 53, 46 )
 [node name="fadeAnim" type="AnimationPlayer" parent="CanvasLayer/80"]
 anims/fade = SubResource( 7 )
 
-[node name="ActivityDisplay" type="Label" parent="CanvasLayer"]
-margin_left = 2.40881
-margin_top = 577.453
-margin_right = 317.409
-margin_bottom = 626.453
-custom_fonts/font = SubResource( 8 )
-text = "nothing right now"
-valign = 2
-
 [node name="coinLabel" type="Label" parent="CanvasLayer"]
 margin_left = 887.317
 margin_right = 1020.32
@@ -224,7 +212,7 @@ text = "99999"
 align = 1
 
 [node name="fadeAnim" type="AnimationPlayer" parent="CanvasLayer/coinLabel"]
-anims/fade = SubResource( 9 )
+anims/fade = SubResource( 8 )
 
 [node name="coinSprite" type="Sprite" parent="CanvasLayer/coinLabel"]
 position = Vector2( -13.8107, 31.741 )
@@ -233,16 +221,21 @@ texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 312, 44, 47, 47 )
 
-[node name="sfx" type="AudioStreamPlayer2D" parent="CanvasLayer/coinLabel"]
-stream = ExtResource( 5 )
+[node name="sfx" type="AudioStreamPlayer" parent="CanvasLayer/coinLabel"]
+stream = ExtResource( 4 )
+volume_db = -10.0
 
 [node name="Interact" type="Label" parent="CanvasLayer"]
 margin_top = 6.0
 margin_right = 1024.0
 margin_bottom = 52.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 9 )
 text = "Press 'E' to interact with door"
 align = 1
 
 [node name="fadeAnim" type="AnimationPlayer" parent="CanvasLayer/Interact"]
-anims/fade = SubResource( 11 )
+anims/fade = SubResource( 10 )
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+[connection signal="finished" from="music" to="." method="_on_music_finished"]

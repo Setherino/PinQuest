@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - notes - 05 friends.ogg-a47d7b329bab0b2ade459d37e6c33781.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - notes - 05 friends.ogg"
+dest_files=[ "res://.import/Louie Zong - notes - 05 friends.ogg-a47d7b329bab0b2ade459d37e6c33781.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

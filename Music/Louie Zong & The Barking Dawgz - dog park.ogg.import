@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong & The Barking Dawgz - dog park.ogg-520a2935f8e162bae14120f797dfea8c.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong & The Barking Dawgz - dog park.ogg"
+dest_files=[ "res://.import/Louie Zong & The Barking Dawgz - dog park.ogg-520a2935f8e162bae14120f797dfea8c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

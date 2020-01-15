@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - winter melon way.ogg-4ad8536dfe06c03b015f0ae1995f4e56.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - winter melon way.ogg"
+dest_files=[ "res://.import/Louie Zong - winter melon way.ogg-4ad8536dfe06c03b015f0ae1995f4e56.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

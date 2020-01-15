@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - end of the show.ogg-15979a7817d5b659efded6dfe80907a8.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - end of the show.ogg"
+dest_files=[ "res://.import/Louie Zong - end of the show.ogg-15979a7817d5b659efded6dfe80907a8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

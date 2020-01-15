@@ -1,0 +1,188 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/NPC.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Game_Objects/door.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/Tools/worldtop.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 96, 136 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 201.507 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 23.2375, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+[node name="House2" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 262144, 14, 65536, 262145, 14, 65537, 262146, 14, 1, 262147, 14, 65537, 262148, 14, 65537, 262149, 14, 65537, 262150, 14, 65537, 262151, 14, 65537, 262152, 14, 65537, 262153, 14, 65537, 262154, 14, 65537, 262155, 14, 65537, 262156, 14, 65537, 262157, 14, 1, 262158, 14, 65537, 262159, 14, 65543, 327680, 0, 0, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 0, 1, 327687, 0, 1, 327688, 0, 1, 327689, 0, 1, 327690, 0, 1, 327691, 0, 1, 327692, 0, 1, 327693, 0, 1, 327694, 0, 1, 327695, 0, 2, 393216, 0, 65536, 393217, 0, 65537, 393218, 0, 65537, 393219, 0, 65537, 393220, 0, 65537, 393221, 0, 65537, 393222, 0, 65537, 393223, 0, 65537, 393224, 0, 65537, 393225, 0, 65537, 393226, 0, 65537, 393227, 0, 65537, 393228, 0, 65537, 393229, 0, 65537, 393230, 0, 65537, 393231, 0, 65538, 458752, 0, 131072, 458753, 0, 131073, 458754, 0, 131073, 458755, 0, 131073, 458756, 0, 131073, 458757, 0, 131073, 458758, 0, 131073, 458759, 0, 131073, 458760, 0, 131073, 458761, 0, 131073, 458762, 0, 131073, 458763, 0, 131073, 458764, 0, 131073, 458765, 0, 131073, 458766, 0, 131073, 458767, 0, 131074 )
+
+[node name="TileMap3" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 393220, 0, 9, 65536, 0, 10, 65537, 0, 65536, 262158, 0, 262147, 9, 65536, 262148, 9, 65536 )
+
+[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 633.13, 286.413 )
+z_index = 1
+script = ExtResource( 3 )
+SPEED = 200
+GRAVITY = 10
+JUMP = 350
+FallDamageHeight = 600
+walkRangeScale = 1
+outside = false
+tutorial = false
+Appearance = ""
+
+[node name="Andy" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 224, 336 )
+script = ExtResource( 5 )
+Folder = "LevelThree/"
+npcName = "Andy"
+dialogueSourceName = "Andy"
+Appearance = "MaleCasual"
+dialogueIcon = null
+wander = true
+stillness = 10
+speed = 75
+wanderArea = Vector2( 80, 2 )
+areaColor = Color( 1, 0.5, 0.5, 1 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 262145, 15, 0, 262158, 10, 65537, 327682, 4, 0, 327683, 4, 1, 327684, 4, 2, 327687, 8, 0, 327693, 8, 0, 393225, 8, 0, 393227, 8, 0, 458759, 8, 0, 458765, 8, 0 )
+
+[node name="door" type="Area2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 608, 288 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 7 )
+nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+triggered = false
+sourceName = "N/A"
+doorType = 2
+
+[node name="Collisions" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+position = Vector2( 224, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Collisions"]
+editor/display_folded = true
+position = Vector2( 1040, 312 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D8"]
+shape = SubResource( 2 )
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Collisions"]
+editor/display_folded = true
+position = Vector2( -16, 312 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D9"]
+shape = SubResource( 2 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
+editor/display_folded = true
+position = Vector2( 480, 336 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D2"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Collisions"]
+editor/display_folded = true
+position = Vector2( 480, 464 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D3"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Collisions"]
+editor/display_folded = true
+position = Vector2( 609.027, 400 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D4"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Collisions"]
+editor/display_folded = true
+position = Vector2( 736, 400 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D5"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Collisions"]
+editor/display_folded = true
+position = Vector2( 864, 336 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D6"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Collisions"]
+editor/display_folded = true
+position = Vector2( 864, 464 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D7"]
+shape = SubResource( 3 )
+
+[node name="Node2D" type="Node2D" parent="Collisions" instance=ExtResource( 8 )]
+position = Vector2( 544, 288.554 )
+scale = Vector2( 68.64, 1 )
+script = ExtResource( 9 )
+shape = SubResource( 4 )
+top = true
+
+[node name="Node2D2" type="Node2D" parent="Collisions" instance=ExtResource( 8 )]
+position = Vector2( 560, 520.145 )
+scale = Vector2( 68.64, 1 )
+script = ExtResource( 9 )
+shape = SubResource( 4 )
+top = false
+[connection signal="body_entered" from="door" to="door" method="_on_door_body_entered"]
+[connection signal="body_exited" from="door" to="door" method="_on_door_body_exited"]

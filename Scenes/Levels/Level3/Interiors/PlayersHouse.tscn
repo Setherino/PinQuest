@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Tools/AnimatedSprite.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 192 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 20, 23 )
+
+[node name="House" type="Node2D"]
+
+[node name="bg" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131077, 17, 1, 131078, 17, 1, 131079, 17, 1, 131080, 17, 1, 131081, 17, 1, 131082, 17, 1, 131083, 17, 1, 131084, 17, 1, 131085, 17, 1, 131086, 17, 1, 131087, 17, 1, 196613, 14, 65537, 196614, 14, 65537, 196615, 14, 65537, 196616, 14, 65537, 196617, 14, 65537, 196618, 14, 1, 196619, 14, 65537, 196620, 14, 65537, 196621, 14, 65537, 196622, 14, 65537, 196623, 14, 65543, 262149, 6, 65536, 262150, 6, 65536, 262151, 6, 65536, 262152, 6, 65536, 262153, 6, 65536, 262154, 6, 65536, 262155, 6, 65536, 262156, 6, 65536, 262157, 6, 65536, 262158, 6, 65536, 262159, 6, 65536, 327685, 6, 65536, 327686, 6, 65536, 327687, 6, 65536, 327688, 6, 65536, 327689, 6, 65536, 327690, 6, 65536, 327691, 6, 65536, 327692, 6, 65536, 327693, 6, 65536, 327694, 6, 65536, 327695, 6, 65536, 393221, 6, 65536, 393222, 6, 65536, 393223, 6, 65536, 393224, 6, 65536, 393225, 6, 65536, 393226, 6, 65536, 393227, 6, 65536, 393228, 6, 65536, 393229, 6, 65536, 393230, 6, 65536, 393231, 6, 65536 )
+
+[node name="fg" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 131074, 0, 1, 589831, 0, 65536, 655361, 0, 65537, 655367, 0, 131072, 720897, 0, 131073, 720903, 0, 196617, 20, 0 )
+
+[node name="door" parent="." instance=ExtResource( 2 )]
+position = Vector2( 848, 224 )
+nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+doorType = 3
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 848, 234 )
+outside = false
+Appearance = "MalePunk"
+
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 480, 224 )
+scale = Vector2( 59.6251, 0.800729 )
+shape = SubResource( 1 )
+top = true
+
+[node name="Node2D2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 480, 448 )
+scale = Vector2( 59.6251, 0.800729 )
+shape = SubResource( 1 )
+top = false
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 304, 260.849 )
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" parent="." instance=ExtResource( 5 )]
+position = Vector2( 604, 236 )
+Anim = "TV"
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2( 1040, 261.705 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2( 604, 215 )
+shape = SubResource( 3 )
+
+[node name="AnimatedSprite2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 928, 320 )
+Anim = "Cat"
+
+[node name="AnimatedSprite3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 384, 400 )
+Anim = "Heater"
+
+[node name="AnimatedSprite4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 672, 224 )
+Anim = "WindowTop1"
+
+[node name="AnimatedSprite5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 672, 288 )
+Anim = "WindowBottom1"
+
+[node name="NPC" parent="." instance=ExtResource( 6 )]
+position = Vector2( 608, 352 )
+Folder = "LevelThree/"
+npcName = "Mom"
+dialogueSourceName = "dog"
+Appearance = "FemaleElder"
+wander = true
+wanderArea = Vector2( 150, 1 )
+
+[node name="NPC2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 928, 304 )
+Folder = "LevelThree/"
+npcName = "Cat"
+dialogueSourceName = "dog"
+Appearance = "NONE"
+wanderArea = Vector2( 150, 1 )

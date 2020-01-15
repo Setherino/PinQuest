@@ -41,20 +41,24 @@ var taskDialogue = [ ]
 
 var animSprite
 
+
 func setChar(var character):
 	Appearance = character
 	
-	for i in characters:
-		if has_node(i):
-			get_node(i).queue_free()
 	
-	print("getting node" + str(characters.find(character)))
+	for i in get_node("Container").get_children():
+		i.queue_free()
+	
 	if characters.has(character):
 		animSprite = chars.getChar(characters.find(character))
 	else:
 		animSprite = chars.getChar(0)
 	
-	add_child(animSprite)
+	if character == "NONE":
+		wander = false
+		animSprite.set_visible(false)
+	
+	get_node("Container").add_child(animSprite)
 
 #this fills the first of the two arrays described above with information from the file.
 func fillDefault():
@@ -65,7 +69,6 @@ func fillDefault():
 
 	var line = dgSource.get_line() #creating a line variable to store the text
 	while line != "-TASK DIALOGUE:" && !dgSource.eof_reached(): #until you get to the task header...
-		print("line " + line)
 		line = dgSource.get_line() #get a line
 		if line != "-TASK DIALOGUE:": #make sure it's not the task header
 			defaultDialogue.push_back(line) #if it's not, then add it to the array
@@ -177,11 +180,17 @@ var stopped = false
 func go():
 	stopped = false
 
+func deleteTimer(var timer : Object):
+	timer.queue_free()
+
+
 func makeTimer(var instruction,var time = 2.0):
 	var t = Timer.new()
 	t.set_wait_time(time)
 	t.set_one_shot(true)
 	t.connect("timeout",self,instruction)
+	var param = [t]
+	t.connect("timeout",self,"deleteTimer",param)
 	add_child(t)
 	t.start()
 
@@ -213,12 +222,10 @@ func _physics_process(delta):
 		var direction = randi()%int(stillness+2)
 		if direction == 0: #left/right
 			if wanderArea.x <= 2:
-				print("meme")
 				goalPos = Vector2(position.x,round(rand_range(wanderArea.y*-1,wanderArea.y)))
 			goalPos = Vector2(round(rand_range(wanderArea.x*-1,wanderArea.x)),position.y)
 		elif direction == 1: #up/down
 			if wanderArea.y <= 2:
-				print("meme")
 				goalPos = Vector2(round(rand_range(wanderArea.x*-1,wanderArea.x)),position.y)
 			goalPos = Vector2(position.x,round(rand_range(wanderArea.y*-1,wanderArea.y)))
 		else:

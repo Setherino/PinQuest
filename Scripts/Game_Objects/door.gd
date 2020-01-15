@@ -48,10 +48,16 @@ func changeTexture(var type):
 	
 	get_node("lowerDoor").set_region_rect(closedDoor1Rect)
 
+func changeVolume():
+	sound.set_volume_db(main.SFXVolume)
+	sound2.set_volume_db(main.SFXVolume)
+
 func _ready():
 	if Engine.editor_hint:
 		return
 	
+	changeVolume()
+	main.connect("volumeChange",self,"changeVolume")
 	
 	if triggered:
 		link.connect("whenChanged",self,"whenLinkChanged")

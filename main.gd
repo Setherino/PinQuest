@@ -34,8 +34,9 @@ var deleteTaskList = false
 var interact = false
 var interactWith = "this"
 
+var changeOnDoor = true
 
-var playerCharacter : int
+var playerCharacter : int = 6
 
 #for the VHS effect
 var vhsEffect = 3
@@ -108,6 +109,7 @@ func clearSaved():
 	levelFolder = "na"
 	dir.remove("res://temp/")
 
+var jumping = false
 
 func startTask():
 	emit_signal("taskStarted")
@@ -168,6 +170,12 @@ signal JumpCheck
 func jumpCheck():
 	emit_signal("JumpCheck")
 
+var SFXVolume = 0
+
+signal volumeChange
+
+func updateVolume():
+	emit_signal("volumeChange")
 
 func _ready():
 	if Engine.editor_hint: #if we're in the editor

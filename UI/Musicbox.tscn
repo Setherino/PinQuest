@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/UI/Musicbox.gd" type="Script" id=1]
+
+[node name="Musicbox" type="PanelContainer"]
+margin_right = 528.0
+margin_bottom = 34.0
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 521.0
+margin_bottom = 27.0
+
+[node name="Back" type="Button" parent="HBoxContainer"]
+margin_right = 75.0
+margin_bottom = 20.0
+size_flags_vertical = 3
+disabled = true
+text = " Previous "
+
+[node name="Display" type="Label" parent="HBoxContainer"]
+margin_left = 79.0
+margin_right = 460.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "No music available."
+align = 1
+valign = 1
+
+[node name="Forward" type="Button" parent="HBoxContainer"]
+margin_left = 464.0
+margin_right = 514.0
+margin_bottom = 20.0
+size_flags_vertical = 3
+disabled = true
+text = " Next "
+[connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="HBoxContainer/Forward" to="." method="_on_Forward_pressed"]

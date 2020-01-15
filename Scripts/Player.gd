@@ -65,6 +65,11 @@ func _ready():
 
 #this makes the player jump, obviously.
 func makeJump(height,force = false):
+	if !outside:
+		return
+	
+	
+	main.jumping = true
 	if !force: #if it's not a forcejump...
 		motion.y += height #add the height to the player velocity
 	else: #if it is
@@ -246,6 +251,7 @@ func _physics_process(delta):
 		motionY = 0
 		motion.y = 0
 		self.name = "Player"
+		main.jumping = false
 	
 	animation()
 	get_node("shadowBody/camera").move_and_slide(Vector2(0,motion.y*.5),UP)

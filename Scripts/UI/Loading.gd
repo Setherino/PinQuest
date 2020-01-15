@@ -30,6 +30,8 @@ func next_scene():
 	else:
 		get_tree().change_scene(level)
 	main.movementEnabled = true
+	if main.changeOnDoor:
+		Hud.get_node("HUDElement").changeSong(-1)
 	var t = Timer.new()
 	add_child(t)
 	t.set_wait_time(1)
@@ -63,50 +65,11 @@ func getFact():
 	#and return it.
 	return line
 
-#takes a file name and returns the file's directory
-func getDir(var fileName):
-	var lastSlash = fileName.find_last("/")
-	
-	fileName.erase(lastSlash,fileName.length()-lastSlash)
-	
-	return fileName
 
 
 
-func saveToTemp():
-	var packedScene = PackedScene.new() #create a new packed scene resource
-	packedScene.pack(get_tree().get_current_scene()) #fill it with the current scene
-	
-	#get it's (the current scene's) location.
-	var saveLocation = str(get_tree().get_current_scene().filename)
-	
-	#modify it's location to inculde a "temp/" in front...
-	
-	if saveLocation.find("res://temp/",0) == -1: #if it doesn't have temp/
-		saveLocation = saveLocation.insert(6,"temp/") #add it.
-		#we insert it in place 6 so it looks like: "res://temp/level..."
-		#                                      so,  123456temp/...
-	
-	#print newly modified saveLocation
-	print("attempting to save in... " + saveLocation)
-	
-	var directory = Directory.new() #making a new directory object
-	var file = File.new() #create a new file object
-	
-	print("looking for directory " + getDir(saveLocation))
-	if directory.dir_exists(getDir(saveLocation)):
-		print("Directory exists! Moving on.")
-	else:
-		print("Directory doesn't exist! Making directory.")
-		directory.make_dir_recursive(getDir(saveLocation))
-	
-	
-	if file.file_exists(saveLocation): #if the file already exists
-		print("save file exists already, deleting...")
-		
-		directory.remove(saveLocation) #delete
-	
-	ResourceSaver.save(saveLocation,packedScene)
+
+
 
 
 
@@ -121,7 +84,7 @@ func _ready():
 	
 	#save the current level, so that if the player comes back it's all the same.
 	if save: #if we want to save (we do usually, except when the player dies)
-		saveToTemp()
+		Hud.saveToTemp()
 	
 	
 	#now we make a timer

@@ -23,6 +23,8 @@ var currentFrame = 0
 func _ready():
 	randomize()
 	current = randi()%14-1
+	while characters[current] == "NO":
+		current = randi()%14-1
 	update()
 
 func rotate():

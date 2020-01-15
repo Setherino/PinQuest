@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Misc/UITheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/UI/mainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Tilemaps/Final_Outdoors_One.tres" type="TileSet" id=3]
 [ext_resource path="res://Tilemaps/Final_Outdoor_Two.tres" type="TileSet" id=4]
-[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Misc/ParallaxLayers.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Misc/VHS effect.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Tools/AnimatedSprite.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Misc/ParallaxLayers.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Misc/VHS effect.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Music/Louie Zong - the intertidal zone.ogg" type="AudioStream" id=9]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -28,7 +30,11 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -131060, 9, 0, -3, 6, 0, -65522, 7, 0, -65521, 8, 0 )
 
-[node name="NPC" parent="." instance=ExtResource( 5 )]
+[node name="AnimatedSprite2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 560, 254 )
+Anim = "Plant"
+
+[node name="NPC" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1056, 528 )
 Folder = "LevelThree/"
 dialogueSourceName = "dog"
@@ -36,15 +42,15 @@ Appearance = "MaleTrafficCop"
 wander = true
 wanderArea = Vector2( 2000, 1 )
 
-[node name="NPC4" parent="." instance=ExtResource( 5 )]
+[node name="NPC4" parent="." instance=ExtResource( 6 )]
 position = Vector2( -96, 528 )
 Folder = "LevelThree/"
 dialogueSourceName = "dog"
-Appearance = "MaleTrafficCop"
+Appearance = "OldBusinessMan"
 wander = true
 wanderArea = Vector2( 2000, 1 )
 
-[node name="NPC2" parent="." instance=ExtResource( 5 )]
+[node name="NPC2" parent="." instance=ExtResource( 6 )]
 position = Vector2( -32, 256 )
 Folder = "LevelThree/"
 dialogueSourceName = "dog"
@@ -53,7 +59,16 @@ wander = true
 stillness = 2
 wanderArea = Vector2( 2000, 1 )
 
-[node name="NPC3" parent="." instance=ExtResource( 5 )]
+[node name="NPC5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 480, -48 )
+Folder = "LevelThree/"
+dialogueSourceName = "dog"
+Appearance = "FemaleYouth"
+wander = true
+stillness = 0
+wanderArea = Vector2( 1, 300 )
+
+[node name="NPC3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 128, 256 )
 Folder = "LevelThree/"
 npcName = "dog"
@@ -64,45 +79,59 @@ stillness = 0
 speed = 200
 wanderArea = Vector2( 2000, 1 )
 
-[node name="ParallaxLayers" parent="." instance=ExtResource( 6 )]
+[node name="ParallaxLayers" parent="." instance=ExtResource( 7 )]
 
-[node name="VHS effect" parent="." instance=ExtResource( 7 )]
+[node name="VHS effect" parent="." instance=ExtResource( 8 )]
 layer = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 margin_left = 45.0
-margin_top = 90.0
-margin_right = 295.0
-margin_bottom = 310.0
+margin_top = 500.0
+margin_right = 976.0
+margin_bottom = 550.0
 theme = ExtResource( 1 )
 
 [node name="newGame" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_right = 250.0
-margin_bottom = 52.0
+margin_right = 229.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "New Game"
 
 [node name="loadGame" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 56.0
-margin_right = 250.0
-margin_bottom = 108.0
+margin_left = 233.0
+margin_right = 462.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Load Game"
 
 [node name="tutorial" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 112.0
-margin_right = 250.0
-margin_bottom = 164.0
+margin_left = 466.0
+margin_right = 695.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Tutorial"
 
 [node name="Exit" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 168.0
-margin_right = 250.0
-margin_bottom = 220.0
+margin_left = 699.0
+margin_right = 931.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Quit"
+
+[node name="AnimatedSprite" parent="." instance=ExtResource( 5 )]
+position = Vector2( 402, 190 )
+
+[node name="AnimatedSprite3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 816, 192 )
+Anim = "Plant"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/newGame" to="." method="_on_newGame_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

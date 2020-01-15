@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - paradise palms.ogg-f9e5934e912a07e1c7cd128726888ad3.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - paradise palms.ogg"
+dest_files=[ "res://.import/Louie Zong - paradise palms.ogg-f9e5934e912a07e1c7cd128726888ad3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

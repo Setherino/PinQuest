@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Louie Zong - lilac lagoon.ogg-d5d701027682abd957d4f6248567acc6.oggstr"
+
+[deps]
+
+source_file="res://Music/Louie Zong - lilac lagoon.ogg"
+dest_files=[ "res://.import/Louie Zong - lilac lagoon.ogg-d5d701027682abd957d4f6248567acc6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
