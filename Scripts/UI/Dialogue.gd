@@ -12,6 +12,11 @@ var dgItem = 0
 
 #triggered by HUD script by the same name
 func dialogue(dgSource:Array,NPCname:String,icon:Texture):
+	print("ass"+dgSource.back()+"ass")
+	
+	while dgSource.back() == "":
+		dgSource.pop_back()
+	
 	dgIcon.set_texture(icon) #set the icon texture
 	dgItem = 0 #start at the 0th dialogue
 	nameText.text = NPCname #set the name text

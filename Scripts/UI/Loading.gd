@@ -21,7 +21,7 @@ func done():
 #own function so it can be triggered by the timers signal
 func next_scene():
 	var file = File.new()
-	var location = level.insert(6,"temp/")
+	var location = level.replace("res://","user://temp/")
 	
 	#checking the temp folder for the scene
 	if file.file_exists(location) && save:

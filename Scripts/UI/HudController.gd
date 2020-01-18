@@ -16,13 +16,35 @@ const loading = preload("res://UI/Loading.tscn")
 
 const vhsEffect = preload("res://Misc/VHS.tscn")
 
+const nxtLevelScreen = preload("res://UI/LevelComplete.tscn")
+
+const timer = preload("res://UI/Timer.tscn")
+
 #is the inventory open?
 var inventoryOpen = false
 
+func clearSaves():
+	var dir = Directory.new()
+	dir.remove("user://temp")
+
+
+func makeTimer(var timeMins:int):
+	var timeInstance = timer.instance()
+	timeInstance.timeLimit = timeMins
+	if has_node("Timer"):
+		get_node("Timer").queue_free()
+	
+	add_child(timeInstance)
+
+func levelDone(var message,var nextLevel):
+	get_tree().change_scene("res://UI/LevelComplete.tscn")
+	get_tree().get_root().get_node("LevelComplete").message = message
+	
+	get_tree().get_root().get_node("LevelComplete").nextLevel = message
+
+
 #allows loading levels with loading screen
 func startLoading(var nextLevel,save = true):
-	
-	
 	var loadUI = loading.instance() #create instance of loading screen
 	loadUI.level = nextLevel #set it's level variable
 	loadUI.save = save
@@ -182,7 +204,7 @@ func showHud():
 
 func _ready():
 	showHud()
-	
+	clearSaves()
 
 #--------------
 #saving stuff
@@ -206,8 +228,10 @@ func saveToTemp():
 	
 	#modify it's location to inculde a "temp/" in front...
 	
-	if saveLocation.find("res://temp/",0) == -1: #if it doesn't have temp/
-		saveLocation = saveLocation.insert(6,"temp/") #add it.
+	
+	
+	if saveLocation.find("user://temp/",0) == -1: #if it doesn't have temp/
+		saveLocation = saveLocation.replace("res://","user://temp/") #add it.
 		#we insert it in place 6 so it looks like: "res://temp/level..."
 		#                                      so,  123456temp/...
 	

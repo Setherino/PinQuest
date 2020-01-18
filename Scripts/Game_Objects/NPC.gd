@@ -41,7 +41,7 @@ var taskDialogue = [ ]
 
 var animSprite
 
-
+var useTaskTitle = false
 func setChar(var character):
 	Appearance = character
 	
@@ -92,6 +92,7 @@ func fillTaskDG():
 
 var speed
 
+var taskName
 
 func _ready():
 	if Engine.editor_hint:
@@ -99,6 +100,8 @@ func _ready():
 	setChar(get_parent().Appearance)
 	print("I EXIST!!")
 	
+	taskName = get_parent().taskName
+	useTaskTitle = get_parent().useTaskName
 	Folder = get_parent().Folder
 	npcName = get_parent().npcName
 	dialogueSourceName = get_parent().dialogueSourceName
@@ -141,7 +144,7 @@ func _input(event):
 		if saveRam && defaultDialogue.size() == 0:
 			fillDefault()
 			fillTaskDG()
-		if main.taskGoal == npcName && main.taskType != 1:
+		if ((main.taskName == taskName && useTaskTitle) or (main.taskGoal == npcName && !useTaskTitle)) && main.taskType != 1:
 			if main.taskType == 2:
 				talkTo()
 			elif main.taskType == 3:
@@ -169,8 +172,8 @@ func _on_Area2D_body_exited(body):
 
 
 func _process(delta):
-	if main.taskGoal == npcName:
-		main.taskTargetX = position.x
+	if ((main.taskName == taskName && useTaskTitle) or (main.taskGoal == npcName && !useTaskTitle)):
+		main.taskTargetX = get_parent().position.x + position.x
 
 var motion = Vector2(0,0)
 var goalPos = Vector2(0,0)

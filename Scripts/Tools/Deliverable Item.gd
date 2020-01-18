@@ -28,6 +28,8 @@ func _ready():
 	main.connect("taskStarted",self,"_taskStart")
 	
 	get_node("Sprite").texture = texture
+	
+	_taskStart()
 
 func _taskStart():
 	if Engine.editor_hint:
@@ -38,10 +40,14 @@ func _taskStart():
 		get_node("Sprite").visible = true
 
 func _on_Area2D_body_entered(body):
+	if body.name != "Player":
+		return
+	
 	if main.taskName == sourceTask:
 		Hud.showMessage("Item Collected","You've collected the " + main.taskGoal + 
 		". Now you have to deliver it too " + DeliverTo + 
 		". \nYou can follow the arrow at the bottom of your screen to find " + DeliverTo + ".")
 		main.taskGoal = DeliverTo
 		main.taskAmmountNeeded = 1
+		main.updateTaskTarget()
 		queue_free()

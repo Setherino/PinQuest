@@ -40,6 +40,8 @@ export var questCoinsRequired = 0
  #the location of next level
 export var nextLevel = "level2"
 
+export var timeLimit:int = 20
+
 #loads task element so we can create them later
 const tasks = preload("res://UI/Task.tscn")
 
@@ -72,6 +74,11 @@ func _ready():
 	
 	#if we're not in the engine
 	if !Engine.editor_hint:
+		#timer stuff
+		if !Hud.has_node("Timer"): #if there isn't already a timer
+			Hud.makeTimer(timeLimit) #make one with the desired time limit
+		
+		
 		#update the number of coins & tasks required
 		main.questCoins = questCoinsRequired
 		main.questTasks = questTasksRequired

@@ -160,10 +160,28 @@ func _ready():
 		addTask(main.taskFileNames[i],i)
 		i = i + 1 #iterate iterator
 
+func getMessage():
+	var message
+	message = "You've finished the level, great job!"
+	if main.levelFolder == "Debug":
+		message = "You've finished the tutorial, great job!"
+	elif main.levelFolder == "LevelOne":
+		pass
+	elif main.levelFolder == "LevelTwo":
+		pass
+	elif main.levelFolder == "LevelThree":
+		pass
+	elif main.levelFolder == "LevelFour":
+		pass
+	
+	
+	return message
+
+
+
 #when the "complete quest" button is pressed...
 func _on_Button_pressed():
-	main.levelFolder = "na" #reset the levelFolder (used by the TaskManager)
-	Hud.startLoading(main.nextLevel) #load the next level w/ loading screen
+	Hud.levelDone(getMessage(),main.nextLevel)
 
 
 func _on_HSlider_value_changed(value):

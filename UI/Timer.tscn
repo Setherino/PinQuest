@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/UI/Timer.gd" type="Script" id=1]
+[ext_resource path="res://Misc/UITheme.tres" type="Theme" id=2]
+
+[node name="Timer" type="CanvasLayer"]
+layer = 4
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 704.0
+margin_top = 496.0
+margin_right = 1007.0
+margin_bottom = 520.0
+theme = ExtResource( 2 )
+text = "You have 20:0 minutes left to complete the level."
+align = 1
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Outdoors_One.tres" type="TileSet" id=1]
 [ext_resource path="res://Tilemaps/Final_Outdoor_Two.tres" type="TileSet" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=9]
+[ext_resource path="res://MiscImages/Coke.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -243,3 +246,20 @@ z_index = 1
 position = Vector2( 1568, 800 )
 z_index = 1
 nextLevel = "res://Scenes/Levels/Level3/Interiors/SchoolHouse.tscn"
+
+[node name="TaskManager" parent="." instance=ExtResource( 8 )]
+position = Vector2( 3285, 1679 )
+Folder = "LevelOne"
+taskFileNames = [ "task0", "task1", "task2", "task3", "task4", "task5", "task6", "task7", "task8", "task9", "task10" ]
+questTasksRequired = 0
+questCoinsRequired = 0
+nextLevel = "level2"
+
+[node name="Spawn Area" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2144, 992 )
+z_index = 1
+spawnArea = Vector2( 500, 100 )
+areaColor = Color( 0.12549, 1, 0, 1 )
+spriteScale = 0.1
+sourceTask = "Community Service"
+texture = ExtResource( 10 )

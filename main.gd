@@ -90,6 +90,13 @@ func forceJump(var height):
 	print("forcejump")
 	emit_signal("forceJump",height,true)
 
+signal updateTaskTarget
+
+func updateTaskTarget():
+	emit_signal("updateTaskTarget")
+	pass
+
+
 #resets all variables to default levels
 func playerDead():
 	print("player dead")
@@ -100,7 +107,12 @@ func playerDead():
 	taskStarted.clear()
 	AmmountOfTasksComplete = 0
 	coins = 0
-	Hud.startLoading("res://Scenes/Levels/Debug/TestLevel.tscn",false)
+	var restartLevel = get_tree().get_current_scene().filename
+	
+	if restartLevel.find("user://") != -1:
+		restartLevel = restartLevel.replace("user://temp/","res://")
+	
+	Hud.startLoading(restartLevel,false)
 	playerHealth = 10
 
 #deletes temp folder, clearing progress
@@ -144,7 +156,7 @@ func _process(delta):
 	if taskName != "none":
 		if taskType == 1:
 			if taskAmmountCollected >= taskAmmountNeeded:
-				Hud.showMessage("Task completed!","You have successfully completed the task! \nOpepn your task menu to start a new one!")
+				Hud.showMessage("Task completed!","You have successfully completed the task! \nOpen your task menu to start a new one!")
 				resetTasks(true)
 				print("YOU COMPLETED THE TASK!!")
 		pass

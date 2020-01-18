@@ -22,7 +22,8 @@ export var stillness = 2
 export var speed = 100
 export var wanderArea = Vector2(200,80) setget setSpawnArea
 export var areaColor = Color(0.517184, 0.375366, 0.960938, 0.298039) setget setAreaColor
-
+export var useTaskName = false
+export var taskName = "none"
 func setWander(var wand):
 	wander = wand
 	update()

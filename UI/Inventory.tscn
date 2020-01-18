@@ -33,7 +33,7 @@ theme = ExtResource( 2 )
 tab_align = 0
 
 [node name="Quest" type="PanelContainer" parent="CanvasLayer/TabContainer"]
-editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
@@ -292,7 +292,6 @@ align = 1
 valign = 1
 
 [node name="Options" type="PanelContainer" parent="CanvasLayer/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
@@ -316,7 +315,6 @@ margin_right = 962.0
 margin_bottom = 60.0
 
 [node name="MusicVolume" type="HBoxContainer" parent="CanvasLayer/TabContainer/Options/VBoxContainer"]
-editor/display_folded = true
 margin_top = 64.0
 margin_right = 962.0
 margin_bottom = 88.0
@@ -327,7 +325,6 @@ margin_bottom = 16.0
 size_flags_horizontal = 3
 min_value = -30.0
 max_value = 0.0
-ticks_on_borders = false
 
 [node name="Label" type="Label" parent="CanvasLayer/TabContainer/Options/VBoxContainer/MusicVolume"]
 margin_left = 786.0
@@ -336,7 +333,6 @@ margin_bottom = 24.0
 text = "Music Volume        (100%)"
 
 [node name="SFX volume" type="HBoxContainer" parent="CanvasLayer/TabContainer/Options/VBoxContainer"]
-editor/display_folded = true
 margin_top = 92.0
 margin_right = 962.0
 margin_bottom = 116.0
@@ -345,9 +341,8 @@ margin_bottom = 116.0
 margin_right = 780.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
-min_value = -40.0
+min_value = -30.0
 max_value = 0.0
-ticks_on_borders = false
 
 [node name="Label" type="Label" parent="CanvasLayer/TabContainer/Options/VBoxContainer/SFX volume"]
 margin_left = 784.0
@@ -409,7 +404,6 @@ size_flags_horizontal = 3
 max_value = 10.0
 value = 3.0
 tick_count = 10
-ticks_on_borders = false
 
 [node name="Label" type="Label" parent="CanvasLayer/TabContainer/Options/VBoxContainer/HBoxContainer"]
 margin_left = 805.0
