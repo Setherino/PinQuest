@@ -114,12 +114,7 @@ Folder = "LevelThree/"
 npcName = "Cat?"
 dialogueSourceName = "dog"
 Appearance = "NONE"
-dialogueIcon = null
-wander = false
-speed = 100
 wanderArea = Vector2( 150, 1 )
-useTaskName = false
-taskName = "none"
 
 [node name="Coin" parent="." instance=ExtResource( 7 )]
 position = Vector2( 432, 312.5 )

@@ -70,7 +70,7 @@ any = true
 
 [node name="door" parent="." instance=ExtResource( 5 )]
 position = Vector2( 864, 224 )
-nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+nextLevel = "res://Scenes/Levels/Level1/Level1Outdoor.tscn"
 doorType = 3
 
 [node name="Node2D" parent="." instance=ExtResource( 6 )]

@@ -25,7 +25,7 @@ var inventoryOpen = false
 
 func clearSaves():
 	var dir = Directory.new()
-	dir.remove("user://temp")
+	main.recursiveDelete("user://temp")
 
 
 func makeTimer(var timeMins:int):

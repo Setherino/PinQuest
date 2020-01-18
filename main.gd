@@ -53,7 +53,32 @@ var coins = 0
 var atTop = false
 var atBottom = false
 
-
+#for deleting entire folders
+func recursiveDelete(var folder):
+	var dir = Directory.new() #create a directory object
+	if !dir.dir_exists(folder): #check if the folder to delete actually exists
+		return #if not, then just stop
+	
+	
+	dir.open(folder) #if so, open it
+	dir.list_dir_begin(true,false) #begin listing the items in the directory
+	var fileName #create a filename variable
+	while fileName != "": #loop unitl it's empty
+		
+		fileName = dir.get_next()
+		
+		print(fileName)
+		
+		if dir.current_is_dir():
+			if fileName == "":
+				dir.change_dir("..")
+				dir.remove(folder)
+			else:
+				recursiveDelete(folder + "/" + fileName)
+		elif dir.file_exists(fileName):
+			dir.remove(fileName)
+		else:
+			pass
 
 #task stuff...
 
@@ -111,7 +136,7 @@ func playerDead():
 	
 	if restartLevel.find("user://") != -1:
 		restartLevel = restartLevel.replace("user://temp/","res://")
-	
+	recursiveDelete("user://temp") # deleting everything in the temp folder.
 	Hud.startLoading(restartLevel,false)
 	playerHealth = 10
 

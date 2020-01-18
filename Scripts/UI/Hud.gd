@@ -35,7 +35,39 @@ func changeVolume():
 	sfx.set_volume_db(main.SFXVolume - 10)
 
 
+func getSongFile():
+	if OS.has_feature("standalone"):
+		return
+	
+	var musicFile = File.new()
+	musicFile.open("res://music.task",2)
+	
+	var musicFolder = Directory.new()
+	musicFolder.open("res://Music/")
+	musicFolder.list_dir_begin(true,false)
+	var fileName = musicFolder.get_next()
+	while fileName != "":
+		if fileName.ends_with("ogg"):
+			musicFile.store_line(fileName)
+		fileName = musicFolder.get_next()
+
+func getSongsArray():
+	var musicFile = File.new()
+	musicFile.open("res://music.task",1)
+	
+	var tune
+	
+	while !musicFile.eof_reached():
+		tune = musicFile.get_line()
+		if tune.ends_with("ogg"):
+			musicStreams.append(tune)
+
+
 func _ready():
+	if !OS.has_feature("standalone"):
+		main.recursiveDelete("user://temp")
+	
+	
 	main.connect("volumeChange",self,"changeVolume")
 	if musicStreams.size() > 1:
 		randomize()
@@ -45,15 +77,10 @@ func _ready():
 		music.play()
 		return
 	
-	var musicFolder = Directory.new()
-	musicFolder.open("res://Music/")
-	musicFolder.list_dir_begin(true,false)
-	var fileName = musicFolder.get_next()
-	while fileName != "":
-		if fileName.ends_with("ogg"):
-			print("yeet " + str(musicStreams.size()))
-			musicStreams.append(fileName)
-		fileName = musicFolder.get_next()
+	getSongFile()
+	getSongsArray()
+	
+	
 	randomize()
 	musicStreams.shuffle()
 	print(musicStreams[0])

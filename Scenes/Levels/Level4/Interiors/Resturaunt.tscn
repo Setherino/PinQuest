@@ -6,6 +6,8 @@
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=5]
 
+
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 96, 136 )
 

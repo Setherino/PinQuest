@@ -8,6 +8,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=7]
 
+
+
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="House" type="Node2D"]

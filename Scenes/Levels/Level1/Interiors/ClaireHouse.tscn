@@ -32,7 +32,7 @@ tile_data = PoolIntArray( 0, 131074, 0, 1, 589831, 0, 65536, 655361, 0, 65537, 6
 
 [node name="door" parent="." instance=ExtResource( 2 )]
 position = Vector2( 848, 224 )
-nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+nextLevel = "res://Scenes/Levels/Level1/Level1Outdoor.tscn"
 doorType = 3
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
