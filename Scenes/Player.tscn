@@ -147,7 +147,7 @@ position = Vector2( -577, -48 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "fregroundwires"
-frame = 10
+frame = 8
 speed_scale = 0.95
 playing = true
 centered = false
@@ -157,7 +157,7 @@ position = Vector2( 95, -47.2234 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "fregroundwires"
-frame = 7
+frame = 10
 playing = true
 centered = false
 
@@ -166,7 +166,7 @@ position = Vector2( 767, -48 )
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "fregroundwires"
-frame = 5
+frame = 14
 speed_scale = 1.05
 playing = true
 centered = false
@@ -197,12 +197,11 @@ texture = ExtResource( 10 )
 layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="VHS effect"]
-visible = false
 material = SubResource( 3 )
-margin_left = -558.798
-margin_top = -403.905
-margin_right = 645.202
-margin_bottom = 353.095
+margin_left = -67.0
+margin_top = -6.3111
+margin_right = 1267.0
+margin_bottom = 750.689
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )

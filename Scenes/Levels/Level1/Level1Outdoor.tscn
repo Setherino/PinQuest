@@ -248,7 +248,6 @@ automaticallyDesync = true
 position = Vector2( 3312, 768 )
 scale = Vector2( 200.164, 4.337 )
 shape = SubResource( 1 )
-top = true
 
 [node name="Node2D2" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 2752, 1152 )
