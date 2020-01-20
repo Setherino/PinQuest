@@ -370,6 +370,12 @@ z_index = 2
 source = "Report"
 byGoal = true
 
+[node name="TaskTarget6" parent="." instance=ExtResource( 11 )]
+position = Vector2( 4769.03, 592 )
+z_index = 2
+source = "Letter"
+byGoal = true
+
 [node name="Coins" type="Node2D" parent="."]
 editor/display_folded = true
 

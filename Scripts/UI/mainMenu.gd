@@ -13,3 +13,9 @@ func _on_newGame_pressed():
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
+
+func _on_tutorial_pressed():
+	Hud.showHud() #show the hud
+	#load the new level & select a character
+	Hud.characterSelect("res://Scenes/Levels/Debug/TestLevel.tscn")

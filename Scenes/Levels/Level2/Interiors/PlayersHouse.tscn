@@ -61,7 +61,6 @@ position = Vector2( 864, 384 )
 position = Vector2( 480, 224 )
 scale = Vector2( 59.6251, 0.800729 )
 shape = SubResource( 1 )
-top = true
 
 [node name="Node2D2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 480, 448 )
@@ -144,8 +143,21 @@ DeliverTo = "Mr.Enns"
 texture = ExtResource( 9 )
 spriteScale = 0.05
 
+[node name="Deliverable Item2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 944, 384 )
+sourceTask = "Letter"
+DeliverTo = "Mr.Young"
+texture = ExtResource( 9 )
+spriteScale = 0.05
+
 [node name="TaskTarget" parent="." instance=ExtResource( 10 )]
 position = Vector2( 848, 128 )
 source = "Mr.Enns"
+byGoal = true
+alwaysUpdating = true
+
+[node name="TaskTarget2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 848, 49.5 )
+source = "Mr.Young"
 byGoal = true
 alwaysUpdating = true
