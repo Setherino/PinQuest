@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 46.9734, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 256 )
+
+[node name="House" type="Node2D"]
+
+[node name="bg" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131082, 17, 1, 131083, 17, 1, 131084, 17, 1, 131085, 17, 1, 131086, 17, 1, 131087, 17, 1, 196618, 14, 1, 196619, 14, 65537, 196620, 14, 65537, 196621, 14, 65537, 196622, 14, 65537, 196623, 14, 65543, 262154, 6, 65536, 262155, 6, 65536, 262156, 6, 65536, 262157, 6, 65536, 262158, 6, 65536, 262159, 6, 65536, 327690, 6, 65536, 327691, 6, 65536, 327692, 6, 65536, 327693, 6, 65536, 327694, 6, 65536, 327695, 6, 65536, 393226, 6, 65536, 393227, 6, 65536, 393228, 6, 65536, 393229, 6, 65536, 393230, 6, 65536, 393231, 6, 65536 )
+
+[node name="fg" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 131074, 0, 1, 589831, 0, 65536, 655361, 0, 65537, 655367, 0, 131072, 720897, 0, 131073, 720903, 0, 327692, 7, 0, 327693, 9, 65538 )
+
+[node name="door" parent="." instance=ExtResource( 2 )]
+position = Vector2( 864, 224 )
+nextLevel = "res://Scenes/Levels/Level2/Interiors/SchoolHouse.tscn"
+doorType = 3
+
+[node name="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 640, 224.554 )
+scale = Vector2( 59.6251, 0.800729 )
+shape = SubResource( 1 )
+top = true
+
+[node name="Node2D2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 688, 456 )
+scale = Vector2( 59.6251, 0.800729 )
+shape = SubResource( 1 )
+top = false
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2( 832, 341.446 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 624, 272 )
+shape = SubResource( 4 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2( 1040, 323 )
+shape = SubResource( 4 )
+
+[node name="NPC" parent="." instance=ExtResource( 4 )]
+position = Vector2( 800, 368 )
+Folder = "LevelOne/"
+npcName = "Mr.Young"
+dialogueSourceName = "brad/Mr.Young"
+Appearance = "OldBusinessMan"
+
+[node name="NPC2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 864, 368 )
+Folder = "LevelTwo/"
+npcName = "Computer"
+dialogueSourceName = "youngPC"
+Appearance = "NONE"
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 865.027, 224 )
+outside = false
+
+[node name="Coin" parent="." instance=ExtResource( 6 )]
+position = Vector2( 704, 393 )
+
+[node name="Coin7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 737, 269 )
+
+[node name="Coin2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 992, 304 )
+
+[node name="Coin3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 928, 393 )
+
+[node name="Coin4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 928, 393 )
+
+[node name="Coin5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 928, 393 )
+
+[node name="Coin6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 928, 393 )

@@ -7,11 +7,11 @@ var nextLevel = "res://UI/mainMenu.tscn"
 onready var messageLabel = get_node("CanvasLayer/VBox/Message")
 
 func _ready():
-	messageLabel.text = message
+	messageLabel.text = Hud.nextLevelMessage
 	
 	pass
 
 func _on_nextLVLbutton_pressed():
 	main.levelFolder = "na"
-	Hud.startLoading(nextLevel)
+	Hud.startLoading(Hud.nextLevelLevel)
 	queue_free()

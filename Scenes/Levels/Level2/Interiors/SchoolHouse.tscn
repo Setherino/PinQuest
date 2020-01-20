@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=5]
-
-
+[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -42,7 +41,12 @@ Appearance = "MalePunk"
 
 [node name="door" parent="." instance=ExtResource( 3 )]
 position = Vector2( 864, 224 )
-nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+nextLevel = "res://Scenes/Levels/Level2/Level2Outdoor.tscn"
+doorType = 3
+
+[node name="door2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 496, 224.108 )
+nextLevel = "res://Scenes/Levels/Level2/Interiors/YoungOffice.tscn"
 doorType = 3
 
 [node name="Node2D" parent="." instance=ExtResource( 4 )]
@@ -88,28 +92,20 @@ shape = SubResource( 4 )
 [node name="NPC" parent="." instance=ExtResource( 5 )]
 position = Vector2( 400, 368 )
 Folder = "LevelThree/"
-npcName = "Ms. Baker"
-dialogueSourceName = "MsBaker"
-Appearance = "FemaleBaker"
+npcName = "Mr.Enns"
+dialogueSourceName = "brad/Mr.Enns"
+Appearance = "OldBusinessMan"
 
 [node name="NPC2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 720, 404 )
-Folder = "LevelThree/"
-npcName = "Katie"
-dialogueSourceName = "Child"
-Appearance = "FemaleYouth"
+position = Vector2( 736, 404 )
+Folder = "LevelTwo/"
+npcName = "Jamar"
+dialogueSourceName = "brad/Jamar"
+Appearance = "MalePunk"
 wander = true
-stillness = 0
-wanderArea = Vector2( 250, 40 )
-areaColor = Color( 0.0196078, 0.74902, 1, 0.168627 )
+wanderArea = Vector2( 150, 2 )
 
-[node name="NPC3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 528, 304 )
-Folder = "LevelThree/"
-npcName = "Johnothan"
-dialogueSourceName = "Johno"
-Appearance = "MaleYouth"
-wander = true
-stillness = 2
-wanderArea = Vector2( 100, 50 )
-areaColor = Color( 1, 0.501961, 0.501961, 0.231373 )
+[node name="TaskTarget" parent="." instance=ExtResource( 6 )]
+position = Vector2( 496, 128 )
+source = "Mr.Young"
+byGoal = true

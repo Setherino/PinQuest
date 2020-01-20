@@ -45,6 +45,7 @@ func setChar(character : int):
 
 
 func _ready():
+	main.startTask(false)
 	setChar(main.playerCharacter)
 	Hud.tutorial = tutorial
 	get_node("Sprite").queue_free()

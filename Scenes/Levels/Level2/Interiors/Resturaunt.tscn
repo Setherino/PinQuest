@@ -6,8 +6,6 @@
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=5]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 96, 136 )
 
@@ -41,7 +39,7 @@ outside = false
 
 [node name="Andy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 224, 336 )
-Folder = "LevelThree/"
+Folder = "LevelTwo/"
 npcName = "Andy"
 dialogueSourceName = "Andy"
 Appearance = "MaleCasual"
@@ -59,7 +57,7 @@ tile_data = PoolIntArray( 262145, 15, 0, 262158, 10, 65537, 327682, 4, 0, 327683
 
 [node name="door" parent="." instance=ExtResource( 4 )]
 position = Vector2( 608, 288 )
-nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+nextLevel = "res://Scenes/Levels/Level2/Level2Outdoor.tscn"
 doorType = 2
 
 [node name="Collisions" type="Node" parent="."]

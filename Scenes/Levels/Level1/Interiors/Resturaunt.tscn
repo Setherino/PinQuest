@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 96, 136 )
@@ -35,19 +34,8 @@ format = 1
 tile_data = PoolIntArray( 0, 393220, 0, 9, 65536, 0, 10, 65537, 0, 65536, 262158, 0, 262147, 9, 65536, 262148, 9, 65536 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 609.027, 286 )
+position = Vector2( 608, 304 )
 outside = false
-
-[node name="Andy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 224, 336 )
-Folder = "LevelThree/"
-npcName = "Andy"
-dialogueSourceName = "Andy"
-Appearance = "MaleCasual"
-wander = true
-stillness = 10
-speed = 75
-wanderArea = Vector2( 80, 2 )
 
 [node name="TileMap2" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -56,7 +44,7 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 262145, 15, 0, 262158, 10, 65537, 327682, 4, 0, 327683, 4, 1, 327684, 4, 2, 327687, 8, 0, 327693, 8, 0, 393225, 8, 0, 393227, 8, 0, 458759, 8, 0, 458765, 8, 0 )
 
-[node name="door" parent="." instance=ExtResource( 4 )]
+[node name="door" parent="." instance=ExtResource( 3 )]
 position = Vector2( 608, 288 )
 nextLevel = "res://Scenes/Levels/Level1/Level1Outdoor.tscn"
 doorType = 2
@@ -152,29 +140,29 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D7"]
 shape = SubResource( 3 )
 
-[node name="Node2D" parent="Collisions" instance=ExtResource( 5 )]
+[node name="Node2D" parent="Collisions" instance=ExtResource( 4 )]
 position = Vector2( 544, 288.554 )
 scale = Vector2( 68.64, 1 )
 shape = SubResource( 4 )
 top = true
 
-[node name="Node2D2" parent="Collisions" instance=ExtResource( 5 )]
+[node name="Node2D2" parent="Collisions" instance=ExtResource( 4 )]
 position = Vector2( 560, 520.145 )
 scale = Vector2( 68.64, 1 )
 shape = SubResource( 4 )
 top = false
 
-[node name="Coin" parent="." instance=ExtResource( 6 )]
+[node name="Coin" parent="." instance=ExtResource( 5 )]
 position = Vector2( 384, 448 )
 
-[node name="Coin2" parent="." instance=ExtResource( 6 )]
+[node name="Coin2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 672, 352 )
 
-[node name="Coin3" parent="." instance=ExtResource( 6 )]
+[node name="Coin3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 800, 471.5 )
 
-[node name="Coin4" parent="." instance=ExtResource( 6 )]
+[node name="Coin4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 224, 448 )
 
-[node name="Coin5" parent="." instance=ExtResource( 6 )]
+[node name="Coin5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 48, 375.5 )

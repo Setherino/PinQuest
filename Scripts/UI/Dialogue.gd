@@ -12,8 +12,6 @@ var dgItem = 0
 
 #triggered by HUD script by the same name
 func dialogue(dgSource:Array,NPCname:String,icon:Texture):
-	print("ass"+dgSource.back()+"ass")
-	
 	while dgSource.back() == "":
 		dgSource.pop_back()
 	
@@ -39,7 +37,6 @@ func showDial():
 	elif main.taskType == 3:
 		Hud.showMessage("Task Complete!","You successfully delivered the item to " 
 		+ main.taskGoal + ".\nOpen your task menu to start a new task!")
-	pass
 
 #when the push the next button
 func _on_Button_pressed():
@@ -48,7 +45,3 @@ func _on_Button_pressed():
 	
 
 
-
-
-func _ready():
-	pass

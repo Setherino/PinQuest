@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=7]
@@ -59,17 +59,17 @@ z_index = 0
 position = Vector2( 960, 416 )
 z_index = 0
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 864, 224.554 )
+[node name="TaskTarget" parent="." instance=ExtResource( 3 )]
+position = Vector2( 864, 128 )
+any = true
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 864, 240.108 )
 outside = false
 Appearance = "MalePunk"
 
-[node name="TaskTarget" parent="Player" instance=ExtResource( 4 )]
-position = Vector2( 0, -96.554 )
-any = true
-
 [node name="door" parent="." instance=ExtResource( 5 )]
-position = Vector2( 864, 224 )
+position = Vector2( 864, 223.554 )
 nextLevel = "res://Scenes/Levels/Level1/Level1Outdoor.tscn"
 doorType = 3
 

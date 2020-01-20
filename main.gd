@@ -148,9 +148,11 @@ func clearSaved():
 
 var jumping = false
 
-func startTask():
+func startTask(var updateTaskActive = true):
+	taskTargetX = 0
 	emit_signal("taskStarted")
-	taskActive = true
+	if updateTaskActive:
+		taskActive = true
 
 # HERE IS ACTUAL CODE!!
 func resetTasks(var success,var hideTaskPannel = true,clearProgress = false):

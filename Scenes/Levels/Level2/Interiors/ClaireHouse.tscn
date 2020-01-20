@@ -4,9 +4,7 @@
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=5]
-
-
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -34,7 +32,7 @@ tile_data = PoolIntArray( 0, 131074, 0, 1, 589831, 0, 65536, 655361, 0, 65537, 6
 
 [node name="door" parent="." instance=ExtResource( 2 )]
 position = Vector2( 848, 224 )
-nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+nextLevel = "res://Scenes/Levels/Level2/Level2Outdoor.tscn"
 doorType = 3
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
@@ -73,9 +71,17 @@ shape = SubResource( 3 )
 position = Vector2( 1040, 261.705 )
 shape = SubResource( 3 )
 
-[node name="NPC" parent="." instance=ExtResource( 5 )]
-position = Vector2( 560, 352 )
-Folder = "LevelThree/"
-npcName = "Claire"
-dialogueSourceName = "Claire"
-Appearance = "FemaleTrendy"
+[node name="Coin" parent="." instance=ExtResource( 5 )]
+position = Vector2( 432, 336 )
+
+[node name="Coin5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 496, 287.705 )
+
+[node name="Coin2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 672, 279 )
+
+[node name="Coin3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 736, 404 )
+
+[node name="Coin4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 480, 393 )

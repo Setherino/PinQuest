@@ -13,8 +13,15 @@ onready var Time = get_node("CanvasLayer/PanelContainer/HBoxContainer/Time")
 #timer to count
 var timer = Timer.new()
 
+func changeVolume():
+	get_node("sfx").set_volume_db(main.SFXVolume)
+
+
 #called when this thing is loaded in
 func _ready():
+	
+	changeVolume()
+	main.connect("volumeChange",self,"changeVolume")
 	
 	timer.set_wait_time(main.timeLimit)
 	self.add_child(timer)
@@ -34,10 +41,17 @@ var prevCollected = 0
 func _process(delta):
 	Time.text = "Time left: " + str(round(timer.get_time_left())) + " seconds"
 	
-	if main.playerX > main.taskTargetX:
+	if main.taskTargetX == 0:
+		get_node("CanvasLayer/arrow").set_visible(false)
+		get_node("CanvasLayer/Label").set_visible(true)
+	elif main.playerX > main.taskTargetX:
+		get_node("CanvasLayer/arrow").set_visible(true)
+		get_node("CanvasLayer/Label").set_visible(false)
 		get_node("CanvasLayer/arrow").set_flip_h(true)
 	else:
 		get_node("CanvasLayer/arrow").set_flip_h(false)
+		get_node("CanvasLayer/arrow").set_visible(true)
+		get_node("CanvasLayer/Label").set_visible(false)
 	
 	
 	if prevCollected != main.taskAmmountCollected:

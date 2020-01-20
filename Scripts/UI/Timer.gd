@@ -15,8 +15,7 @@ var secondLimit
 func _ready():
 	#label.text = str(round(secondsPassed/60)) + ":" + str(secondsPassed - ((secondsPassed % 60) * 60))
 	secondsPassed = timeLimit * 60
-	pass
-
+	label.text = "You have " + get_time() + " minutes left to complete the level."
 
 func get_time():
 	return str(secondsPassed/60) + ":" + str(secondsPassed % 60)

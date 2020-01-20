@@ -101,5 +101,14 @@ position = Vector2( 66.0002, 500 )
 scale = Vector2( 0.233332, 0.233332 )
 texture = ExtResource( 3 )
 
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+margin_left = 32.0
+margin_top = 496.0
+margin_right = 109.0
+margin_bottom = 520.0
+theme = ExtResource( 2 )
+text = "Go outside"
+
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

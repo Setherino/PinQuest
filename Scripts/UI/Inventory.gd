@@ -59,6 +59,7 @@ func getDesc(location):
 	
 	return line
 
+#retuns the name based on the number stored in the file
 func getType(type:int):
 	match type:
 		1:
@@ -67,6 +68,8 @@ func getType(type:int):
 			return "Talk to NPC"
 		3:
 			return "Delivery"
+		4:
+			return "Interact With"
 
 #adds task element to list
 func addTask(location:String,place):

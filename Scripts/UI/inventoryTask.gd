@@ -40,6 +40,8 @@ func getType(type:String):
 			return 2
 		"Delivery":
 			return 3
+		"Interact With":
+			return 2
 	pass
 
 #when the button is pressed

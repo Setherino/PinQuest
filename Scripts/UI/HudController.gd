@@ -35,13 +35,16 @@ func makeTimer(var timeMins:int):
 		get_node("Timer").queue_free()
 	
 	add_child(timeInstance)
+var  nextLevelMessage
+var nextLevelLevel 
 
 func levelDone(var message,var nextLevel):
+	nextLevelLevel = nextLevel
+	nextLevelMessage = message
 	get_tree().change_scene("res://UI/LevelComplete.tscn")
-	get_tree().get_root().get_node("LevelComplete").message = message
+	Hud.clearSaves()
+	Hud.hideInventory()
 	
-	get_tree().get_root().get_node("LevelComplete").nextLevel = message
-
 
 #allows loading levels with loading screen
 func startLoading(var nextLevel,save = true):

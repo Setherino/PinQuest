@@ -11,8 +11,6 @@
 [ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=9]
 [ext_resource path="res://MiscImages/Coke.png" type="Texture" id=10]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -57,89 +55,158 @@ editor/display_folded = true
 [node name="AnimatedSprite5" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1664, 832 )
 Anim = "Plant"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite7" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 2640, 704 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite8" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3025, 768 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite9" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3088, 768 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite10" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3153, 768 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite11" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3296, 736 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite24" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 5264, 832 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite25" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 5264, 896 )
 z_index = 2
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite26" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 5264, 960 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite27" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 5264, 1024 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite28" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 5264, 1088 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite19" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1328, 836.295 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite20" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1328, 912 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite21" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1328, 976 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite22" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1328, 1040 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite23" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1328, 1120 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite13" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3424, 736 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite12" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3360, 736 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite14" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3488, 736 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite17" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 4368, 768 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite18" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 4688, 768 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite15" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 4320, 832 )
 Anim = "Plant"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite16" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 4960, 800 )
 Anim = "BannerBlue"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="Trees" type="Node" parent="Animations"]
 editor/display_folded = true
@@ -147,18 +214,30 @@ editor/display_folded = true
 [node name="AnimatedSprite" parent="Animations/Trees" instance=ExtResource( 3 )]
 position = Vector2( 2016, 736 )
 Anim = "Tree"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite2" parent="Animations/Trees" instance=ExtResource( 3 )]
 position = Vector2( 2144, 736 )
 Anim = "Tree"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite3" parent="Animations/Trees" instance=ExtResource( 3 )]
 position = Vector2( 2272, 736 )
 Anim = "Tree"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite4" parent="Animations/Trees" instance=ExtResource( 3 )]
 position = Vector2( 2400, 736 )
 Anim = "Tree"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="Walls" type="Node" parent="."]
 editor/display_folded = true
@@ -167,7 +246,6 @@ editor/display_folded = true
 position = Vector2( 3312, 768 )
 scale = Vector2( 200.164, 4.337 )
 shape = SubResource( 1 )
-top = true
 
 [node name="Node2D2" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 2752, 1152 )
@@ -201,10 +279,14 @@ Folder = "LevelThree/"
 npcName = "Shotzee"
 dialogueSourceName = "dog"
 Appearance = "Dog"
+dialogueIcon = null
 wander = true
 stillness = 2
+speed = 100
 wanderArea = Vector2( 800, 20 )
 areaColor = Color( 1, 0.501961, 0.501961, 0.196078 )
+useTaskName = false
+taskName = "none"
 
 [node name="Oliver" parent="." instance=ExtResource( 5 )]
 position = Vector2( 3568, 944 )
@@ -213,10 +295,14 @@ Folder = "LevelThree/"
 npcName = "Oliver"
 dialogueSourceName = "Oliver"
 Appearance = "MaleStudent1"
+dialogueIcon = null
 wander = true
 stillness = 2
+speed = 100
 wanderArea = Vector2( 600, 130 )
 areaColor = Color( 0.501961, 1, 0.509804, 0.196078 )
+useTaskName = false
+taskName = "none"
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2880, 804.295 )
@@ -256,6 +342,7 @@ taskFileNames = [ "task0", "task1", "task2", "task3", "task4", "task5", "task6",
 questTasksRequired = 0
 questCoinsRequired = 0
 nextLevel = "level2"
+timeLimit = 20
 
 [node name="Spawn Area" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2144, 992 )

@@ -16,8 +16,6 @@
 [ext_resource path="res://Scenes/Tools/Deliverable Item.tscn" type="PackedScene" id=14]
 [ext_resource path="res://MiscImages/PaperStack.png" type="Texture" id=15]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 176 )
 
@@ -136,6 +134,8 @@ byGoal = true
 [node name="Spawn Area" parent="TaskTargets" instance=ExtResource( 7 )]
 position = Vector2( 1272.5, 986.904 )
 spawnArea = Vector2( 400, 100 )
+areaColor = Color( 1, 0.5, 0.5, 1 )
+randomRotation = true
 spriteScale = 0.1
 sourceTask = "Collection"
 ammountToSpawn = 800
@@ -147,61 +147,95 @@ taskFileNames = [ "task0", "task1", "task2" ]
 questTasksRequired = 0
 questCoinsRequired = 5
 nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+timeLimit = 999
 
 [node name="AnimatedSprites" type="Node" parent="."]
 
 [node name="AnimatedSprite" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1232, 768 )
 z_index = 1
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite5" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 784, 736 )
 z_index = 1
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite6" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 480, 896 )
 z_index = 1
 Anim = "Plant"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite2" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1392, 832 )
 z_index = 1
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite10" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1440, 832 )
 z_index = 1
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite7" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1936, 928 )
 z_index = 1
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite13" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 112, 928 )
 z_index = 1
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite8" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1936, 980.295 )
 z_index = 1
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite11" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 112, 980.295 )
 z_index = 1
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite9" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 1936, 1024 )
 z_index = 1
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite12" parent="AnimatedSprites" instance=ExtResource( 10 )]
 position = Vector2( 112, 1024 )
 z_index = 1
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="Messagetriggers" type="Node" parent="."]
 
@@ -218,7 +252,10 @@ Folder = "Debug/"
 npcName = "Claire"
 dialogueSourceName = "Claire"
 Appearance = "FemaleTrendy"
+dialogueIcon = null
+wander = false
 stillness = 0
+speed = 100
 wanderArea = Vector2( 250, 90 )
 areaColor = Color( 0.517184, 0.375366, 0.960938, 0.298039 )
 useTaskName = true
@@ -231,14 +268,17 @@ Folder = "Debug/"
 npcName = "asdasdasdasd"
 dialogueSourceName = "Claire"
 Appearance = "FemaleTrendy"
+dialogueIcon = null
+wander = false
 stillness = 0
+speed = 100
 wanderArea = Vector2( 250, 90 )
 areaColor = Color( 0.517184, 0.375366, 0.960938, 0.298039 )
 useTaskName = true
 taskName = "Talk to NPC"
 
 [node name="Player" parent="." instance=ExtResource( 13 )]
-position = Vector2( 816, 1040 )
+position = Vector2( 320, 944 )
 z_index = 2
 tutorial = true
 Appearance = "MalePunk"
