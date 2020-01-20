@@ -104,6 +104,11 @@ func addTask(location:String,place):
 #previously selected task (used for updating the current task)
 var prevID = -1
 
+func setQuestTooltip():
+	
+	pass
+
+
 func _process(delta):
 	if main.taskID != prevID && main.taskID != 0: #if the current ID has changed (it's changed by the inventoryTask elements)
 		prevID = main.taskID #reset prevID
@@ -155,8 +160,15 @@ func _ready():
 
 	if main.AmmountOfTasksComplete >= main.questTasks && main.coins >= main.questCoins:
 		button.disabled = false
+		button.hint_tooltip = "Press this button to move on to the next level"
 	else:
 		button.disabled = true
+		if main.AmmountOfTasksComplete <= main.questTasks && main.coins <= main.questCoins:
+			button.hint_tooltip = "To complete this level you must first complete the required\nammount of tasks and collect the required ammount of coins"
+		elif  main.AmmountOfTasksComplete <= main.questTasks && main.coins >= main.questCoins:
+			button.hint_tooltip = "You've completed the required ammount of tasks, but you still need to collect coins"
+		elif  main.AmmountOfTasksComplete >= main.questTasks && main.coins <= main.questCoins:
+			button.hint_tooltip = "You've collected enough coins, but you still have to complete the required ammount of tasks"
 	var i = 0 #create iterator variable
 	while i < main.taskFileNames.size():
 		#add a task element for each item

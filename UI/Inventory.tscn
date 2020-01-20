@@ -55,6 +55,7 @@ align = 1
 margin_top = 28.0
 margin_right = 962.0
 margin_bottom = 52.0
+hint_tooltip = "You have to go around the level, and collect coins"
 size_flags_horizontal = 3
 size_flags_vertical = 5
 
@@ -77,6 +78,7 @@ value = 50.0
 margin_top = 56.0
 margin_right = 962.0
 margin_bottom = 80.0
+hint_tooltip = "Click on the \"Tasks\" tab to start a task."
 size_flags_horizontal = 3
 size_flags_vertical = 5
 
@@ -110,13 +112,14 @@ valign = 1
 margin_top = 278.0
 margin_right = 962.0
 margin_bottom = 468.0
+hint_tooltip = "Click this button once you've completed all the
+necissary requirements"
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
 text = "Complete Quest"
 
 [node name="Tasks" type="PanelContainer" parent="CanvasLayer/TabContainer"]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -140,6 +143,7 @@ scroll_horizontal_enabled = false
 [node name="VContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Tasks/Split/Scroll"]
 margin_right = 962.0
 margin_bottom = 253.0
+hint_tooltip = "These are the tasks you've yet to complete"
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -325,7 +329,6 @@ margin_bottom = 16.0
 size_flags_horizontal = 3
 min_value = -30.0
 max_value = 0.0
-ticks_on_borders = false
 
 [node name="Label" type="Label" parent="CanvasLayer/TabContainer/Options/VBoxContainer/MusicVolume"]
 margin_left = 786.0
@@ -344,7 +347,6 @@ margin_bottom = 16.0
 size_flags_horizontal = 3
 min_value = -30.0
 max_value = 0.0
-ticks_on_borders = false
 
 [node name="Label" type="Label" parent="CanvasLayer/TabContainer/Options/VBoxContainer/SFX volume"]
 margin_left = 784.0
@@ -406,7 +408,6 @@ size_flags_horizontal = 3
 max_value = 10.0
 value = 3.0
 tick_count = 10
-ticks_on_borders = false
 
 [node name="Label" type="Label" parent="CanvasLayer/TabContainer/Options/VBoxContainer/HBoxContainer"]
 margin_left = 805.0
