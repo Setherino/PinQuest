@@ -12,6 +12,11 @@ func _ready():
 	pass
 
 func _on_nextLVLbutton_pressed():
+	main.coins = 0
+	if Hud.has_node("Timer"):
+		Hud.get_node("Timer").queue_free()
+	main.AmmountOfTasksComplete = 0
+	main.resetTasks(false,true,true)
 	main.levelFolder = "na"
 	Hud.startLoading(Hud.nextLevelLevel)
 	queue_free()

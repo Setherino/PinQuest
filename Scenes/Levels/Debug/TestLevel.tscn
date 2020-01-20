@@ -94,7 +94,6 @@ shape = SubResource( 1 )
 position = Vector2( 1008, 848 )
 scale = Vector2( 156.114, -2.58868 )
 shape = SubResource( 2 )
-top = true
 
 [node name="Bottom" parent="World Edges" instance=ExtResource( 4 )]
 position = Vector2( 992, 1152 )
@@ -103,7 +102,6 @@ shape = SubResource( 2 )
 top = false
 
 [node name="Coins" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Coin" parent="Coins" instance=ExtResource( 5 )]
 position = Vector2( 544, 945 )
@@ -113,6 +111,9 @@ position = Vector2( 480, 945 )
 
 [node name="Coin3" parent="Coins" instance=ExtResource( 5 )]
 position = Vector2( 736, 944 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 1456, 960 )
 
 [node name="Coin4" parent="Coins" instance=ExtResource( 5 )]
 position = Vector2( 672, 944 )
@@ -144,9 +145,9 @@ texture = ExtResource( 8 )
 [node name="TaskManager" parent="." instance=ExtResource( 9 )]
 position = Vector2( -288, 1584 )
 taskFileNames = [ "task0", "task1", "task2" ]
-questTasksRequired = 0
-questCoinsRequired = 5
-nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+questTasksRequired = 3
+questCoinsRequired = 7
+nextLevel = "res://Scenes/Levels/Level1/Level1Outdoor.tscn"
 timeLimit = 999
 
 [node name="AnimatedSprites" type="Node" parent="."]
@@ -245,6 +246,13 @@ z_index = 1
 messageTitle = "Welcome to Pin Quest!"
 messageBody = "Use WASD or the ARROW KEYS to move to Claire, and speak with her."
 
+[node name="MessageTrigger2" parent="Messagetriggers" instance=ExtResource( 11 )]
+position = Vector2( 1456, 960 )
+scale = Vector2( 0.640005, 0.56 )
+z_index = 1
+messageTitle = "Coins"
+messageBody = "Some coins will be outside, but some are inside, so you might have to look for them!"
+
 [node name="NPC" parent="." instance=ExtResource( 12 )]
 position = Vector2( 798.947, 947.295 )
 z_index = 1
@@ -252,29 +260,9 @@ Folder = "Debug/"
 npcName = "Claire"
 dialogueSourceName = "Claire"
 Appearance = "FemaleTrendy"
-dialogueIcon = null
-wander = false
 stillness = 0
-speed = 100
 wanderArea = Vector2( 250, 90 )
 areaColor = Color( 0.517184, 0.375366, 0.960938, 0.298039 )
-useTaskName = true
-taskName = "Talk to NPC"
-
-[node name="NPC2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 848, 947.839 )
-z_index = 1
-Folder = "Debug/"
-npcName = "asdasdasdasd"
-dialogueSourceName = "Claire"
-Appearance = "FemaleTrendy"
-dialogueIcon = null
-wander = false
-stillness = 0
-speed = 100
-wanderArea = Vector2( 250, 90 )
-areaColor = Color( 0.517184, 0.375366, 0.960938, 0.298039 )
-useTaskName = true
 taskName = "Talk to NPC"
 
 [node name="Player" parent="." instance=ExtResource( 13 )]

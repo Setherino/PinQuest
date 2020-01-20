@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=5]
-
-
+[ext_resource path="res://Scenes/Tools/Deliverable Item.tscn" type="PackedScene" id=5]
+[ext_resource path="res://MiscImages/PaperStack.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -46,7 +47,6 @@ Appearance = "MalePunk"
 position = Vector2( 480, 224 )
 scale = Vector2( 59.6251, 0.800729 )
 shape = SubResource( 1 )
-top = true
 
 [node name="Node2D2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 480, 448 )
@@ -73,9 +73,30 @@ shape = SubResource( 3 )
 position = Vector2( 1040, 261.705 )
 shape = SubResource( 3 )
 
-[node name="NPC" parent="." instance=ExtResource( 5 )]
-position = Vector2( 560, 352 )
-Folder = "LevelThree/"
-npcName = "Claire"
-dialogueSourceName = "Claire"
-Appearance = "FemaleTrendy"
+[node name="Deliverable Item" parent="." instance=ExtResource( 5 )]
+position = Vector2( 704, 304 )
+sourceTask = "Grade Papers"
+DeliverTo = "Mr.Johnson"
+texture = ExtResource( 6 )
+spriteScale = 0.05
+
+[node name="TaskTarget" parent="." instance=ExtResource( 7 )]
+position = Vector2( 848, 128 )
+source = "Mr.Johnson"
+byGoal = true
+alwaysUpdating = true
+
+[node name="Coin" parent="." instance=ExtResource( 8 )]
+position = Vector2( 432, 336 )
+
+[node name="Coin2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 640, 260.849 )
+
+[node name="Coin3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 867.059, 359.5 )
+
+[node name="Coin4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 675.5, 404 )
+
+[node name="Coin5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 944, 288 )

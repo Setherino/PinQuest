@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Outdoors_One.tres" type="TileSet" id=1]
 [ext_resource path="res://Tilemaps/Final_Outdoor_Two.tres" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=9]
 [ext_resource path="res://MiscImages/Coke.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -20,6 +21,7 @@ extents = Vector2( 48, 393 )
 [node name="Level3Outdoor" type="Node2D"]
 
 [node name="Tilemaps" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Tile1BG" type="TileMap" parent="Tilemaps"]
 scale = Vector2( 2, 2 )
@@ -41,14 +43,10 @@ Folder = "LevelThree/"
 npcName = "Claire"
 dialogueSourceName = "dog"
 Appearance = "FemaleTrendy"
-dialogueIcon = null
 wander = true
 stillness = 2
-speed = 100
 wanderArea = Vector2( 325, 20 )
 areaColor = Color( 1, 0.501961, 0.501961, 0.196078 )
-useTaskName = false
-taskName = "none"
 
 [node name="Tile1 FG" type="TileMap" parent="Tilemaps"]
 scale = Vector2( 2, 2 )
@@ -65,6 +63,7 @@ format = 1
 tile_data = PoolIntArray( 786463, 11, 0, 786465, 11, 0, 786467, 11, 0, 786469, 11, 0 )
 
 [node name="Animations" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="AnimatedSprite5" parent="Animations" instance=ExtResource( 4 )]
 position = Vector2( 1664, 832 )
@@ -253,6 +252,7 @@ playBackwards = false
 automaticallyDesync = true
 
 [node name="Walls" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Node2D4" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 3312, 768 )
@@ -291,17 +291,13 @@ Folder = "LevelThree/"
 npcName = "Shotzee"
 dialogueSourceName = "dog"
 Appearance = "Dog"
-dialogueIcon = null
 wander = true
 stillness = 2
-speed = 100
 wanderArea = Vector2( 800, 20 )
 areaColor = Color( 1, 0.501961, 0.501961, 0.196078 )
-useTaskName = false
-taskName = "none"
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2128, 880 )
+position = Vector2( 3504, 928 )
 z_index = 2
 
 [node name="door" parent="." instance=ExtResource( 7 )]
@@ -328,16 +324,16 @@ nextLevel = "res://Scenes/Levels/Level2/Interiors/SchoolHouse.tscn"
 position = Vector2( 3285, 1679 )
 Folder = "LevelTwo"
 taskFileNames = [ "task0", "task1", "task2", "task3", "task4" ]
-questTasksRequired = 0
-questCoinsRequired = 0
+questTasksRequired = 5
+questCoinsRequired = 20
 nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
-timeLimit = 20
 
 [node name="Spawn Area" parent="." instance=ExtResource( 9 )]
 position = Vector2( 3520, 992 )
 z_index = 1
 spawnArea = Vector2( 500, 100 )
 areaColor = Color( 0.12549, 1, 0, 1 )
+randomRotation = true
 spriteScale = 0.1
 sourceTask = "Community Service 2"
 ammountToSpawn = 10
@@ -373,3 +369,39 @@ position = Vector2( 4769.03, 672 )
 z_index = 2
 source = "Report"
 byGoal = true
+
+[node name="Coins" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Coin" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 3184, 960 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 2800, 912 )
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 2544, 944 )
+
+[node name="Coin8" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 2208, 920.5 )
+
+[node name="Coin9" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 1825.03, 856.5 )
+
+[node name="Coin10" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 1680, 935.5 )
+
+[node name="Coin11" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 1568, 864 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 3872, 880 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 4080, 1040 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 4528, 856.5 )
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 4935.5, 1024 )

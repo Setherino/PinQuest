@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=5]
-
-
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -42,14 +41,13 @@ Appearance = "MalePunk"
 
 [node name="door" parent="." instance=ExtResource( 3 )]
 position = Vector2( 864, 224 )
-nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+nextLevel = "res://Scenes/Levels/Level4/Level4Outdoor.tscn"
 doorType = 3
 
 [node name="Node2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 480, 224 )
 scale = Vector2( 59.6251, 0.800729 )
 shape = SubResource( 1 )
-top = true
 
 [node name="Node2D2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 480, 512 )
@@ -87,29 +85,42 @@ shape = SubResource( 4 )
 
 [node name="NPC" parent="." instance=ExtResource( 5 )]
 position = Vector2( 400, 368 )
-Folder = "LevelThree/"
-npcName = "Ms. Baker"
-dialogueSourceName = "MsBaker"
-Appearance = "FemaleBaker"
-
-[node name="NPC2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 720, 404 )
-Folder = "LevelThree/"
-npcName = "Katie"
-dialogueSourceName = "Child"
-Appearance = "FemaleYouth"
-wander = true
-stillness = 0
-wanderArea = Vector2( 250, 40 )
-areaColor = Color( 0.0196078, 0.74902, 1, 0.168627 )
+Folder = "LevelFour/"
+npcName = "Mr.Enns"
+dialogueSourceName = "brad/Mr.Enns"
+Appearance = "OldBusinessMan"
 
 [node name="NPC3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 528, 304 )
-Folder = "LevelThree/"
-npcName = "Johnothan"
-dialogueSourceName = "Johno"
-Appearance = "MaleYouth"
+position = Vector2( 800, 416 )
+Folder = "LevelFour/"
+npcName = "Hunter"
+dialogueSourceName = "brad/Hunter"
+Appearance = "MaleTraditional"
 wander = true
 stillness = 2
-wanderArea = Vector2( 100, 50 )
+wanderArea = Vector2( 200, 2 )
 areaColor = Color( 1, 0.501961, 0.501961, 0.231373 )
+
+[node name="Coin" parent="." instance=ExtResource( 6 )]
+position = Vector2( 464, 272 )
+
+[node name="Coin2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 592, 416 )
+
+[node name="Coin3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 960, 295.5 )
+
+[node name="Coin4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 912, 416 )
+
+[node name="Coin5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 416, 480 )
+
+[node name="Coin6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 416, 480 )
+
+[node name="Coin7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 416, 480 )
+
+[node name="Coin8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 416, 480 )

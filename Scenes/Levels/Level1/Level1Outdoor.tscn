@@ -323,7 +323,7 @@ useTaskName = false
 taskName = "none"
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 4737.03, 832 )
+position = Vector2( 3328, 880 )
 z_index = 2
 
 [node name="door" parent="." instance=ExtResource( 7 )]

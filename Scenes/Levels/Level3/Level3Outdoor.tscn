@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Outdoors_One.tres" type="TileSet" id=1]
 [ext_resource path="res://Tilemaps/Final_Outdoor_Two.tres" type="TileSet" id=2]
@@ -8,8 +8,11 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=9]
-[ext_resource path="res://MiscImages/Coke.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=9]
+[ext_resource path="res://MiscImages/Mailboxsprite.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=11]
+[ext_resource path="res://MiscImages/led-light-png-2.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -240,7 +243,6 @@ playBackwards = false
 automaticallyDesync = true
 
 [node name="Walls" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Node2D4" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 3312, 768 )
@@ -272,40 +274,31 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
 shape = SubResource( 2 )
 
+[node name="Claire" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1840, 992 )
+z_index = 1
+Folder = "LevelThree/"
+npcName = "Claire"
+dialogueSourceName = "Claire"
+Appearance = "FemaleTrendy"
+wander = true
+wanderArea = Vector2( 400, 80 )
+areaColor = Color( 0, 1, 0.764706, 0.419608 )
+
 [node name="Shotzee" parent="." instance=ExtResource( 5 )]
-position = Vector2( 4720, 848 )
+position = Vector2( 5456, 992 )
 z_index = 1
 Folder = "LevelThree/"
 npcName = "Shotzee"
 dialogueSourceName = "dog"
 Appearance = "Dog"
-dialogueIcon = null
 wander = true
 stillness = 2
-speed = 100
-wanderArea = Vector2( 800, 20 )
+wanderArea = Vector2( 100, 300 )
 areaColor = Color( 1, 0.501961, 0.501961, 0.196078 )
-useTaskName = false
-taskName = "none"
-
-[node name="Oliver" parent="." instance=ExtResource( 5 )]
-position = Vector2( 3568, 944 )
-z_index = 1
-Folder = "LevelThree/"
-npcName = "Oliver"
-dialogueSourceName = "Oliver"
-Appearance = "MaleStudent1"
-dialogueIcon = null
-wander = true
-stillness = 2
-speed = 100
-wanderArea = Vector2( 600, 130 )
-areaColor = Color( 0.501961, 1, 0.509804, 0.196078 )
-useTaskName = false
-taskName = "none"
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2880, 804.295 )
+position = Vector2( 4560, 880 )
 z_index = 2
 
 [node name="door" parent="." instance=ExtResource( 7 )]
@@ -321,34 +314,122 @@ nextLevel = "res://Scenes/Levels/Level3/Interiors/ClaireHouse.tscn"
 [node name="door4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4512, 800 )
 z_index = 1
+nextLevel = "res://Scenes/Levels/Level3/Interiors/ComputerLab.tscn"
 
 [node name="door5" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4768, 800 )
 z_index = 1
-
-[node name="door6" parent="." instance=ExtResource( 7 )]
-position = Vector2( 5216, 800 )
-z_index = 1
+nextLevel = "res://Scenes/Levels/Level3/Interiors/PlayersHouse.tscn"
 
 [node name="door2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1568, 800 )
 z_index = 1
 nextLevel = "res://Scenes/Levels/Level3/Interiors/SchoolHouse.tscn"
 
-[node name="TaskManager" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3285, 1679 )
-Folder = "LevelOne"
-taskFileNames = [ "task0", "task1", "task2", "task3", "task4", "task5", "task6", "task7", "task8", "task9", "task10" ]
-questTasksRequired = 0
-questCoinsRequired = 0
-nextLevel = "level2"
-timeLimit = 20
+[node name="TaskManager2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 3744, 1621 )
+Folder = "LevelThree"
+taskFileNames = [ "task0", "task1", "task2", "task3", "task4" ]
+questTasksRequired = 5
+questCoinsRequired = 30
+nextLevel = "res://Scenes/Levels/Level4/Level4Outdoor.tscn"
+timeLimit = 15
 
-[node name="Spawn Area" parent="." instance=ExtResource( 9 )]
-position = Vector2( 2144, 992 )
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 2560, 868.295 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 2860.94, 976 )
+
+[node name="Coin10" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 3312, 999.5 )
+
+[node name="Coin11" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 3312, 999.5 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 3440, 928 )
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 4000, 992 )
+
+[node name="Coin8" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 4704, 904.5 )
+
+[node name="Coin9" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 5168, 944 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 2288, 1056 )
+
+[node name="Coin12" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 2480, 952.5 )
+
+[node name="Coin13" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 2288, 861 )
+
+[node name="Coin14" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 2032, 1008 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 1920, 830.295 )
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 1440, 928 )
+
+[node name="Mailboxsprite" type="Sprite" parent="."]
+position = Vector2( 4848, 830.295 )
+scale = Vector2( 2, 2 )
 z_index = 1
-spawnArea = Vector2( 500, 100 )
-areaColor = Color( 0.12549, 1, 0, 1 )
-spriteScale = 0.1
-sourceTask = "Community Service"
 texture = ExtResource( 10 )
+
+[node name="NPC" parent="." instance=ExtResource( 5 )]
+position = Vector2( 4848, 848 )
+z_index = 1
+Folder = "LevelThree/"
+npcName = "Mailbox"
+dialogueSourceName = "brad/Mail Box"
+Appearance = "NONE"
+
+[node name="Spawn Area" parent="." instance=ExtResource( 11 )]
+position = Vector2( 3153, 992 )
+z_index = 1
+spawnArea = Vector2( 500, 80 )
+areaColor = Color( 1, 0.5, 0.5, 1 )
+randomRotation = true
+spriteScale = 0.1
+sourceTask = "Donation"
+ammountToSpawn = 5
+texture = ExtResource( 12 )
+
+[node name="TaskTarget" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2784, 688 )
+z_index = 1
+source = "Papers"
+byGoal = true
+
+[node name="TaskTarget3" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1568, 704 )
+z_index = 1
+source = "Jerry"
+byGoal = true
+
+[node name="TaskTarget5" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1568, 624 )
+z_index = 1
+source = "Mr.Johnson"
+byGoal = true
+
+[node name="TaskTarget2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 4513.03, 704 )
+z_index = 1
+source = "Letter"
+byGoal = true
+
+[node name="TaskTarget4" parent="." instance=ExtResource( 13 )]
+position = Vector2( 4513.03, 624 )
+z_index = 1
+source = "Computer"
+byGoal = true

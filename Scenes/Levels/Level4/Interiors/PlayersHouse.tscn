@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
@@ -6,8 +6,10 @@
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Tools/AnimatedSprite.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=6]
-
-
+[ext_resource path="res://Scenes/Tools/Deliverable Item.tscn" type="PackedScene" id=7]
+[ext_resource path="res://MiscImages/5856ad234f6ae202fedf277b.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -35,7 +37,7 @@ tile_data = PoolIntArray( 0, 131074, 0, 1, 589831, 0, 65536, 655361, 0, 65537, 6
 
 [node name="door" parent="." instance=ExtResource( 2 )]
 position = Vector2( 848, 224 )
-nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+nextLevel = "res://Scenes/Levels/Level4/Level4Outdoor.tscn"
 doorType = 3
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
@@ -47,7 +49,6 @@ Appearance = "MalePunk"
 position = Vector2( 480, 224 )
 scale = Vector2( 59.6251, 0.800729 )
 shape = SubResource( 1 )
-top = true
 
 [node name="Node2D2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 480, 448 )
@@ -64,6 +65,9 @@ shape = SubResource( 2 )
 [node name="AnimatedSprite" parent="." instance=ExtResource( 5 )]
 position = Vector2( 604, 236 )
 Anim = "TV"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 
@@ -75,43 +79,62 @@ shape = SubResource( 2 )
 position = Vector2( 604, 215 )
 shape = SubResource( 3 )
 
-[node name="AnimatedSprite2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 928, 320 )
-Anim = "Cat"
-
 [node name="AnimatedSprite3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 384, 400 )
 Anim = "Heater"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 672, 224 )
 Anim = "WindowTop1"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 672, 288 )
 Anim = "WindowBottom1"
-
-[node name="NPC" parent="." instance=ExtResource( 6 )]
-position = Vector2( 608, 352 )
-Folder = "LevelThree/"
-npcName = "Mom"
-dialogueSourceName = "dog"
-Appearance = "FemaleElder"
-wander = true
-wanderArea = Vector2( 150, 1 )
-
-[node name="NPC2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 928, 304 )
-Folder = "LevelThree/"
-npcName = "Cat"
-dialogueSourceName = "dog"
-Appearance = "NONE"
-wanderArea = Vector2( 150, 1 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="NPC3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 608, 240 )
-Folder = "LevelThree/"
+Folder = "LevelFour/"
 npcName = "TV"
-dialogueSourceName = "dog"
+dialogueSourceName = "TV"
 Appearance = "NONE"
 wanderArea = Vector2( 150, 1 )
+
+[node name="Deliverable Item" parent="." instance=ExtResource( 7 )]
+position = Vector2( 720, 352 )
+sourceTask = "Autobiography"
+DeliverTo = "Hunter"
+texture = ExtResource( 8 )
+spriteScale = 0.05
+
+[node name="TaskTarget" parent="." instance=ExtResource( 9 )]
+position = Vector2( 849.027, 128 )
+source = "Hunter"
+byGoal = true
+alwaysUpdating = true
+
+[node name="Coin" parent="." instance=ExtResource( 10 )]
+position = Vector2( 432, 352 )
+
+[node name="Coin2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 604, 375.5 )
+
+[node name="Coin3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 912, 340.4 )
+
+[node name="Coin4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 912, 340.4 )
+
+[node name="Coin5" parent="." instance=ExtResource( 10 )]
+position = Vector2( 544, 304 )
+
+[node name="Coin6" parent="." instance=ExtResource( 10 )]
+position = Vector2( 864, 404 )

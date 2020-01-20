@@ -6,8 +6,6 @@
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=5]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -36,7 +34,7 @@ format = 1
 tile_data = PoolIntArray( 0, 131074, 0, 1, 589831, 0, 65536, 655361, 0, 65537, 655367, 0, 131072, 720897, 0, 131073, 720903, 0, 196614, 10, 65537, 327690, 8, 0, 327691, 8, 0, 327692, 8, 0, 327694, 8, 0, 327695, 8, 0, 458762, 8, 0, 458763, 8, 0, 458764, 8, 0, 458765, 8, 0, 458766, 8, 0, 458767, 8, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 864, 224.554 )
+position = Vector2( 865.027, 224.554 )
 outside = false
 Appearance = "MalePunk"
 
@@ -49,7 +47,6 @@ doorType = 3
 position = Vector2( 480, 224 )
 scale = Vector2( 59.6251, 0.800729 )
 shape = SubResource( 1 )
-top = true
 
 [node name="Node2D2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 480, 512 )
@@ -88,28 +85,40 @@ shape = SubResource( 4 )
 [node name="NPC" parent="." instance=ExtResource( 5 )]
 position = Vector2( 400, 368 )
 Folder = "LevelThree/"
-npcName = "Ms. Baker"
-dialogueSourceName = "MsBaker"
-Appearance = "FemaleBaker"
+npcName = "Mr.Enns"
+dialogueSourceName = "brad/Mr.Enns"
+Appearance = "OldBusinessMan"
 
 [node name="NPC2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 720, 404 )
 Folder = "LevelThree/"
-npcName = "Katie"
-dialogueSourceName = "Child"
-Appearance = "FemaleYouth"
+npcName = "Joey"
+dialogueSourceName = "brad/Joey"
+Appearance = "MaleStudent"
 wander = true
 stillness = 0
-wanderArea = Vector2( 250, 40 )
+wanderArea = Vector2( 250, 2 )
 areaColor = Color( 0.0196078, 0.74902, 1, 0.168627 )
 
 [node name="NPC3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 528, 304 )
+position = Vector2( 672, 404 )
 Folder = "LevelThree/"
-npcName = "Johnothan"
-dialogueSourceName = "Johno"
-Appearance = "MaleYouth"
+npcName = "Jerry"
+dialogueSourceName = "brad/Jerry"
+Appearance = "MaleStudent1"
 wander = true
-stillness = 2
-wanderArea = Vector2( 100, 50 )
+stillness = 0
+speed = 120
+wanderArea = Vector2( 250, 2 )
+areaColor = Color( 1, 0.501961, 0.501961, 0.231373 )
+
+[node name="NPC4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 560, 240 )
+Folder = "LevelThree/"
+npcName = "Mr.Johnson"
+dialogueSourceName = "brad/Mr.Johnson"
+Appearance = "MaleCasual"
+stillness = 0
+speed = 120
+wanderArea = Vector2( 250, 2 )
 areaColor = Color( 1, 0.501961, 0.501961, 0.231373 )

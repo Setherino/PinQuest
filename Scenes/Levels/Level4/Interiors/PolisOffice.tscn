@@ -33,7 +33,7 @@ tile_data = PoolIntArray( 0, 131074, 0, 1, 589831, 0, 65536, 655361, 0, 65537, 6
 
 [node name="door" parent="." instance=ExtResource( 2 )]
 position = Vector2( 864, 224 )
-nextLevel = "res://Scenes/Levels/Level2/Interiors/SchoolHouse.tscn"
+nextLevel = "res://Scenes/Levels/Level4/Level4Outdoor.tscn"
 doorType = 3
 
 [node name="Node2D" parent="." instance=ExtResource( 3 )]
@@ -67,20 +67,20 @@ shape = SubResource( 3 )
 
 [node name="NPC" parent="." instance=ExtResource( 4 )]
 position = Vector2( 800, 368 )
-Folder = "LevelOne/"
-npcName = "Mr.Young"
-dialogueSourceName = "brad/Mr.Young"
-Appearance = "OldBusinessMan"
+Folder = "LevelFour/"
+npcName = "Jared Polis"
+dialogueSourceName = "brad/Jared Polis"
+Appearance = "MaleBusinessMan"
 
 [node name="NPC2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 875, 369.5 )
+position = Vector2( 875, 368 )
 Folder = "LevelTwo/"
-npcName = "Computer"
+npcName = "PC"
 dialogueSourceName = "youngPC"
 Appearance = "NONE"
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 865.027, 224 )
+position = Vector2( 864, 224 )
 outside = false
 
 [node name="Coin" parent="." instance=ExtResource( 6 )]

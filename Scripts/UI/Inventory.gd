@@ -175,7 +175,7 @@ func getMessage():
 	elif main.levelFolder == "LevelThree":
 		pass
 	elif main.levelFolder == "LevelFour":
-		pass
+		message = "You've finished the game, great job! \n Press the button to go back to the main menu."
 	
 	
 	return message

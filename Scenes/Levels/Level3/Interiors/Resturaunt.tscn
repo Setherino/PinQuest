@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=5]
-
-
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 96, 136 )
@@ -157,10 +156,42 @@ shape = SubResource( 3 )
 position = Vector2( 544, 288.554 )
 scale = Vector2( 68.64, 1 )
 shape = SubResource( 4 )
-top = true
 
 [node name="Node2D2" parent="Collisions" instance=ExtResource( 5 )]
 position = Vector2( 560, 520.145 )
 scale = Vector2( 68.64, 1 )
 shape = SubResource( 4 )
 top = false
+
+[node name="Coin" parent="." instance=ExtResource( 6 )]
+position = Vector2( 224, 432 )
+
+[node name="Coin2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 448, 408.5 )
+
+[node name="Coin3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 640, 352 )
+
+[node name="Coin4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 663.5, 480 )
+
+[node name="Coin5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 944, 408.5 )
+
+[node name="Coin6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 976, 352 )
+
+[node name="Coin7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 976, 352 )
+
+[node name="Coin8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 967.5, 464 )
+
+[node name="Coin9" parent="." instance=ExtResource( 6 )]
+position = Vector2( 976, 352 )
+
+[node name="Coin10" parent="." instance=ExtResource( 6 )]
+position = Vector2( 967.5, 464 )
+
+[node name="Coin11" parent="." instance=ExtResource( 6 )]
+position = Vector2( 967.5, 464 )

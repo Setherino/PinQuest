@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Tilemaps/Final_Outdoors_One.tres" type="TileSet" id=1]
 [ext_resource path="res://Tilemaps/Final_Outdoor_Two.tres" type="TileSet" id=2]
@@ -9,9 +9,9 @@
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=9]
-[ext_resource path="res://MiscImages/Coke.png" type="Texture" id=10]
-
-
+[ext_resource path="res://MiscImages/SinglePage.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -57,89 +57,158 @@ editor/display_folded = true
 [node name="AnimatedSprite5" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1664, 832 )
 Anim = "Plant"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite7" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 2640, 704 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite8" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3025, 768 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite9" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3088, 768 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite10" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3153, 768 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite11" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3296, 736 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite24" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 5264, 832 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite25" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 5264, 896 )
 z_index = 2
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite26" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 5264, 960 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite27" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 5264, 1024 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite28" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 5264, 1088 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite19" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1328, 836.295 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite20" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1328, 912 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite21" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1328, 976 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite22" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1328, 1040 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite23" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 1328, 1120 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite13" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3424, 736 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite12" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3360, 736 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite14" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 3488, 736 )
 Anim = "BannerRed"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite17" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 4368, 768 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite18" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 4688, 768 )
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite15" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 4320, 832 )
 Anim = "Plant"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite16" parent="Animations" instance=ExtResource( 3 )]
 position = Vector2( 4960, 800 )
 Anim = "BannerBlue"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="Trees" type="Node" parent="Animations"]
 editor/display_folded = true
@@ -147,18 +216,30 @@ editor/display_folded = true
 [node name="AnimatedSprite" parent="Animations/Trees" instance=ExtResource( 3 )]
 position = Vector2( 2016, 736 )
 Anim = "Tree"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite2" parent="Animations/Trees" instance=ExtResource( 3 )]
 position = Vector2( 2144, 736 )
 Anim = "Tree"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite3" parent="Animations/Trees" instance=ExtResource( 3 )]
 position = Vector2( 2272, 736 )
 Anim = "Tree"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="AnimatedSprite4" parent="Animations/Trees" instance=ExtResource( 3 )]
 position = Vector2( 2400, 736 )
 Anim = "Tree"
+speedScale = 1
+playBackwards = false
+automaticallyDesync = true
 
 [node name="Walls" type="Node" parent="."]
 editor/display_folded = true
@@ -167,7 +248,6 @@ editor/display_folded = true
 position = Vector2( 3312, 768 )
 scale = Vector2( 200.164, 4.337 )
 shape = SubResource( 1 )
-top = true
 
 [node name="Node2D2" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 2752, 1152 )
@@ -195,7 +275,7 @@ __meta__ = {
 shape = SubResource( 2 )
 
 [node name="Shotzee" parent="." instance=ExtResource( 5 )]
-position = Vector2( 4720, 848 )
+position = Vector2( 4320, 976 )
 z_index = 1
 Folder = "LevelThree/"
 npcName = "Shotzee"
@@ -203,20 +283,8 @@ dialogueSourceName = "dog"
 Appearance = "Dog"
 wander = true
 stillness = 2
-wanderArea = Vector2( 800, 20 )
+wanderArea = Vector2( 800, 80 )
 areaColor = Color( 1, 0.501961, 0.501961, 0.196078 )
-
-[node name="Oliver" parent="." instance=ExtResource( 5 )]
-position = Vector2( 3568, 944 )
-z_index = 1
-Folder = "LevelThree/"
-npcName = "Oliver"
-dialogueSourceName = "Oliver"
-Appearance = "MaleStudent1"
-wander = true
-stillness = 2
-wanderArea = Vector2( 600, 130 )
-areaColor = Color( 0.501961, 1, 0.509804, 0.196078 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2880, 804.295 )
@@ -227,40 +295,139 @@ position = Vector2( 1824, 800 )
 z_index = 1
 nextLevel = "res://Scenes/Levels/Level3/Interiors/Resturaunt.tscn"
 
-[node name="door3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 2784, 800 )
-z_index = 1
-nextLevel = "res://Scenes/Levels/Level3/Interiors/ClaireHouse.tscn"
-
 [node name="door4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4512, 800 )
 z_index = 1
+nextLevel = "res://Scenes/Levels/Level4/Interiors/ComputerLab2.tscn"
 
 [node name="door5" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4768, 800 )
 z_index = 1
+nextLevel = "res://Scenes/Levels/Level4/Interiors/PlayersHouse.tscn"
 
 [node name="door6" parent="." instance=ExtResource( 7 )]
 position = Vector2( 5216, 800 )
 z_index = 1
+nextLevel = "res://Scenes/Levels/Level4/Interiors/PolisOffice.tscn"
 
 [node name="door2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1568, 800 )
 z_index = 1
-nextLevel = "res://Scenes/Levels/Level3/Interiors/SchoolHouse.tscn"
+nextLevel = "res://Scenes/Levels/Level4/Interiors/SchoolHouse.tscn"
 
 [node name="TaskManager" parent="." instance=ExtResource( 8 )]
 position = Vector2( 3285, 1679 )
-Folder = "LevelThree"
-questTasksRequired = 0
-questCoinsRequired = 0
-nextLevel = "level2"
+Folder = "LevelFour"
+taskFileNames = [ "task0", "task1", "task2", "task3", "task4" ]
+questTasksRequired = 5
+questCoinsRequired = 35
+nextLevel = "res://UI/mainMenu.tscn"
+timeLimit = 10
 
 [node name="Spawn Area" parent="." instance=ExtResource( 9 )]
-position = Vector2( 2144, 992 )
+position = Vector2( 2416, 992 )
 z_index = 1
 spawnArea = Vector2( 500, 100 )
 areaColor = Color( 0.12549, 1, 0, 1 )
-spriteScale = 0.1
-sourceTask = "Community Service"
+randomRotation = true
+spriteScale = 2.0
+sourceTask = "Autobiography"
+ammountToSpawn = 5
 texture = ExtResource( 10 )
+
+[node name="TaskTarget" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1568, 688 )
+z_index = 1
+source = "Mr.Enns"
+byGoal = true
+
+[node name="TaskTarget2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1568, 624 )
+z_index = 1
+source = "Hunter"
+byGoal = true
+
+[node name="TaskTarget3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 5217.03, 688 )
+z_index = 1
+source = "Jared Polis"
+byGoal = true
+
+[node name="TaskTarget4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 4512, 688 )
+z_index = 1
+source = "Computer"
+byGoal = true
+
+[node name="TaskTarget5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 4768, 688 )
+z_index = 1
+source = "Autobiography"
+byGoal = true
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 12 )]
+position = Vector2( 1552, 1024 )
+
+[node name="Coins2" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 1712, 912 )
+
+[node name="Coin2" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 1825.03, 1040 )
+
+[node name="Coin3" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 1825.03, 1040 )
+
+[node name="Coin4" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 1825.03, 1040 )
+
+[node name="Coin5" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 2416, 912 )
+
+[node name="Coin6" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 2992, 1072 )
+
+[node name="Coin7" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 3232, 1000.5 )
+
+[node name="Coin8" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 3232, 1000.5 )
+
+[node name="Coin9" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 3632, 912 )
+
+[node name="Coin10" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 4016, 944 )
+
+[node name="Coin11" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 4688, 967.5 )
+
+[node name="Coin12" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 4912, 1016.5 )
+
+[node name="Coin13" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 4912, 1016.5 )
+
+[node name="Coin14" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 4368, 880 )
+
+[node name="Coin15" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 4368, 880 )
+
+[node name="Coin16" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 3232, 836.295 )
+
+[node name="Coin17" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 2608, 856.5 )
+
+[node name="Coin18" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 2016, 1040 )
+
+[node name="Coin19" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 1376, 868.295 )
+
+[node name="Coin20" parent="Coins2" instance=ExtResource( 12 )]
+position = Vector2( 1440, 880 )
