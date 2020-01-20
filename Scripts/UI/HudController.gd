@@ -149,6 +149,9 @@ func hideInventory(): #hide inventory
 #when any key is pressed
 func _input(event):
 	if Input.is_action_just_pressed("inventory"): #if it was one of the inventory buttons
+		if has_node("Message"):
+			return
+		
 		if inventoryOpen: #if the inventory is already open
 			hideInventory()
 		else:

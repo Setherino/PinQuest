@@ -281,14 +281,10 @@ Folder = "LevelThree/"
 npcName = "Shotzee"
 dialogueSourceName = "dog"
 Appearance = "Dog"
-dialogueIcon = null
 wander = true
 stillness = 2
-speed = 100
 wanderArea = Vector2( 800, 20 )
 areaColor = Color( 1, 0.501961, 0.501961, 0.196078 )
-useTaskName = false
-taskName = "none"
 
 [node name="Oliver" parent="." instance=ExtResource( 5 )]
 position = Vector2( 3568, 955 )
@@ -297,14 +293,10 @@ Folder = "LevelOne/"
 npcName = "Oliver"
 dialogueSourceName = "Oliver"
 Appearance = "MaleStudent1"
-dialogueIcon = null
 wander = true
 stillness = 2
-speed = 100
 wanderArea = Vector2( 600, 130 )
 areaColor = Color( 0.501961, 1, 0.509804, 0.196078 )
-useTaskName = false
-taskName = "none"
 
 [node name="Oliver2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2112, 868.295 )
@@ -313,14 +305,10 @@ Folder = "LevelOne/"
 npcName = "Jacque"
 dialogueSourceName = "brad/Jacque"
 Appearance = "FemaleStudent"
-dialogueIcon = null
 wander = true
 stillness = 2
-speed = 100
 wanderArea = Vector2( 200, 50 )
 areaColor = Color( 0.501961, 1, 0.509804, 0.196078 )
-useTaskName = false
-taskName = "none"
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3328, 880 )
@@ -353,7 +341,6 @@ taskFileNames = [ "task0", "task1", "task2", "task3", "task4" ]
 questTasksRequired = 5
 questCoinsRequired = 20
 nextLevel = "res://Scenes/Levels/Level2/Level2Outdoor.tscn"
-timeLimit = 20
 
 [node name="Spawn Area" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2144, 992 )
