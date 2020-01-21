@@ -20,6 +20,7 @@ func _ready():
 func get_time():
 	return str(secondsPassed/60) + ":" + str(secondsPassed % 60)
 
+
 func _on_Timer_timeout():
 	label.text = "You have " + get_time() + " minutes left to complete the level."
 	secondsPassed -= 1

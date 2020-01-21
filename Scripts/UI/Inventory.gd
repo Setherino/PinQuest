@@ -129,6 +129,8 @@ var characters = ["Dog", "Baker",
 
 #when the inventory is created
 func _ready():
+	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/fullscreen toggle").set_pressed(OS.window_fullscreen)
+	
 	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/Toggle Switches/Mute").set_pressed(!Hud.get_node("HUDElement").get_mute())
 	get_node("CanvasLayer/TabContainer/Options/VBoxContainer/Toggle Switches/ChangeSong").set_pressed(main.changeOnDoor)
 	
@@ -177,17 +179,16 @@ func _ready():
 
 func getMessage():
 	var message
-	message = "You've finished the level, great job!"
 	if main.levelFolder == "Debug":
 		message = "You've finished the tutorial, great job!"
 	elif main.levelFolder == "LevelOne":
-		pass
+		message = "You've recienved the Future pin!\nPress the button bellow to continue your BAA mission!"
 	elif main.levelFolder == "LevelTwo":
-		pass
+		message = "You've recienved the Buisiness pin!\nPress the button bellow to continue your BAA mission!"
 	elif main.levelFolder == "LevelThree":
-		pass
+		message = "You've recienved the Leader pin!\nPress the button bellow to continue your BAA mission!"
 	elif main.levelFolder == "LevelFour":
-		message = "You've finished the game, great job! \n Press the button to go back to the main menu."
+		message = "You've recieved the America pin, and finished the game, great job! \n Press the button to go back to the main menu."
 	
 	
 	return message
@@ -244,3 +245,7 @@ func _on_ChangeSong_toggled(button_pressed):
 func _on_Shuffle_pressed():
 	Hud.get_node("HUDElement").musicStreams.shuffle()
 	Hud.get_node("HUDElement").changeSong(-1)
+
+
+func _on_fullscreen_toggle_toggled(button_pressed):
+	OS.window_fullscreen = button_pressed

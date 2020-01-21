@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/UI/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/SillyGames/SILLYGAMES-BOLD.OTF" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Sound/coins/coin2.wav" type="AudioStream" id=4]
 [ext_resource path="res://Fonts/SUMMER IN DECEMBER - OTF.OTF" type="DynamicFontData" id=5]
 [ext_resource path="res://Music/Louie Zong - Suburbia - 06 Mom & Pop Store (Closing Shop).ogg" type="AudioStream" id=6]
+[ext_resource path="res://UI/Lives.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -240,4 +241,6 @@ anims/fade = SubResource( 10 )
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+
+[node name="Lives" parent="." instance=ExtResource( 7 )]
 [connection signal="finished" from="music" to="." method="_on_music_finished"]

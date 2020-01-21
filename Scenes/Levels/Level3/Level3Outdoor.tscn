@@ -333,7 +333,7 @@ taskFileNames = [ "task0", "task1", "task2", "task3", "task4" ]
 questTasksRequired = 5
 questCoinsRequired = 30
 nextLevel = "res://Scenes/Levels/Level4/Level4Outdoor.tscn"
-timeLimit = 15
+timeLimit = 10
 
 [node name="Coins" type="Node2D" parent="."]
 

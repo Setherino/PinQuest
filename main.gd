@@ -20,6 +20,8 @@ var playerX = 0
 
 var nextLevel = ""
 
+var livesLeft = 3
+
 #is the current level an outdoor level
 var outdoors = false
 
@@ -121,22 +123,42 @@ func updateTaskTarget():
 	emit_signal("updateTaskTarget")
 	pass
 
+signal playerDead
+
+func getLevel():
+	match levelFolder:
+		"LevelOne":
+			return "Level1"
+		"LevelTwo":
+			return "Level2"
+		"LevelThree":
+			return "Level3"
+		"LevelFour":
+			return "Level4"
+
 
 #resets all variables to default levels
 func playerDead():
-	print("player dead")
-	clearSaved()
+	
 	#calls reset tasks function, without success, hiding task pannel, and clearing progress
 	resetTasks(false,true,true)
 	tasksComplete.clear()
 	taskStarted.clear()
 	AmmountOfTasksComplete = 0
 	coins = 0
-	var restartLevel = get_tree().get_current_scene().filename
-	
-	if restartLevel.find("user://") != -1:
-		restartLevel = restartLevel.replace("user://temp/","res://")
 	recursiveDelete("user://temp") # deleting everything in the temp folder.
+	if livesLeft <= 0:
+		playerHealth = 10
+		livesLeft = 3
+		clearSaved()
+		Hud.startLoading("res://UI/mainMenu.tscn")
+		return
+	livesLeft -= 1
+	emit_signal("playerDead")
+	var restartLevel = "res://Scenes/Levels/" + getLevel() + "/" + getLevel() + "Outdoor.tscn"
+	
+	print(restartLevel)
+	clearSaved()
 	Hud.startLoading(restartLevel,false)
 	playerHealth = 10
 

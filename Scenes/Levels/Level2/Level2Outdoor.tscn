@@ -321,12 +321,13 @@ z_index = 1
 nextLevel = "res://Scenes/Levels/Level2/Interiors/SchoolHouse.tscn"
 
 [node name="TaskManager" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3285, 1679 )
+position = Vector2( 3285, 1680 )
 Folder = "LevelTwo"
 taskFileNames = [ "task0", "task1", "task2", "task3", "task4" ]
 questTasksRequired = 5
 questCoinsRequired = 20
 nextLevel = "res://Scenes/Levels/Level3/Level3Outdoor.tscn"
+timeLimit = 12
 
 [node name="Spawn Area" parent="." instance=ExtResource( 9 )]
 position = Vector2( 3520, 992 )

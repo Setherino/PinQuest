@@ -322,7 +322,7 @@ taskFileNames = [ "task0", "task1", "task2", "task3", "task4" ]
 questTasksRequired = 5
 questCoinsRequired = 35
 nextLevel = "res://UI/mainMenu.tscn"
-timeLimit = 10
+timeLimit = 8
 
 [node name="Spawn Area" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2416, 992 )

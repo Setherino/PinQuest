@@ -33,6 +33,8 @@ theme = ExtResource( 2 )
 tab_align = 0
 
 [node name="Quest" type="PanelContainer" parent="CanvasLayer/TabContainer"]
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
@@ -120,6 +122,7 @@ custom_fonts/font = SubResource( 2 )
 text = "Complete Quest"
 
 [node name="Tasks" type="PanelContainer" parent="CanvasLayer/TabContainer"]
+editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -295,7 +298,6 @@ align = 1
 valign = 1
 
 [node name="Options" type="PanelContainer" parent="CanvasLayer/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
@@ -435,16 +437,24 @@ margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Change (might take a second)"
 
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/TabContainer/Options/VBoxContainer"]
+[node name="fullscreen toggle" type="CheckButton" parent="CanvasLayer/TabContainer/Options/VBoxContainer"]
 margin_top = 248.0
 margin_right = 962.0
-margin_bottom = 444.0
+margin_bottom = 280.0
+text = "Toggle Fullscreen"
+align = 1
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/TabContainer/Options/VBoxContainer"]
+margin_top = 284.0
+margin_right = 962.0
+margin_bottom = 374.0
 size_flags_vertical = 3
 
 [node name="Quit" type="Button" parent="CanvasLayer/TabContainer/Options/VBoxContainer"]
-margin_top = 448.0
+margin_top = 378.0
 margin_right = 962.0
 margin_bottom = 468.0
+size_flags_vertical = 3
 text = "Quit Game"
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
@@ -457,4 +467,5 @@ stream = ExtResource( 4 )
 [connection signal="pressed" from="CanvasLayer/TabContainer/Options/VBoxContainer/Toggle Switches/Shuffle" to="." method="_on_Shuffle_pressed"]
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Options/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/TabContainer/Options/VBoxContainer/PlayerModel/changeModel" to="." method="_on_changeModel_pressed"]
+[connection signal="toggled" from="CanvasLayer/TabContainer/Options/VBoxContainer/fullscreen toggle" to="." method="_on_fullscreen_toggle_toggled"]
 [connection signal="pressed" from="CanvasLayer/TabContainer/Options/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
