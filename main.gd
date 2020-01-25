@@ -55,6 +55,11 @@ var coins = 0
 var atTop = false
 var atBottom = false
 
+signal taskTimeout
+
+func taskTimeout():
+	emit_signal("taskTimeout")
+
 #for deleting entire folders
 func recursiveDelete(var folder):
 	var dir = Directory.new() #create a directory object

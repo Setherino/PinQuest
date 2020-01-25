@@ -15,10 +15,14 @@ func setTexture(var text : Texture):
 	get_node("Sprite").texture = text
 	texture = text
 
+func timeout():
+	get_node("Sprite").visible = false
+	pass
+
 func _ready():
 	if Engine.editor_hint:
 		return
-	
+	main.connect("taskTimeout",self,"timeout")
 	if main.taskName == sourceTask:
 		main.taskTargetX = position.x
 		get_node("Sprite").visible = true
@@ -50,4 +54,4 @@ func _on_Area2D_body_entered(body):
 		main.taskGoal = DeliverTo
 		main.taskAmmountNeeded = 1
 		main.updateTaskTarget()
-		queue_free()
+		get_node("Sprite").visible = false

@@ -62,3 +62,4 @@ func _process(delta):
 func _timeout():
 	Hud.showMessage("Task failed!","You ran out of time to complete the task. \nIf you want to, you can start the task again to retry")
 	main.resetTasks(false)
+	main.taskTimeout()

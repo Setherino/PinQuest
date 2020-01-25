@@ -365,6 +365,12 @@ z_index = 1
 source = "Autobiography"
 byGoal = true
 
+[node name="TaskTarget6" parent="." instance=ExtResource( 11 )]
+position = Vector2( 4768, 608 )
+z_index = 1
+source = "Video"
+byGoal = true
+
 [node name="Coins" type="Node2D" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource( 12 )]

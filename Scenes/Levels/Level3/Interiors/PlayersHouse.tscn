@@ -109,25 +109,16 @@ Folder = "LevelThree/"
 npcName = "Mom"
 dialogueSourceName = "dog"
 Appearance = "FemaleElder"
-dialogueIcon = null
 wander = true
-speed = 100
 wanderArea = Vector2( 150, 1 )
-useTaskName = false
-taskName = "none"
 
 [node name="NPC2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 928, 304 )
 Folder = "LevelThree/"
-npcName = "Cat"
+npcName = "Cat?"
 dialogueSourceName = "dog"
 Appearance = "NONE"
-dialogueIcon = null
-wander = false
-speed = 100
 wanderArea = Vector2( 150, 1 )
-useTaskName = false
-taskName = "none"
 
 [node name="NPC3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 608, 240 )
@@ -135,9 +126,4 @@ Folder = "LevelThree/"
 npcName = "TV"
 dialogueSourceName = "dog"
 Appearance = "NONE"
-dialogueIcon = null
-wander = false
-speed = 100
 wanderArea = Vector2( 150, 1 )
-useTaskName = false
-taskName = "none"

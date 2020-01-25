@@ -131,7 +131,7 @@ wanderArea = Vector2( 150, 1 )
 [node name="NPC2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 928, 304 )
 Folder = "LevelThree/"
-npcName = "Cat"
+npcName = "Cat?"
 dialogueSourceName = "dog"
 Appearance = "NONE"
 wanderArea = Vector2( 150, 1 )

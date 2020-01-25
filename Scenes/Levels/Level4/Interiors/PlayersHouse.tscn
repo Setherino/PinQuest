@@ -110,7 +110,7 @@ wanderArea = Vector2( 150, 1 )
 
 [node name="Deliverable Item" parent="." instance=ExtResource( 7 )]
 position = Vector2( 720, 352 )
-sourceTask = "Autobiography"
+sourceTask = "FBLA Video"
 DeliverTo = "Hunter"
 texture = ExtResource( 8 )
 spriteScale = 0.05
