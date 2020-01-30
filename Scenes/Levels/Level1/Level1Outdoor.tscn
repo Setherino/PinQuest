@@ -5,14 +5,14 @@
 [ext_resource path="res://Scenes/Tools/AnimatedSprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=9]
-[ext_resource path="res://MiscImages/Coke.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/coin.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Tools/TaskManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Tools/Spawn Area.tscn" type="PackedScene" id=8]
+[ext_resource path="res://MiscImages/Coke.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/coin.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=12]
+[ext_resource path="res://MultiplayerStuff/PlayerSpawn.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -243,11 +243,13 @@ playBackwards = false
 automaticallyDesync = true
 
 [node name="Walls" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Node2D4" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 3312, 768 )
 scale = Vector2( 200.164, 4.337 )
 shape = SubResource( 1 )
+top = true
 
 [node name="Node2D2" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 2752, 1152 )
@@ -310,32 +312,28 @@ stillness = 2
 wanderArea = Vector2( 200, 50 )
 areaColor = Color( 0.501961, 1, 0.509804, 0.196078 )
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 3328, 880 )
-z_index = 2
-
-[node name="door" parent="." instance=ExtResource( 7 )]
+[node name="door" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1824, 800 )
 z_index = 1
 nextLevel = "res://Scenes/Levels/Level1/Interiors/Resturaunt.tscn"
 
-[node name="door3" parent="." instance=ExtResource( 7 )]
+[node name="door3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2784, 800 )
 z_index = 1
 nextLevel = "res://Scenes/Levels/Level1/Interiors/ClaireHouse.tscn"
 
-[node name="door4" parent="." instance=ExtResource( 7 )]
+[node name="door4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 4769.03, 800 )
 z_index = 1
 nextLevel = "res://Scenes/Levels/Level1/Interiors/PlayersHouse.tscn"
 
-[node name="door2" parent="." instance=ExtResource( 7 )]
+[node name="door2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1568, 800 )
 z_index = 1
 nextLevel = "res://Scenes/Levels/Level1/Interiors/SchoolHouse.tscn"
 
-[node name="TaskManager" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3162, 1512 )
+[node name="TaskManager" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3162, 1515 )
 Folder = "LevelOne"
 taskFileNames = [ "task0", "task1", "task2", "task3", "task4" ]
 questTasksRequired = 5
@@ -343,7 +341,7 @@ questCoinsRequired = 20
 nextLevel = "res://Scenes/Levels/Level2/Level2Outdoor.tscn"
 timeLimit = 15
 
-[node name="Spawn Area" parent="." instance=ExtResource( 9 )]
+[node name="Spawn Area" parent="." instance=ExtResource( 8 )]
 position = Vector2( 2144, 992 )
 z_index = 1
 spawnArea = Vector2( 500, 100 )
@@ -352,9 +350,9 @@ randomRotation = true
 spriteScale = 0.1
 sourceTask = "Community Service"
 ammountToSpawn = 3
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 
-[node name="Spawn Area2" parent="." instance=ExtResource( 9 )]
+[node name="Spawn Area2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 4544, 976 )
 z_index = 1
 spawnArea = Vector2( 700, 100 )
@@ -363,39 +361,44 @@ randomRotation = true
 spriteScale = 0.2
 sourceTask = "March for Dimes"
 ammountToSpawn = 25
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 
-[node name="TaskTarget" parent="." instance=ExtResource( 12 )]
+[node name="TaskTarget" parent="." instance=ExtResource( 11 )]
 position = Vector2( 2784, 688 )
 z_index = 1
 source = "Karen"
 byGoal = true
 
-[node name="TaskTarget2" parent="." instance=ExtResource( 12 )]
+[node name="TaskTarget2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 4768, 688 )
 z_index = 1
 source = "Poster"
 
-[node name="Coin2" parent="." instance=ExtResource( 13 )]
+[node name="Coin2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4512, 861 )
 
-[node name="Coin8" parent="." instance=ExtResource( 13 )]
+[node name="Coin8" parent="." instance=ExtResource( 12 )]
 position = Vector2( 2784, 987 )
 
-[node name="Coin9" parent="." instance=ExtResource( 13 )]
+[node name="Coin9" parent="." instance=ExtResource( 12 )]
 position = Vector2( 2432, 963.5 )
 
-[node name="Coin10" parent="." instance=ExtResource( 13 )]
+[node name="Coin10" parent="." instance=ExtResource( 12 )]
 position = Vector2( 2064, 963.5 )
 
-[node name="Coin11" parent="." instance=ExtResource( 13 )]
+[node name="Coin11" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1792, 987 )
 
-[node name="Coin12" parent="." instance=ExtResource( 13 )]
+[node name="Coin12" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1536, 963.5 )
 
-[node name="Coin3" parent="." instance=ExtResource( 13 )]
+[node name="Coin3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 3600, 842 )
 
-[node name="Coin4" parent="." instance=ExtResource( 13 )]
+[node name="Coin4" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4944, 837.5 )
+
+[node name="PlayerSpawn" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3486, 978 )
+z_index = 2
+spawnArea = Vector2( 200, 100 )

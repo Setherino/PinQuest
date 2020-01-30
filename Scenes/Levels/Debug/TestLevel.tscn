@@ -94,6 +94,7 @@ shape = SubResource( 1 )
 position = Vector2( 1008, 848 )
 scale = Vector2( 156.114, -2.58868 )
 shape = SubResource( 2 )
+top = true
 
 [node name="Bottom" parent="World Edges" instance=ExtResource( 4 )]
 position = Vector2( 992, 1152 )
@@ -266,9 +267,19 @@ areaColor = Color( 0.517184, 0.375366, 0.960938, 0.298039 )
 taskName = "Talk to NPC"
 
 [node name="Player" parent="." instance=ExtResource( 13 )]
-position = Vector2( 320, 944 )
+position = Vector2( 320, 945 )
 z_index = 2
 tutorial = true
+activeCamera = false
+Appearance = "MalePunk"
+
+[node name="Player2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 432, 945 )
+z_index = 2
+outside = false
+tutorial = true
+activeCamera = false
+playerID = 2
 Appearance = "MalePunk"
 
 [node name="Deliverable Item" parent="." instance=ExtResource( 14 )]

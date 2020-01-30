@@ -2,14 +2,14 @@
 
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Tools/AnimatedSprite.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Tools/Deliverable Item.tscn" type="PackedScene" id=8]
-[ext_resource path="res://MiscImages/FBLA-PBL-2018-19-Create-Lead-Inspire-Small.jpg" type="Texture" id=9]
-[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Tools/AnimatedSprite.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Tools/Deliverable Item.tscn" type="PackedScene" id=7]
+[ext_resource path="res://MiscImages/FBLA-PBL-2018-19-Create-Lead-Inspire-Small.jpg" type="Texture" id=8]
+[ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=9]
+[ext_resource path="res://MultiplayerStuff/PlayerSpawn.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -40,17 +40,13 @@ position = Vector2( 848, 224 )
 nextLevel = "res://Scenes/Levels/Level1/Level1Outdoor.tscn"
 doorType = 3
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 848, 234 )
-outside = false
-Appearance = "MalePunk"
-
-[node name="Node2D" parent="." instance=ExtResource( 4 )]
+[node name="Node2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 480, 224 )
 scale = Vector2( 59.6251, 0.800729 )
 shape = SubResource( 1 )
+top = true
 
-[node name="Node2D2" parent="." instance=ExtResource( 4 )]
+[node name="Node2D2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 480, 448 )
 scale = Vector2( 59.6251, 0.800729 )
 shape = SubResource( 1 )
@@ -62,7 +58,7 @@ top = false
 position = Vector2( 304, 260.849 )
 shape = SubResource( 2 )
 
-[node name="AnimatedSprite" parent="." instance=ExtResource( 5 )]
+[node name="AnimatedSprite" parent="." instance=ExtResource( 4 )]
 position = Vector2( 604, 236 )
 Anim = "TV"
 speedScale = 1
@@ -79,35 +75,35 @@ shape = SubResource( 2 )
 position = Vector2( 604, 215 )
 shape = SubResource( 3 )
 
-[node name="AnimatedSprite2" parent="." instance=ExtResource( 5 )]
+[node name="AnimatedSprite2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 928, 320 )
 Anim = "Cat"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite3" parent="." instance=ExtResource( 5 )]
+[node name="AnimatedSprite3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 400, 393 )
 Anim = "Heater"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite4" parent="." instance=ExtResource( 5 )]
+[node name="AnimatedSprite4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 672, 224 )
 Anim = "WindowTop1"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="AnimatedSprite5" parent="." instance=ExtResource( 5 )]
+[node name="AnimatedSprite5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 672, 288 )
 Anim = "WindowBottom1"
 speedScale = 1
 playBackwards = false
 automaticallyDesync = true
 
-[node name="NPC2" parent="." instance=ExtResource( 6 )]
+[node name="NPC2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 928, 304 )
 Folder = "LevelThree/"
 npcName = "Cat?"
@@ -115,26 +111,30 @@ dialogueSourceName = "dog"
 Appearance = "NONE"
 wanderArea = Vector2( 150, 1 )
 
-[node name="Coin" parent="." instance=ExtResource( 7 )]
+[node name="Coin" parent="." instance=ExtResource( 6 )]
 position = Vector2( 432, 312.5 )
 
-[node name="Coin2" parent="." instance=ExtResource( 7 )]
+[node name="Coin2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 737, 320 )
 
-[node name="Coin3" parent="." instance=ExtResource( 7 )]
+[node name="Coin3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 656, 400 )
 
-[node name="Coin4" parent="." instance=ExtResource( 7 )]
+[node name="Coin4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 880, 400 )
 
-[node name="Deliverable Item" parent="." instance=ExtResource( 8 )]
+[node name="Deliverable Item" parent="." instance=ExtResource( 7 )]
 position = Vector2( 544, 343.5 )
 sourceTask = "Poster"
 DeliverTo = "Oliver"
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 spriteScale = 0.1
 
-[node name="TaskTarget" parent="." instance=ExtResource( 10 )]
+[node name="TaskTarget" parent="." instance=ExtResource( 9 )]
 position = Vector2( 848, 128 )
 source = "Oliver"
 byGoal = true
+
+[node name="PlayerSpawn" parent="." instance=ExtResource( 10 )]
+position = Vector2( 847, 236 )
+spawnArea = Vector2( 20, 20 )

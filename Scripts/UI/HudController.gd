@@ -20,6 +20,7 @@ const nxtLevelScreen = preload("res://UI/LevelComplete.tscn")
 
 const timer = preload("res://UI/Timer.tscn")
 
+
 #is the inventory open?
 var inventoryOpen = false
 
@@ -47,10 +48,12 @@ func levelDone(var message,var nextLevel):
 	
 
 #allows loading levels with loading screen
-func startLoading(var nextLevel,save = true):
+func startLoading(var nextLevel,save = true,var player = "err"):
+	
 	var loadUI = loading.instance() #create instance of loading screen
 	loadUI.level = nextLevel #set it's level variable
 	loadUI.save = save
+	loadUI.player = player
 	add_child(loadUI) #add it to the screen
 
 #remove the loading screen
@@ -214,6 +217,7 @@ func showHud():
 	add_child(HUD)
 
 func _ready():
+	print("im ready")
 	showHud()
 	clearSaves()
 
@@ -230,9 +234,12 @@ func getDir(var fileName):
 	
 	return fileName
 
-func saveToTemp():
+func saveToTemp(var scene):
 	var packedScene = PackedScene.new() #create a new packed scene resource
-	packedScene.pack(get_tree().get_current_scene()) #fill it with the current scene
+	if scene:
+		packedScene.pack(scene)
+	else:
+		packedScene.pack(get_tree().get_current_scene()) #fill it with the current scene
 	
 	#get it's (the current scene's) location.
 	var saveLocation = str(get_tree().get_current_scene().filename)
@@ -268,3 +275,7 @@ func saveToTemp():
 	ResourceSaver.save(saveLocation,packedScene)
 	
 	return saveLocation
+
+
+func multiplayerVeiwport():
+	pass

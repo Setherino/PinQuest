@@ -3,10 +3,10 @@
 [ext_resource path="res://Tilemaps/Final_Indoors.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Objects/Collectables/Coin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Tools/TaskTarget.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Objects/levelDoor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Tools/worldTop.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/NPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://MultiplayerStuff/PlayerSpawn.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -63,23 +63,18 @@ z_index = 0
 position = Vector2( 864, 128 )
 any = true
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 864, 240.108 )
-outside = false
-Appearance = "MalePunk"
-
-[node name="door" parent="." instance=ExtResource( 5 )]
+[node name="door" parent="." instance=ExtResource( 4 )]
 position = Vector2( 864, 223.554 )
 nextLevel = "res://Scenes/Levels/Level1/Level1Outdoor.tscn"
 doorType = 3
 
-[node name="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="Node2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 480, 224 )
 scale = Vector2( 59.6251, 0.800729 )
 shape = SubResource( 1 )
 top = true
 
-[node name="Node2D2" parent="." instance=ExtResource( 6 )]
+[node name="Node2D2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 480, 512 )
 scale = Vector2( 59.6251, 0.800729 )
 shape = SubResource( 1 )
@@ -117,14 +112,14 @@ editor/display_folded = true
 position = Vector2( 1040, 323 )
 shape = SubResource( 4 )
 
-[node name="NPC" parent="." instance=ExtResource( 7 )]
+[node name="NPC" parent="." instance=ExtResource( 6 )]
 position = Vector2( 400, 368 )
 Folder = "LevelOne/"
 npcName = "Mr.Enns"
 dialogueSourceName = "brad/Mr.Enns"
 Appearance = "OldBusinessMan"
 
-[node name="NPC2" parent="." instance=ExtResource( 7 )]
+[node name="NPC2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 720, 404 )
 Folder = "LevelThree/"
 npcName = "Katie"
@@ -135,7 +130,7 @@ stillness = 0
 wanderArea = Vector2( 250, 40 )
 areaColor = Color( 0.0196078, 0.74902, 1, 0.168627 )
 
-[node name="NPC3" parent="." instance=ExtResource( 7 )]
+[node name="NPC3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 528, 304 )
 Folder = "LevelThree/"
 npcName = "Johnothan"
@@ -145,3 +140,7 @@ wander = true
 stillness = 2
 wanderArea = Vector2( 100, 50 )
 areaColor = Color( 1, 0.501961, 0.501961, 0.231373 )
+
+[node name="PlayerSpawn" parent="." instance=ExtResource( 7 )]
+position = Vector2( 864.604, 235.169 )
+spawnArea = Vector2( 20, 20 )

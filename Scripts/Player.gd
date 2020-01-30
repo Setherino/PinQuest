@@ -9,7 +9,12 @@ export var walkRangeScale = 1
 export var outside = false
 export var tutorial = false
 
+export var activeCamera = true
 onready var sound = get_node("sfx")
+
+var canMove = true
+
+export var playerID = 1
 
 #this is the motion variables that hold the x & y speeds of the player
 var motion = Vector2( )
@@ -45,6 +50,9 @@ func setChar(character : int):
 
 
 func _ready():
+#	get_node("shadowBody/camera/Camera2D")._set_current(activeCamera)
+	playerID = main.players.size()
+	print("player created, ID = " + str(playerID))
 	main.startTask(false)
 	setChar(main.playerCharacter)
 	Hud.tutorial = tutorial
@@ -180,7 +188,6 @@ func slide(slider:Vector2,var object = self):
 		object.position += slider
 
 
-
 func moveVert(var ammount):
 	sliding.y += ammount
 
@@ -210,11 +217,21 @@ func animation():
 		anim.set_frame(idleFrame)
 	pass
 
+func inputPressed(var direction):
+	if main.mpMode > 0:
+		if Input.is_action_pressed(direction + "_" + str(playerID)):
+			return true
+	else:
+		if Input.is_action_pressed(direction + "_1") or Input.is_action_pressed(direction + "_2"):
+			return true
+	
+	return false
+
 
 #this runs every ??frame?? and does physics and movement
 #it's kinda complex because of the isometric movement.
 func _physics_process(delta):
-	if !main.movementEnabled:
+	if !main.movementEnabled or !canMove:
 		return
 	
 	main.playerX = position.x
@@ -223,9 +240,9 @@ func _physics_process(delta):
 	prevMotion = motion
 	
 	#moving left
-	if Input.is_action_pressed("moveLeft"):
+	if inputPressed("left"):
 		motion.x = -SPEED #move left
-	elif Input.is_action_pressed("moveRight"):
+	elif inputPressed("right"):
 		motion.x = SPEED #move right
 	else:
 		if motion.x > 1:
@@ -236,12 +253,12 @@ func _physics_process(delta):
 			motion.x = 0
 	if !onGround():
 		motion.y += GRAVITY
-	elif Input.is_action_pressed("moveDown"):
+	elif inputPressed("down"):
 		if !main.atBottom:
 			move_and_slide(Vector2(0,SPEED))
 			motionY = SPEED
 		motion.y = 0
-	elif Input.is_action_pressed("moveUp"):
+	elif inputPressed("up"):
 		if !main.atTop:
 			move_and_slide(Vector2(0,-SPEED))
 			motionY = -SPEED

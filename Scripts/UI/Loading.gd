@@ -9,7 +9,7 @@ extends Control
 var level = "res://UI/mainMenu.tscn"
 
 var save = true
-
+var player
 onready var anim1 = get_node("canv/PanelContainer/pnlPlayer")
 onready var anim2 = get_node("canv/contain/txtPlayer")
 
@@ -26,9 +26,9 @@ func next_scene():
 	#checking the temp folder for the scene
 	if file.file_exists(location) && save:
 		print("loading from temp...")
-		get_tree().change_scene(location)
+		main.splitscreen.changeScene(location,player.playerID)
 	else:
-		get_tree().change_scene(level)
+		main.splitscreen.changeScene(level,player.playerID)
 	main.movementEnabled = true
 	if main.changeOnDoor:
 		Hud.get_node("HUDElement").changeSong(-1)
@@ -81,10 +81,6 @@ func _ready():
 	
 	var fact = getFact() #first we get a fun fact 
 	get_node("canv/contain/facts").text = fact #and add it
-	
-	#save the current level, so that if the player comes back it's all the same.
-	if save: #if we want to save (we do usually, except when the player dies)
-		Hud.saveToTemp()
 	
 	
 	#now we make a timer

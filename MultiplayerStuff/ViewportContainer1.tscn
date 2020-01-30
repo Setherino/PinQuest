@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MultiplayerStuff/viewportChild.gd" type="Script" id=1]
+[ext_resource path="res://MultiplayerStuff/Camera2D.gd" type="Script" id=2]
+
+[node name="ViewportContainer1" type="ViewportContainer"]
+margin_right = 510.0
+margin_bottom = 576.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+script = ExtResource( 1 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 510, 576 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="Viewport"]
+anchor_mode = 0
+current = true
+script = ExtResource( 2 )

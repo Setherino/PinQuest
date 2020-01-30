@@ -153,7 +153,7 @@ func _input(event):
 			Hud.showDialogue(defaultDialogue,npcName,dialogueIcon)
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Player":
+	if main.players.has(body):
 		onNPC = true
 		main.interact = true
 		main.interactWith = npcName
@@ -162,7 +162,7 @@ func _on_Area2D_body_entered(body):
 
 #when you leave the npc's hitbox
 func _on_Area2D_body_exited(body):
-	if body.name == "Player":
+	if main.players.has(body):
 		main.interact = false
 		main.interactWith = "nothing"
 		onNPC = false

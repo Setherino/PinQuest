@@ -39,8 +39,6 @@ func setSpawnArea(var area):
 	wanderArea = area
 	update() #updates the rectangle
 
-onready var kine = get_node("KinematicBody2D")
-
 func setChar(var charac):
 	Appearance = charac
 	get_node("KinematicBody2D").setChar(charac)

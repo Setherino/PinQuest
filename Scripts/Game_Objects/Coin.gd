@@ -5,16 +5,20 @@ extends Node2D
 export var damage = false
 export var triggeredWhileJumping = true
 
+onready var collect : collectable = collectable.new()
 #this activates when a player walks onto the button
-func _on_Area2D_body_entered(body):
-	if body.name == "Player" or body.name == "notPlayer": #if it's the player
-		#print(main.futureRewards[main.coins]) #print stuff
-		if !triggeredWhileJumping:
-			if body.name == "notPlayer":
-				return
-		
-		if !damage:
+
+func _ready():
+	collect.connect("entered",self,"entered")
+
+func entered():
+	if !damage:
 			main.coins += 1 #iterate coins variable by one
-		else:
+	else:
 			main.playerHealth -= 1
-		queue_free()
+	
+	queue_free()
+
+
+func _on_Area2D_body_entered(body):
+	collect.entered(body)

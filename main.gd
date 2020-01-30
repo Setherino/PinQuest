@@ -9,6 +9,53 @@ extends Spatial
 
 signal forceJump
 
+var SFXVolume = 0
+
+signal volumeChange
+
+
+
+var splitscreen
+
+signal replacePlayer
+
+func replacePlayer(var world2d,var player):
+	emit_signal("replacePlayer",world2d,player)
+
+signal spawnPlayer
+
+func spawnPlayer(var viewport):
+	var temp = [viewport]
+	emit_signal("spawnPlayer",viewport)
+	pass
+
+signal unload
+
+func unload(var world2d):
+	emit_signal("unload",world2d)
+
+var players = [ ]
+var viewports = [ ]
+
+func appendPlayers(var value):
+	print("appended player " + value.name)
+	players.append(value)
+	
+
+func appendViewport(var value):
+	print("appended viewport " + value.name)
+	viewports.append(value)
+
+
+var playerSpawn = [ ]
+
+
+func getPlayerSpawn(var world2d):
+	for spawner in playerSpawn: #look through all the playerspawns
+		if spawner.get_world_2d() == world2d: #once you find the right one
+			return spawner #return it
+	return false #if you didn't find it, return false
+
 var taskDescription = "none"
 
 #this is where the arrow points
@@ -46,6 +93,8 @@ var vhsEffect = 3
 #for linkObjects
 var sourceNames = [ ]
 var linkCodes = [ ]
+
+var mpMode = 1
 
 #for coins
 var slowcoin = 0
@@ -235,10 +284,6 @@ signal JumpCheck
 
 func jumpCheck():
 	emit_signal("JumpCheck")
-
-var SFXVolume = 0
-
-signal volumeChange
 
 func updateVolume():
 	emit_signal("volumeChange")
